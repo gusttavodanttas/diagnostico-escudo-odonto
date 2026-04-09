@@ -12,21 +12,13 @@
   --brand:#E07B00;--brand-l:#F59E0B;--glow:rgba(224,123,0,.3);
   --bg:#1a1a1a;--card:#232323;--item:#2d2d2d;--deep:#383838;
   --border:#3a3a3a;--txt:#f0ece4;--muted:#a89880;--white:#fff;
-  --r:14px;--gap:12px;
 }
-html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-size:16px;line-height:1.5;}
-
-/* ── TELAS ── */
+html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;}
 .tela{display:none;min-height:100vh;}
 .tela.active{display:flex;flex-direction:column;}
 
-/* ── HOME ── */
-#tela-home{
-  background:linear-gradient(160deg,#111 0%,#1e1e1e 55%,#251800 100%);
-  align-items:center;justify-content:center;
-  padding:clamp(28px,6vw,60px) clamp(16px,5vw,40px);
-  text-align:center;
-}
+/* HOME */
+#tela-home{background:linear-gradient(160deg,#111 0%,#1e1e1e 55%,#251800 100%);align-items:center;justify-content:center;padding:clamp(28px,6vw,60px) clamp(16px,5vw,40px);text-align:center;}
 .logo-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
 .escudo-svg{width:clamp(36px,7vw,52px);height:auto;filter:drop-shadow(0 0 10px var(--brand));}
 .logo-txt{font-family:'Cinzel',serif;font-size:clamp(18px,4vw,26px);font-weight:800;letter-spacing:3px;color:var(--white);}
@@ -35,64 +27,45 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
 .hero-h1{font-family:'Cinzel',serif;font-size:clamp(20px,5vw,40px);font-weight:800;line-height:1.2;color:var(--white);margin-bottom:10px;}
 .hero-h1 span{color:var(--brand);}
 .hero-sub{font-size:clamp(13px,2vw,16px);color:var(--muted);max-width:520px;margin:0 auto 20px;line-height:1.7;}
-
 .riscos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:580px;margin:0 auto 24px;}
 .risco-item{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;text-align:left;}
 .ri-icon{font-size:16px;flex-shrink:0;line-height:1.4;}
 .ri-txt{font-size:11px;color:var(--muted);line-height:1.4;}
 .ri-txt strong{display:block;color:var(--brand-l);font-size:11px;font-weight:700;margin-bottom:1px;}
-
-.btn-cta{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111;font-weight:800;font-size:clamp(14px,3vw,16px);padding:15px clamp(28px,6vw,44px);border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px var(--glow);letter-spacing:.3px;transition:transform .18s,box-shadow .18s;width:100%;max-width:340px;}
-.btn-cta:active{transform:scale(.97);}
-
+.btn-cta{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111;font-weight:800;font-size:clamp(14px,3vw,16px);padding:15px clamp(28px,6vw,44px);border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px var(--glow);letter-spacing:.3px;width:100%;max-width:340px;}
 .stats{display:flex;justify-content:center;gap:clamp(20px,5vw,40px);margin-top:20px;}
 .stat-n{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--brand);}
 .stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 
-/* ── FORMULÁRIO & QUIZ ── */
-#tela-form,#tela-quiz{
-  align-items:center;justify-content:center;
-  padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);
-}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
-
+/* FORM & QUIZ */
+#tela-form,#tela-quiz{align-items:center;justify-content:center;padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
 .form-lbl{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:5px;}
 .form-inp{width:100%;background:var(--item);border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;font-size:15px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none;}
 .form-inp:focus{border-color:var(--brand);}
 .form-grp{display:flex;flex-direction:column;gap:12px;}
 .form-err{display:none;font-size:13px;color:#f87171;text-align:center;padding:8px;background:rgba(248,113,113,.1);border-radius:8px;}
-
-/* PROGRESS */
 .prog-wrap{margin-bottom:20px;}
 .prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px;}
 .prog-bar{height:5px;background:var(--deep);border-radius:10px;overflow:hidden;}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-l));border-radius:10px;transition:width .4s ease;}
-
 .cat-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(224,123,0,.1);border:1px solid rgba(224,123,0,.22);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
 .q-txt{font-size:clamp(14px,3vw,18px);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.45;}
-
 .options{display:flex;flex-direction:column;gap:8px;}
-.option{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1.5px solid var(--border);border-radius:11px;cursor:pointer;font-size:clamp(13px,2.5vw,14px);font-weight:500;background:var(--item);color:var(--txt);transition:border-color .15s,background .15s;-webkit-tap-highlight-color:transparent;user-select:none;}
-.option:active{background:rgba(224,123,0,.1);}
+.option{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1.5px solid var(--border);border-radius:11px;cursor:pointer;font-size:clamp(13px,2.5vw,14px);font-weight:500;background:var(--item);color:var(--txt);transition:border-color .15s,background .15s;user-select:none;}
 .option.selected{border-color:var(--brand);background:rgba(224,123,0,.13);color:var(--white);}
-.option.correct{border-color:#22c55e;background:rgba(34,197,94,.1);pointer-events:none;}
 .opt-icon{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:var(--deep);transition:all .15s;}
 .option.selected .opt-icon{background:var(--brand);border-color:var(--brand);color:#111;font-weight:800;}
+.nav-btns{margin-top:16px;}
+.btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:11px 20px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;}
 
-.nav-btns{display:flex;gap:10px;margin-top:18px;}
-.btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:11px 20px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;flex-shrink:0;}
-.btn-back:active{border-color:var(--brand);color:var(--brand);}
-
-/* ── RESULTADO ── */
+/* RESULTADO */
 #tela-resultado{align-items:center;justify-content:flex-start;padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);}
-.result-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
-
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
 .res-header{text-align:center;margin-bottom:22px;}
 .res-nivel{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
 .res-titulo{font-family:'Cinzel',serif;font-size:clamp(16px,3.5vw,22px);font-weight:800;color:var(--white);margin-bottom:10px;line-height:1.3;}
-.res-desc{font-size:13px;color:var(--muted);line-height:1.75;max-width:480px;margin:0 auto;}
-
-/* TERMÔMETRO */
+.res-desc{font-size:13px;color:var(--muted);line-height:1.75;}
 .termo-wrap{margin:20px 0;text-align:center;}
 .termo-lbl{font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
 .score{font-family:'Cinzel',serif;font-size:clamp(32px,7vw,44px);font-weight:800;margin:6px 0 3px;}
@@ -102,8 +75,6 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
 .termo-dot{width:28px;height:28px;border-radius:50%;background:var(--white);border:3px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.5);}
 .termo-marks{display:flex;justify-content:space-between;margin-top:6px;}
 .termo-marks span{font-size:10px;color:var(--muted);}
-
-/* PARECER */
 .parecer-ttl{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
 .parecer-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
 .parecer-item{background:var(--item);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;}
@@ -114,48 +85,35 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
 .p-bar-lbl span:last-child{font-size:11px;color:var(--muted);}
 .p-bar-track{height:5px;background:var(--deep);border-radius:10px;overflow:hidden;}
 .p-bar-fill{height:100%;border-radius:10px;transition:width 1s ease;}
-
 .alertas-box{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
 .alertas-box h4{font-size:11px;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
 .alertas-box li{font-size:13px;color:var(--muted);margin-bottom:7px;list-style:none;display:flex;gap:8px;}
 .alertas-box li::before{content:"⚠️";flex-shrink:0;}
-
 .inclui-box{background:rgba(224,123,0,.07);border:1px solid rgba(224,123,0,.18);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
 .inclui-box h4{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
 .inclui-item{display:flex;gap:8px;font-size:13px;color:var(--muted);margin-bottom:7px;}
 .inclui-item::before{content:"✅";flex-shrink:0;}
-
 .cta-box{display:flex;flex-direction:column;gap:10px;}
-.cta-wpp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:opacity .2s;}
-.cta-wpp:active{opacity:.85;}
-.cta-ass{background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:opacity .2s;}
-.cta-ass:active{opacity:.85;}
+.cta-wpp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;}
+.cta-ass{background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;}
 .cta-lbl{font-size:11px;opacity:.8;font-weight:400;}
 .divider{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin:2px 0;}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
-.btn-refazer{width:100%;margin-top:10px;background:none;border:1.5px solid var(--border);color:var(--muted);padding:12px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
-.btn-refazer:active{border-color:var(--brand);color:var(--brand);}
-
+.btn-refazer{width:100%;margin-top:10px;background:none;border:1.5px solid var(--border);color:var(--muted);padding:12px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;}
 .nivel-v{color:#22c55e;}.nivel-a{color:#facc15;}.nivel-o{color:#fb923c;}.nivel-r{color:#ef4444;}
 
-@media(max-width:480px){
-  .riscos-grid{grid-template-columns:repeat(2,1fr);}
-  .ri-icon{font-size:14px;}
-}
-@media(max-width:320px){
-  .riscos-grid{grid-template-columns:1fr;}
-}
+@media(max-width:480px){.riscos-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:320px){.riscos-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- ① HOME -->
+<!-- HOME -->
 <div id="tela-home" class="tela active">
   <div class="logo-wrap">
-    <svg class="escudo-svg" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="escudo-svg" viewBox="0 0 48 56" fill="none">
       <path d="M24 2L44 11V31C44 42 24 54 24 54C24 54 4 42 4 31V11L24 2Z" fill="#E07B00"/>
       <path d="M24 2L24 54C24 54 4 42 4 31V11L24 2Z" fill="#F5C842"/>
-      <path d="M24 2L44 11V31C44 42 24 54 24 54C24 54 4 42 4 31V11L24 2Z" fill="none" stroke="#F5C842" stroke-width="1" opacity="0.3"/>
     </svg>
     <div class="logo-txt">ESCUDO <span>ODONTO</span></div>
   </div>
@@ -178,7 +136,7 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
   </div>
 </div>
 
-<!-- ② FORMULÁRIO -->
+<!-- FORMULÁRIO -->
 <div id="tela-form" class="tela">
   <div class="card">
     <div style="text-align:center;margin-bottom:22px;">
@@ -200,7 +158,7 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
   </div>
 </div>
 
-<!-- ③ QUIZ -->
+<!-- QUIZ -->
 <div id="tela-quiz" class="tela">
   <div class="card">
     <div class="prog-wrap">
@@ -217,19 +175,47 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
   </div>
 </div>
 
-<!-- ④ RESULTADO -->
+<!-- RESULTADO -->
 <div id="tela-resultado" class="tela">
   <div class="result-card" id="resultContent"></div>
 </div>
 
 <script>
-const ir=id=>{
-  document.querySelectorAll('.tela').forEach(t=>t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-};
+// ── dados do formulário (acessíveis globalmente)
+var dadosLead = {};
 
-const Ps=[
+// ── navegação
+function ir(id) {
+  document.querySelectorAll('.tela').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── envio ao Formspree (não bloqueia o fluxo)
+function enviarFormspree(dados) {
+  fetch('https://formspree.io/f/mzdkqepj', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+    body: JSON.stringify(dados)
+  }).catch(function(e){ console.error('Formspree:', e); });
+}
+
+// ── validação do formulário
+function validarForm() {
+  var n = document.getElementById('fNome').value.trim();
+  var e = document.getElementById('fEmail').value.trim();
+  var w = document.getElementById('fWpp').value.trim();
+  var err = document.getElementById('formErro');
+  if (!n || !e || !w) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  dadosLead = {nome: n, email: e, wpp: w};
+  cur = 0; resp = []; lock = false;
+  ir('tela-quiz');
+  render();
+}
+
+// ── perguntas
+var Ps = [
   {c:"👤 Pacientes",q:"Seus pacientes assinam termo de consentimento informado antes de qualquer procedimento?",o:[{t:"Sim, sempre e para todos os procedimentos",p:0},{t:"Apenas para procedimentos mais complexos",p:1},{t:"Raramente ou nunca utilizamos esse documento",p:3}]},
   {c:"👤 Pacientes",q:"Os contratos com pacientes têm cláusulas claras sobre honorários, prazo e resultados?",o:[{t:"Sim, contratos revisados e assinados sempre",p:0},{t:"Usamos contratos, mas nunca foram revisados",p:2},{t:"Não utilizamos contratos formais com pacientes",p:3}]},
   {c:"👤 Pacientes",q:"Existe protocolo documentado para lidar com reclamações e insatisfações de pacientes?",o:[{t:"Sim, temos fluxo definido e documentado",p:0},{t:"Lidamos caso a caso, sem protocolo formal",p:2},{t:"Não temos nenhum protocolo definido",p:3}]},
@@ -244,10 +230,10 @@ const Ps=[
   {c:"🔒 LGPD",q:"Prontuários e dados dos pacientes seguem política de privacidade adequada conforme a LGPD?",o:[{t:"Sim, temos política de privacidade implementada",p:0},{t:"Conhecemos a lei, mas ainda não nos adequamos",p:2},{t:"Nunca nos preocupamos com isso",p:3}]},
   {c:"🏥 ANVISA",q:"Seu consultório está adequado às normas da ANVISA e da vigilância sanitária?",o:[{t:"Sim, com orientação especializada e documentação",p:0},{t:"Acreditamos estar adequados, mas sem verificação formal",p:1},{t:"Nunca avaliamos nossa adequação sanitária",p:3}]},
   {c:"🚨 Acionamentos",q:"Se você recebesse hoje uma notificação extrajudicial ou citação judicial, saberia o que fazer?",o:[{t:"Sim, tenho suporte especializado para isso",p:0},{t:"Tentaria resolver por conta própria",p:2},{t:"Não teria ideia por onde começar",p:3}]},
-  {c:"🏦 Patrimônio",q:"A estrutura da sua clínica foi planejada para proteger seu patrimônio pessoal em caso de processo?",o:[{t:"Sim, estruturada com orientação especializada",p:0},{t:"Tenho CNPJ, mas sem planejamento de proteção",p:2},{t:"Atendo como pessoa física sem estrutura definida",p:3}]},
+  {c:"🏦 Patrimônio",q:"A estrutura da sua clínica foi planejada para proteger seu patrimônio pessoal em caso de processo?",o:[{t:"Sim, estruturada com orientação especializada",p:0},{t:"Tenho CNPJ, mas sem planejamento de proteção",p:2},{t:"Atendo como pessoa física sem estrutura definida",p:3}]}
 ];
 
-const CATS={
+var CATS = {
   "👤 Pacientes":{l:"Pacientes",i:[0,1,2]},
   "👷 Funcionários":{l:"Funcionários",i:[3,4]},
   "🤝 Sócios":{l:"Sócios",i:[5,6]},
@@ -256,140 +242,138 @@ const CATS={
   "🔒 LGPD":{l:"LGPD e Dados",i:[11]},
   "🏥 ANVISA":{l:"ANVISA",i:[12]},
   "🚨 Acionamentos":{l:"Acionamentos",i:[13]},
-  "🏦 Patrimônio":{l:"Patrimônio",i:[14]},
+  "🏦 Patrimônio":{l:"Patrimônio",i:[14]}
 };
 
-let cur=0,resp=[],lock=false;
-const TOT=Ps.length;
+var cur = 0, resp = [], lock = false;
+var TOT = Ps.length;
 
-const validarForm=()=>{
-  const n=document.getElementById('fNome').value.trim();
-  const e=document.getElementById('fEmail').value.trim();
-  const w=document.getElementById('fWpp').value.trim();
-  const err=document.getElementById('formErro');
-  if(!n||!e||!w){err.style.display='block';return;}
-  err.style.display='none';
-  cur=0;resp=[];lock=false;
-  ir('tela-quiz');
-  render();
-};
+function render() {
+  var p = Ps[cur];
+  var sel = resp[cur] !== undefined ? resp[cur] : null;
+  var pct = Math.round((cur / TOT) * 100);
+  document.getElementById('progLabel').innerHTML = 'Pergunta <strong>' + (cur+1) + '</strong> de ' + TOT;
+  document.getElementById('progPct').textContent = pct + '%';
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('btnBack').style.display = cur > 0 ? 'inline-block' : 'none';
 
-const enviarFormspree=async(dados)=>{
-  try{
-    await fetch('https://formspree.io/f/mzdkqepj',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(dados)
-    });
-  }catch(e){console.error('Formspree error:',e);}
-};
-
-const render=()=>{
-  const p=Ps[cur];
-  const sel=resp[cur]!==undefined?resp[cur]:null;
-  const pct=Math.round((cur/TOT)*100);
-  document.getElementById('progLabel').innerHTML=`Pergunta <strong>${cur+1}</strong> de ${TOT}`;
-  document.getElementById('progPct').textContent=pct+'%';
-  document.getElementById('progFill').style.width=pct+'%';
-  document.getElementById('btnBack').style.display=cur>0?'inline-flex':'none';
-
-  let html=`<div class="cat-badge">${p.c}</div><div class="q-txt">${p.q}</div><div class="options">`;
-  p.o.forEach((op,i)=>{
-    const s=sel===i?'selected':'';
-    html+=`<div class="option ${s}" onclick="escolher(${i})"><div class="opt-icon">${sel===i?'✓':''}</div><span>${op.t}</span></div>`;
+  var html = '<div class="cat-badge">' + p.c + '</div><div class="q-txt">' + p.q + '</div><div class="options">';
+  p.o.forEach(function(op, i) {
+    var s = sel === i ? 'selected' : '';
+    var chk = sel === i ? '✓' : '';
+    html += '<div class="option ' + s + '" onclick="escolher(' + i + ')">' +
+            '<div class="opt-icon">' + chk + '</div><span>' + op.t + '</span></div>';
   });
-  html+='</div>';
-  document.getElementById('questionArea').innerHTML=html;
-  lock=false;
-};
+  html += '</div>';
+  document.getElementById('questionArea').innerHTML = html;
+  lock = false;
+}
 
-const escolher=i=>{
-  if(lock)return;
-  lock=true;
-  resp[cur]=i;
+function escolher(i) {
+  if (lock) return;
+  lock = true;
+  resp[cur] = i;
 
-  // marca selecionada visualmente
-  document.querySelectorAll('.option').forEach((el,idx)=>{
+  document.querySelectorAll('.option').forEach(function(el, idx) {
     el.classList.remove('selected');
-    if(idx===i) el.classList.add('selected');
-    el.querySelector('.opt-icon').textContent=idx===i?'✓':'';
+    el.querySelector('.opt-icon').textContent = '';
+    if (idx === i) {
+      el.classList.add('selected');
+      el.querySelector('.opt-icon').textContent = '✓';
+    }
   });
 
-  // avança automaticamente após breve delay
-  setTimeout(()=>{
-    if(cur<TOT-1){cur++;render();}
-    else resultado();
-  },420);
-};
+  setTimeout(function() {
+    if (cur < TOT - 1) { cur++; render(); }
+    else { resultado(); }
+  }, 420);
+}
 
-const voltarP=()=>{
-  if(cur>0){cur--;lock=false;render();}
-};
+function voltarP() {
+  if (cur > 0) { cur--; lock = false; render(); }
+}
 
-const resultado=()=>{
-  let pts=0,max=0;
-  resp.forEach((r,i)=>{pts+=Ps[i].o[r].p;max+=3;});
-  const pct=Math.round((pts/max)*100);
+function resultado() {
+  var pts = 0, max = 0;
+  resp.forEach(function(r, i) { pts += Ps[i].o[r].p; max += 3; });
+  var pct = Math.round((pts / max) * 100);
 
-  const cScores={};
-  Object.entries(CATS).forEach(([k,c])=>{
-    let s=0,m=0;
-    c.i.forEach(i=>{s+=Ps[i].o[resp[i]].p;m+=3;});
-    cScores[k]={l:c.l,pct:Math.round((s/m)*100)};
+  var cScores = {};
+  Object.keys(CATS).forEach(function(k) {
+    var c = CATS[k];
+    var s = 0, m = 0;
+    c.i.forEach(function(i) { s += Ps[i].o[resp[i]].p; m += 3; });
+    cScores[k] = {l: c.l, pct: Math.round((s/m)*100)};
   });
 
-  let nv,cl,cor,ic,ti,de;
-  if(pct<=20){nv="Blindagem Sólida";cl="nivel-v";cor="#22c55e";ic="🟢";ti="Sua clínica está bem protegida!";de="Você demonstra atenção às boas práticas preventivas. Mantenha esse cuidado — o ambiente normativo evolui e a proteção contínua é o que separa clínicas vulneráveis das verdadeiramente blindadas.";}
-  else if(pct<=45){nv="Risco Moderado";cl="nivel-a";cor="#facc15";ic="🟡";ti="Sua clínica tem pontos de atenção importantes.";de="Existem lacunas que podem se transformar em processos reais. Agir preventivamente agora é muito mais simples e barato do que remediar depois que o processo chega.";}
-  else if(pct<=70){nv="Risco Elevado";cl="nivel-o";cor="#fb923c";ic="🟠";ti="Sua clínica está exposta em múltiplas frentes.";de="Identificamos várias áreas de vulnerabilidade com risco real de processo. Cada dia sem blindagem é um dia de exposição desnecessária para você e seu patrimônio.";}
-  else{nv="Risco Crítico";cl="nivel-r";cor="#ef4444";ic="🔴";ti="Sua clínica precisa de proteção urgente.";de="Sua clínica está criticamente exposta em diversas frentes. Um único acionamento agora pode ter consequências graves. É fundamental agir com rapidez e orientação especializada.";}
+  var nv, cl, cor, ic, ti, de;
+  if (pct <= 20) {
+    nv="Blindagem Sólida"; cl="nivel-v"; cor="#22c55e"; ic="🟢";
+    ti="Sua clínica está bem protegida!";
+    de="Você demonstra atenção às boas práticas preventivas. Mantenha esse cuidado — o ambiente normativo evolui e a proteção contínua é o que separa clínicas vulneráveis das verdadeiramente blindadas.";
+  } else if (pct <= 45) {
+    nv="Risco Moderado"; cl="nivel-a"; cor="#facc15"; ic="🟡";
+    ti="Sua clínica tem pontos de atenção importantes.";
+    de="Existem lacunas que podem se transformar em processos reais. Agir preventivamente agora é muito mais simples e barato do que remediar depois que o processo chega.";
+  } else if (pct <= 70) {
+    nv="Risco Elevado"; cl="nivel-o"; cor="#fb923c"; ic="🟠";
+    ti="Sua clínica está exposta em múltiplas frentes.";
+    de="Identificamos várias áreas de vulnerabilidade com risco real de processo. Cada dia sem blindagem é um dia de exposição desnecessária para você e seu patrimônio.";
+  } else {
+    nv="Risco Crítico"; cl="nivel-r"; cor="#ef4444"; ic="🔴";
+    ti="Sua clínica precisa de proteção urgente.";
+    de="Sua clínica está criticamente exposta em diversas frentes. Um único acionamento agora pode ter consequências graves. É fundamental agir com rapidez e orientação especializada.";
+  }
 
-  const criticas=Object.values(cScores).filter(c=>c.pct>=50).map(c=>c.l);
-  const nl=Math.max(4,Math.min(96,pct));
-  const bC=p=>p<=20?'#22c55e':p<=45?'#facc15':p<=70?'#fb923c':'#ef4444';
-  const bI=p=>p<=20?'✅':p<=45?'⚠️':'🚨';
-  const bL=p=>p<=20?'Protegido':p<=45?'Atenção':p<=70?'Elevado':'Crítico';
+  var criticas = Object.values(cScores).filter(function(c){ return c.pct >= 50; }).map(function(c){ return c.l; });
+  var nl = Math.max(4, Math.min(96, pct));
 
-  const bars=Object.values(cScores).map(c=>`
-    <div class="parecer-item">
-      <span class="p-icon">${bI(c.pct)}</span>
-      <div class="p-bar-wrap">
-        <div class="p-bar-lbl"><span>${c.l}</span><span>${bL(c.pct)}</span></div>
-        <div class="p-bar-track"><div class="p-bar-fill" style="width:0%;background:${bC(c.pct)}" data-w="${c.pct}"></div></div>
-      </div>
-    </div>`).join('');
+  function bC(p){ return p<=20?'#22c55e':p<=45?'#facc15':p<=70?'#fb923c':'#ef4444'; }
+  function bI(p){ return p<=20?'✅':p<=45?'⚠️':'🚨'; }
+  function bL(p){ return p<=20?'Protegido':p<=45?'Atenção':p<=70?'Elevado':'Crítico'; }
 
-  const wG="https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20entrar%20no%20grupo%20gratuito.";
-  const wA=`https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto.%20Resultado%3A%20*${encodeURIComponent(nv)}*%20(${pct}%25).%20Quero%20conhecer%20a%20assessoria.`;
+  var bars = Object.values(cScores).map(function(c) {
+    return '<div class="parecer-item"><span class="p-icon">' + bI(c.pct) + '</span>' +
+           '<div class="p-bar-wrap"><div class="p-bar-lbl"><span>' + c.l + '</span><span>' + bL(c.pct) + '</span></div>' +
+           '<div class="p-bar-track"><div class="p-bar-fill" style="width:0%;background:' + bC(c.pct) + '" data-w="' + c.pct + '"></div></div></div></div>';
+  }).join('');
 
-  document.getElementById('resultContent').innerHTML=`
-    <div class="res-header">
-      <div class="res-nivel ${cl}">${ic} ${nv}</div>
-      <div class="res-titulo">${ti}</div>
-      <div class="res-desc">${de}</div>
-    </div>
-    <div class="termo-wrap">
-      <div class="termo-lbl">Índice de exposição a processos</div>
-      <div class="score" style="color:${cor}">${pct}<span style="font-size:clamp(16px,3vw,22px)">%</span></div>
-      <div class="score-sub">de exposição identificada</div>
-      <div class="termo-track">
-        <div class="termo-needle" id="needle" style="left:${nl}%"><div class="termo-dot"></div></div>
-      </div>
-      <div class="termo-marks"><span>Blindado</span><span>Moderado</span><span>Elevado</span><span>Crítico</span></div>
-    </div>
-    <div class="parecer-ttl">Parecer por frente de risco</div>
-    <div class="parecer-grid">${bars}</div>
-    ${criticas.length?`<div class="alertas-box"><h4>🚨 Áreas críticas identificadas:</h4><ul>${criticas.map(a=>`<li>${a}</li>`).join('')}</ul></div>`:''}
-    <div class="inclui-box">
-      <h4>O que você recebe na assessoria mensal:</h4>
-      <div class="inclui-item">Diagnóstico inicial gratuito dos contratos e documentos</div>
-      <div class="inclui-item">Suporte via WhatsApp em até 24h úteis</div>
-      <div class="inclui-item">Revisão contínua de contratos e documentos</div>
-      <div class="inclui-item">Blindagem contra riscos de pacientes, funcionários e CRO</div>
-      <div class="inclui-item">Relatório mensal com ações realizadas</div>
-      <div class="inclui-item">Honorários fixos e previsíveis mensalmente</div>
-    </div>
-    <div class="cta-box">
-      <a href="${wG}" target="_blank" class="cta-wpp"><span>💬</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-lbl">Conteúdo de prevenção exclusivo para dentistas</div></div></a>
-      <div class="divider">ou</div>
-      <a href="${wA}" target="_blank" class="cta-ass"><span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-lbl">Diagnóstico inicial gratuito — sem compromisso</d
+  var wG = "https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20entrar%20no%20grupo%20gratuito.";
+  var wA = "https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto.%20Resultado%3A%20" + encodeURIComponent(nv) + "%20(" + pct + "%25).%20Quero%20conhecer%20a%20assessoria.";
+
+  var alertasHtml = '';
+  if (criticas.length) {
+    alertasHtml = '<div class="alertas-box"><h4>🚨 Áreas críticas identificadas:</h4><ul>' +
+                  criticas.map(function(a){ return '<li>' + a + '</li>'; }).join('') +
+                  '</ul></div>';
+  }
+
+  document.getElementById('resultContent').innerHTML =
+    '<div class="res-header">' +
+      '<div class="res-nivel ' + cl + '">' + ic + ' ' + nv + '</div>' +
+      '<div class="res-titulo">' + ti + '</div>' +
+      '<div class="res-desc">' + de + '</div>' +
+    '</div>' +
+    '<div class="termo-wrap">' +
+      '<div class="termo-lbl">Índice de exposição a processos</div>' +
+      '<div class="score" style="color:' + cor + '">' + pct + '<span style="font-size:clamp(16px,3vw,22px)">%</span></div>' +
+      '<div class="score-sub">de exposição identificada</div>' +
+      '<div class="termo-track"><div class="termo-needle" id="needle" style="left:' + nl + '%"><div class="termo-dot"></div></div></div>' +
+      '<div class="termo-marks"><span>Blindado</span><span>Moderado</span><span>Elevado</span><span>Crítico</span></div>' +
+    '</div>' +
+    '<div class="parecer-ttl">Parecer por frente de risco</div>' +
+    '<div class="parecer-grid">' + bars + '</div>' +
+    alertasHtml +
+    '<div class="inclui-box"><h4>O que você recebe na assessoria mensal:</h4>' +
+      '<div class="inclui-item">Diagnóstico inicial gratuito dos contratos e documentos</div>' +
+      '<div class="inclui-item">Suporte via WhatsApp em até 24h úteis</div>' +
+      '<div class="inclui-item">Revisão contínua de contratos e documentos</div>' +
+      '<div class="inclui-item">Blindagem contra riscos de pacientes, funcionários e CRO</div>' +
+      '<div class="inclui-item">Relatório mensal com ações realizadas</div>' +
+      '<div class="inclui-item">Honorários fixos e previsíveis mensalmente</div>' +
+    '</div>' +
+    '<div class="cta-box">' +
+      '<a href="' + wG + '" target="_blank" class="cta-wpp"><span>💬</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-lbl">Conteúdo de prevenção exclusivo para dentistas</div></div></a>' +
+      '<div class="divider">ou</div>' +
+      '<a href="' + wA + '" target="_blank" class="cta-ass"><span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-lbl">Diagnóstico inicial gratuito — sem compromisso</div></div></a>' +
+    '</div>' 
