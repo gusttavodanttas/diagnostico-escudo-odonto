@@ -274,6 +274,16 @@ const validarForm=()=>{
   render();
 };
 
+const enviarFormspree=async(dados)=>{
+  try{
+    await fetch('https://formspree.io/f/mzdkqepj',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(dados)
+    });
+  }catch(e){console.error('Formspree error:',e);}
+};
+
 const render=()=>{
   const p=Ps[cur];
   const sel=resp[cur]!==undefined?resp[cur]:null;
@@ -382,15 +392,4 @@ const resultado=()=>{
     <div class="cta-box">
       <a href="${wG}" target="_blank" class="cta-wpp"><span>💬</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-lbl">Conteúdo de prevenção exclusivo para dentistas</div></div></a>
       <div class="divider">ou</div>
-      <a href="${wA}" target="_blank" class="cta-ass"><span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-lbl">Diagnóstico inicial gratuito — sem compromisso</div></div></a>
-    </div>
-    <button class="btn-refazer" onclick="ir('tela-home')">↺ Refazer o diagnóstico</button>`;
-
-  ir('tela-resultado');
-  setTimeout(()=>{
-    document.querySelectorAll('.p-bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});
-  },300);
-};
-</script>
-</body>
-</html>
+      <a href="${wA}" target="_blank" class="cta-ass"><span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-lbl">Diagnóstico inicial gratuito — sem compromisso</d
