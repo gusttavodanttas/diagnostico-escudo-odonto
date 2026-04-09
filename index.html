@@ -2,432 +2,395 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="theme-color" content="#1a1a1a"/>
 <title>Diagnóstico Escudo Odonto</title>
-
-  <!-- ================================================
-       🔖 FAVICON
-       Substitua a URL abaixo pela URL da sua imagem
-       de favicon (quadrada, idealmente 512x512 px)
-       ================================================ -->
-  <link rel="icon" type="image/png" href="https://gusttavodanttas.github.io/diagnostico-escudo-odonto/favicon.png"/>
-  <link rel="apple-touch-icon" href="https://gusttavodanttas.github.io/diagnostico-escudo-odonto/favicon.png"/>
-
-  <!-- ================================================
-       📣 OPEN GRAPH — imagem ao compartilhar o link
-       Substitua os campos marcados com ✏️
-       Imagem ideal: 1200x630 px
-       ================================================ -->
-  <meta property="og:type"        content="website"/>
-  <meta property="og:url"         content="https://gusttavodanttas.github.io/diagnostico-escudo-odonto/"/>
-  <meta property="og:title"       content="Diagnóstico Escudo Odonto — Sua clínica está protegida?"/>
-  <meta property="og:description" content="Descubra em 5 minutos o nível de risco da sua clínica sofrer um processo de pacientes, funcionários, sócios, CRO e ANVISA. Gratuito."/>
-  <meta property="og:image"       content="https://gusttavodanttas.github.io/diagnostico-escudo-odonto/og-image.png"/>
-  <meta property="og:image:width"  content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:locale"      content="pt_BR"/>
-
-  <!-- WhatsApp e Telegram usam og: mas também leem estas: -->
-  <meta name="twitter:card"        content="summary_large_image"/>
-  <meta name="twitter:title"       content="Diagnóstico Escudo Odonto — Sua clínica está protegida?"/>
-  <meta name="twitter:description" content="Descubra em 5 minutos o nível de risco da sua clínica sofrer um processo. Gratuito."/>
-  <meta name="twitter:image"       content="https://gusttavodanttas.github.io/diagnostico-escudo-odonto/og-image.png"/>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box;}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --brand:#E07B00;--brand-l:#F59E0B;--glow:rgba(224,123,0,.3);
+  --bg:#1a1a1a;--card:#232323;--item:#2d2d2d;--deep:#383838;
+  --border:#3a3a3a;--txt:#f0ece4;--muted:#a89880;--white:#fff;
+  --r:14px;--gap:12px;
+}
+html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-size:16px;line-height:1.5;}
 
-  /* =============================================
-     🎨 TEMA ESCUDO ODONTO
-     Edite apenas esta seção para mudar as cores
-     ============================================= */
-  :root{
-    --brand-primary:       #E07B00;
-    --brand-primary-light: #F59E0B;
-    --brand-primary-glow:  rgba(224,123,0,.35);
-    --bg-base:   #1a1a1a;
-    --bg-card:   #232323;
-    --bg-item:   #2d2d2d;
-    --bg-deep:   #383838;
-    --border:    #3a3a3a;
-    --text-main: #f0ece4;
-    --text-muted:#a89880;
-    --text-white:#fff;
-    --laranja:       var(--brand-primary);
-    --laranja-claro: var(--brand-primary-light);
-    --laranja-glow:  var(--brand-primary-glow);
-    --dark:  var(--bg-base); --dark2: var(--bg-card);
-    --dark3: var(--bg-item); --dark4: var(--bg-deep);
-    --borda: var(--border);
-    --texto: var(--text-main); --texto-suave: var(--text-muted); --branco: var(--text-white);
-  }
+/* ── TELAS ── */
+.tela{display:none;min-height:100vh;}
+.tela.active{display:flex;flex-direction:column;}
 
-  body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--texto);min-height:100vh;}
+/* ── HOME ── */
+#tela-home{
+  background:linear-gradient(160deg,#111 0%,#1e1e1e 55%,#251800 100%);
+  align-items:center;justify-content:center;
+  padding:clamp(28px,6vw,60px) clamp(16px,5vw,40px);
+  text-align:center;
+}
+.logo-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
+.escudo-svg{width:clamp(36px,7vw,52px);height:auto;filter:drop-shadow(0 0 10px var(--brand));}
+.logo-txt{font-family:'Cinzel',serif;font-size:clamp(18px,4vw,26px);font-weight:800;letter-spacing:3px;color:var(--white);}
+.logo-txt span{color:var(--brand);}
+.badge{display:inline-block;background:rgba(224,123,0,.12);border:1px solid rgba(224,123,0,.28);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--brand-l);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+.hero-h1{font-family:'Cinzel',serif;font-size:clamp(20px,5vw,40px);font-weight:800;line-height:1.2;color:var(--white);margin-bottom:10px;}
+.hero-h1 span{color:var(--brand);}
+.hero-sub{font-size:clamp(13px,2vw,16px);color:var(--muted);max-width:520px;margin:0 auto 20px;line-height:1.7;}
 
-  /* TELAS */
-  .tela{display:none;} .tela.active{display:block;}
+.riscos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:580px;margin:0 auto 24px;}
+.risco-item{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;text-align:left;}
+.ri-icon{font-size:16px;flex-shrink:0;line-height:1.4;}
+.ri-txt{font-size:11px;color:var(--muted);line-height:1.4;}
+.ri-txt strong{display:block;color:var(--brand-l);font-size:11px;font-weight:700;margin-bottom:1px;}
 
-  /* ── HOME ── */
-  .hero{background:linear-gradient(160deg,#111 0%,#1f1f1f 60%,#2a1a00 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;position:relative;overflow:hidden;}
-  .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:320px;background:radial-gradient(ellipse,rgba(224,123,0,.18) 0%,transparent 70%);pointer-events:none;}
-  .logo-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;}
-  .logo-escudo{font-size:56px;filter:drop-shadow(0 0 18px var(--laranja)) sepia(1) saturate(5) hue-rotate(5deg);}
-  .logo-text{font-family:'Cinzel',serif;font-size:28px;font-weight:800;color:var(--branco);letter-spacing:3px;}
-  .logo-text span{color:var(--laranja);}
-  .badge{display:inline-block;background:rgba(224,123,0,.12);border:1px solid rgba(224,123,0,.3);border-radius:20px;padding:5px 18px;font-size:12px;color:var(--laranja-claro);letter-spacing:1px;text-transform:uppercase;margin-bottom:22px;}
-  .hero h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,46px);font-weight:800;line-height:1.2;margin-bottom:16px;color:var(--branco);}
-  .hero h1 span{color:var(--laranja);}
-  .hero-sub{font-size:clamp(14px,2vw,17px);color:var(--texto-suave);max-width:580px;margin:0 auto 32px;line-height:1.8;}
+.btn-cta{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111;font-weight:800;font-size:clamp(14px,3vw,16px);padding:15px clamp(28px,6vw,44px);border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px var(--glow);letter-spacing:.3px;transition:transform .18s,box-shadow .18s;width:100%;max-width:340px;}
+.btn-cta:active{transform:scale(.97);}
 
-  .riscos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:660px;margin:0 auto 36px;}
-  .risco-item{background:rgba(255,255,255,.04);border:1px solid var(--borda);border-radius:12px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;text-align:left;}
-  .risco-icon{font-size:18px;flex-shrink:0;}
-  .risco-text strong{display:block;color:var(--laranja-claro);font-size:11px;margin-bottom:2px;font-weight:700;}
-  .risco-text{font-size:11px;color:var(--texto-suave);line-height:1.5;}
+.stats{display:flex;justify-content:center;gap:clamp(20px,5vw,40px);margin-top:20px;}
+.stat-n{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--brand);}
+.stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 
-  .btn-primary{background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;font-weight:800;font-size:16px;padding:18px 48px;border:none;border-radius:50px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px var(--laranja-glow);letter-spacing:.5px;}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--laranja-glow);}
-  .stats{display:flex;justify-content:center;gap:36px;margin-top:32px;flex-wrap:wrap;}
-  .stat-num{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--laranja);}
-  .stat-label{font-size:11px;color:var(--texto-suave);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+/* ── FORMULÁRIO & QUIZ ── */
+#tela-form,#tela-quiz{
+  align-items:center;justify-content:center;
+  padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);
+}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
 
-  /* ── FORMULÁRIO & QUIZ ── */
-  .quiz-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 16px;}
-  .card{background:var(--dark2);border:1px solid var(--borda);border-radius:20px;padding:clamp(24px,5vw,42px);box-shadow:0 8px 40px rgba(0,0,0,.5);width:100%;max-width:680px;}
+.form-lbl{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:5px;}
+.form-inp{width:100%;background:var(--item);border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;font-size:15px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.form-inp:focus{border-color:var(--brand);}
+.form-grp{display:flex;flex-direction:column;gap:12px;}
+.form-err{display:none;font-size:13px;color:#f87171;text-align:center;padding:8px;background:rgba(248,113,113,.1);border-radius:8px;}
 
-  .form-label{font-size:12px;font-weight:600;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;}
-  .form-input{width:100%;background:var(--dark3);border:1.5px solid var(--borda);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--branco);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;}
-  .form-input:focus{border-color:var(--laranja);}
-  .form-group{display:flex;flex-direction:column;gap:14px;}
+/* PROGRESS */
+.prog-wrap{margin-bottom:20px;}
+.prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px;}
+.prog-bar{height:5px;background:var(--deep);border-radius:10px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-l));border-radius:10px;transition:width .4s ease;}
 
-  .progress-wrap{margin-bottom:28px;}
-  .progress-info{display:flex;justify-content:space-between;font-size:13px;color:var(--texto-suave);margin-bottom:10px;}
-  .progress-bar{height:6px;background:var(--dark4);border-radius:10px;overflow:hidden;}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--laranja),var(--laranja-claro));border-radius:10px;transition:width .4s ease;box-shadow:0 0 8px var(--laranja-glow);}
+.cat-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(224,123,0,.1);border:1px solid rgba(224,123,0,.22);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
+.q-txt{font-size:clamp(14px,3vw,18px);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.45;}
 
-  .cat-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(224,123,0,.12);border:1px solid rgba(224,123,0,.25);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-  .q-text{font-size:clamp(15px,2.5vw,19px);font-weight:700;color:var(--branco);margin-bottom:22px;line-height:1.5;}
-  .options{display:flex;flex-direction:column;gap:10px;}
-  .option{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid var(--borda);border-radius:12px;cursor:pointer;transition:all .2s;font-size:14px;font-weight:500;background:var(--dark3);color:var(--texto);}
-  .option:hover{border-color:var(--laranja);background:rgba(224,123,0,.08);}
-  .option.selected{border-color:var(--laranja);background:rgba(224,123,0,.15);color:var(--branco);}
-  .opt-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--borda);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all .2s;background:var(--dark4);}
-  .option.selected .opt-icon{background:var(--laranja);border-color:var(--laranja);color:#111;font-weight:800;}
+.options{display:flex;flex-direction:column;gap:8px;}
+.option{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1.5px solid var(--border);border-radius:11px;cursor:pointer;font-size:clamp(13px,2.5vw,14px);font-weight:500;background:var(--item);color:var(--txt);transition:border-color .15s,background .15s;-webkit-tap-highlight-color:transparent;user-select:none;}
+.option:active{background:rgba(224,123,0,.1);}
+.option.selected{border-color:var(--brand);background:rgba(224,123,0,.13);color:var(--white);}
+.option.correct{border-color:#22c55e;background:rgba(34,197,94,.1);pointer-events:none;}
+.opt-icon{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:var(--deep);transition:all .15s;}
+.option.selected .opt-icon{background:var(--brand);border-color:var(--brand);color:#111;font-weight:800;}
 
-  .nav-btns{display:flex;justify-content:space-between;margin-top:26px;gap:12px;}
-  .btn-back{background:none;border:1.5px solid var(--borda);color:var(--texto-suave);padding:12px 24px;border-radius:50px;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;}
-  .btn-back:hover{border-color:var(--laranja);color:var(--laranja);}
-  .btn-next{background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;border:none;padding:13px 34px;border-radius:50px;cursor:pointer;font-size:15px;font-weight:800;transition:all .2s;margin-left:auto;box-shadow:0 4px 16px var(--laranja-glow);}
-  .btn-next:hover{transform:translateY(-1px);}
-  .btn-next:disabled{opacity:.3;cursor:not-allowed;transform:none;}
+.nav-btns{display:flex;gap:10px;margin-top:18px;}
+.btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:11px 20px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;flex-shrink:0;}
+.btn-back:active{border-color:var(--brand);color:var(--brand);}
 
-  /* ── RESULTADO ── */
-  .result-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:40px 16px;}
-  .result-card{background:var(--dark2);border:1px solid var(--borda);border-radius:20px;padding:clamp(24px,5vw,42px);box-shadow:0 8px 40px rgba(0,0,0,.5);width:100%;max-width:680px;}
+/* ── RESULTADO ── */
+#tela-resultado{align-items:center;justify-content:flex-start;padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
 
-  .result-header{text-align:center;margin-bottom:28px;}
-  .result-nivel{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
-  .result-titulo{font-family:'Cinzel',serif;font-size:clamp(18px,3.5vw,26px);font-weight:800;color:var(--branco);margin-bottom:12px;line-height:1.3;}
-  .result-desc{font-size:14px;color:var(--texto-suave);line-height:1.8;max-width:520px;margin:0 auto;}
+.res-header{text-align:center;margin-bottom:22px;}
+.res-nivel{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
+.res-titulo{font-family:'Cinzel',serif;font-size:clamp(16px,3.5vw,22px);font-weight:800;color:var(--white);margin-bottom:10px;line-height:1.3;}
+.res-desc{font-size:13px;color:var(--muted);line-height:1.75;max-width:480px;margin:0 auto;}
 
-  .termometro-wrap{margin:28px 0;text-align:center;}
-  .termometro-label{font-size:12px;color:var(--texto-suave);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
-  .score-display{font-family:'Cinzel',serif;font-size:42px;font-weight:800;margin:8px 0 4px;}
-  .score-max{font-size:13px;color:var(--texto-suave);margin-bottom:18px;}
-  .termometro-track{width:100%;height:22px;border-radius:50px;background:linear-gradient(90deg,#22c55e 0%,#facc15 40%,#f97316 70%,#dc2626 100%);position:relative;box-shadow:0 2px 16px rgba(0,0,0,.4);}
-  .termometro-needle{position:absolute;top:50%;transform:translate(-50%,-50%);transition:left 1.2s cubic-bezier(.34,1.56,.64,1);}
-  .termometro-needle-inner{width:30px;height:30px;border-radius:50%;background:var(--branco);border:3px solid var(--dark);box-shadow:0 2px 12px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-size:13px;}
-  .termometro-markers{display:flex;justify-content:space-between;margin-top:8px;padding:0 2px;}
-  .termometro-markers span{font-size:10px;color:var(--texto-suave);}
+/* TERMÔMETRO */
+.termo-wrap{margin:20px 0;text-align:center;}
+.termo-lbl{font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+.score{font-family:'Cinzel',serif;font-size:clamp(32px,7vw,44px);font-weight:800;margin:6px 0 3px;}
+.score-sub{font-size:12px;color:var(--muted);margin-bottom:14px;}
+.termo-track{width:100%;height:20px;border-radius:50px;background:linear-gradient(90deg,#22c55e 0%,#facc15 40%,#f97316 70%,#dc2626 100%);position:relative;}
+.termo-needle{position:absolute;top:50%;transform:translate(-50%,-50%);transition:left 1.2s cubic-bezier(.34,1.56,.64,1);}
+.termo-dot{width:28px;height:28px;border-radius:50%;background:var(--white);border:3px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.5);}
+.termo-marks{display:flex;justify-content:space-between;margin-top:6px;}
+.termo-marks span{font-size:10px;color:var(--muted);}
 
-  .parecer-titulo{font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
-  .parecer-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
-  .parecer-item{background:var(--dark3);border:1px solid var(--borda);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;}
-  .parecer-bar-wrap{flex:1;}
-  .parecer-bar-label{display:flex;justify-content:space-between;margin-bottom:6px;}
-  .parecer-bar-label span:first-child{font-size:12px;font-weight:600;color:var(--texto);}
-  .parecer-bar-label span:last-child{font-size:11px;color:var(--texto-suave);}
-  .parecer-bar-track{height:6px;background:var(--dark4);border-radius:10px;overflow:hidden;}
-  .parecer-bar-fill{height:100%;border-radius:10px;transition:width 1s ease;}
-  .parecer-icon{font-size:20px;flex-shrink:0;}
+/* PARECER */
+.parecer-ttl{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.parecer-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.parecer-item{background:var(--item);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.p-icon{font-size:18px;flex-shrink:0;}
+.p-bar-wrap{flex:1;min-width:0;}
+.p-bar-lbl{display:flex;justify-content:space-between;margin-bottom:5px;}
+.p-bar-lbl span:first-child{font-size:12px;font-weight:600;color:var(--txt);}
+.p-bar-lbl span:last-child{font-size:11px;color:var(--muted);}
+.p-bar-track{height:5px;background:var(--deep);border-radius:10px;overflow:hidden;}
+.p-bar-fill{height:100%;border-radius:10px;transition:width 1s ease;}
 
-  .alertas-box{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:14px;padding:18px 20px;margin-bottom:18px;}
-  .alertas-box h4{font-size:11px;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-  .alertas-box li{font-size:13px;color:var(--texto-suave);margin-bottom:8px;list-style:none;display:flex;gap:10px;}
-  .alertas-box li::before{content:"⚠️";flex-shrink:0;}
+.alertas-box{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
+.alertas-box h4{font-size:11px;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.alertas-box li{font-size:13px;color:var(--muted);margin-bottom:7px;list-style:none;display:flex;gap:8px;}
+.alertas-box li::before{content:"⚠️";flex-shrink:0;}
 
-  .inclui-box{background:rgba(224,123,0,.07);border:1px solid rgba(224,123,0,.2);border-radius:14px;padding:18px 20px;margin-bottom:18px;}
-  .inclui-box h4{font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-  .inclui-item{display:flex;gap:10px;font-size:13px;color:var(--texto-suave);margin-bottom:8px;}
-  .inclui-item::before{content:"✅";flex-shrink:0;}
+.inclui-box{background:rgba(224,123,0,.07);border:1px solid rgba(224,123,0,.18);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
+.inclui-box h4{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.inclui-item{display:flex;gap:8px;font-size:13px;color:var(--muted);margin-bottom:7px;}
+.inclui-item::before{content:"✅";flex-shrink:0;}
 
-  .cta-box{display:flex;flex-direction:column;gap:12px;}
-  .cta-wpp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:18px 24px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;transition:transform .2s;box-shadow:0 4px 20px rgba(37,211,102,.25);}
-  .cta-wpp:hover{transform:translateY(-2px);}
-  .cta-assessoria{background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;border:none;padding:18px 24px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;transition:transform .2s;box-shadow:0 4px 20px var(--laranja-glow);}
-  .cta-assessoria:hover{transform:translateY(-2px);}
-  .cta-label{font-size:11px;opacity:.8;font-weight:400;}
-  .divider{display:flex;align-items:center;gap:10px;color:var(--texto-suave);font-size:12px;margin:4px 0;}
-  .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--borda);}
+.cta-box{display:flex;flex-direction:column;gap:10px;}
+.cta-wpp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:opacity .2s;}
+.cta-wpp:active{opacity:.85;}
+.cta-ass{background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:opacity .2s;}
+.cta-ass:active{opacity:.85;}
+.cta-lbl{font-size:11px;opacity:.8;font-weight:400;}
+.divider{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin:2px 0;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.btn-refazer{width:100%;margin-top:10px;background:none;border:1.5px solid var(--border);color:var(--muted);padding:12px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.btn-refazer:active{border-color:var(--brand);color:var(--brand);}
 
-  .nivel-verde{color:#22c55e;} .nivel-amarelo{color:#facc15;} .nivel-laranja{color:#fb923c;} .nivel-vermelho{color:#ef4444;}
+.nivel-v{color:#22c55e;}.nivel-a{color:#facc15;}.nivel-o{color:#fb923c;}.nivel-r{color:#ef4444;}
 
-  @media(max-width:520px){
-    .riscos-grid{grid-template-columns:repeat(2,1fr);}
-    .nav-btns{flex-direction:column;}
-    .btn-back,.btn-next{width:100%;text-align:center;}
-  }
-  @media(max-width:360px){
-    .riscos-grid{grid-template-columns:1fr;}
-  }
+@media(max-width:480px){
+  .riscos-grid{grid-template-columns:repeat(2,1fr);}
+  .ri-icon{font-size:14px;}
+}
+@media(max-width:320px){
+  .riscos-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
 <!-- ① HOME -->
 <div id="tela-home" class="tela active">
-  <div class="hero">
-    <div class="logo-wrap">
-      <span class="logo-escudo">🛡️</span>
-      <span class="logo-text">ESCUDO <span>ODONTO</span></span>
-    </div>
-    <div class="badge">Diagnóstico preventivo gratuito</div>
-    <h1>Sua clínica está prestes a<br><span>sofrer um processo?</span></h1>
-    <p class="hero-sub">Pacientes, funcionários, sócios, parceiros, CRO e ANVISA — cada um pode acionar sua clínica judicialmente. Descubra agora o seu nível real de exposição.</p>
-
-    <div class="riscos-grid">
-      <div class="risco-item"><span class="risco-icon">👤</span><span class="risco-text"><strong>Pacientes</strong>Insatisfação, consentimento e cobranças</span></div>
-      <div class="risco-item"><span class="risco-icon">👷</span><span class="risco-text"><strong>Funcionários</strong>Vínculos mal formalizados</span></div>
-      <div class="risco-item"><span class="risco-icon">🤝</span><span class="risco-text"><strong>Sócios</strong>Conflitos sem proteção contratual</span></div>
-      <div class="risco-item"><span class="risco-icon">🔗</span><span class="risco-text"><strong>Parceiros</strong>Acordos informais e sem contrato</span></div>
-      <div class="risco-item"><span class="risco-icon">⚖️</span><span class="risco-text"><strong>CRO / CFO</strong>Infrações éticas e publicidade irregular</span></div>
-      <div class="risco-item"><span class="risco-icon">🏥</span><span class="risco-text"><strong>ANVISA</strong>Autuações sanitárias por não conformidade</span></div>
-    </div>
-
-    <button class="btn-primary" onclick="ir('tela-form')">Fazer o diagnóstico gratuito →</button>
-
-    <div class="stats">
-      <div class="stat"><div class="stat-num">15</div><div class="stat-label">Perguntas</div></div>
-      <div class="stat"><div class="stat-num">5 min</div><div class="stat-label">Duração</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
-    </div>
+  <div class="logo-wrap">
+    <svg class="escudo-svg" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 2L44 11V31C44 42 24 54 24 54C24 54 4 42 4 31V11L24 2Z" fill="#E07B00"/>
+      <path d="M24 2L24 54C24 54 4 42 4 31V11L24 2Z" fill="#F5C842"/>
+      <path d="M24 2L44 11V31C44 42 24 54 24 54C24 54 4 42 4 31V11L24 2Z" fill="none" stroke="#F5C842" stroke-width="1" opacity="0.3"/>
+    </svg>
+    <div class="logo-txt">ESCUDO <span>ODONTO</span></div>
+  </div>
+  <div class="badge">Diagnóstico preventivo gratuito</div>
+  <h1 class="hero-h1">Sua clínica está prestes a<br><span>sofrer um processo?</span></h1>
+  <p class="hero-sub">Pacientes, funcionários, sócios, parceiros, CRO e ANVISA — cada um pode acionar sua clínica. Descubra agora seu nível real de exposição.</p>
+  <div class="riscos-grid">
+    <div class="risco-item"><span class="ri-icon">👤</span><span class="ri-txt"><strong>Pacientes</strong>Insatisfação e contratos</span></div>
+    <div class="risco-item"><span class="ri-icon">👷</span><span class="ri-txt"><strong>Funcionários</strong>Vínculos informais</span></div>
+    <div class="risco-item"><span class="ri-icon">🤝</span><span class="ri-txt"><strong>Sócios</strong>Conflitos contratuais</span></div>
+    <div class="risco-item"><span class="ri-icon">🔗</span><span class="ri-txt"><strong>Parceiros</strong>Acordos sem formalização</span></div>
+    <div class="risco-item"><span class="ri-icon">⚖️</span><span class="ri-txt"><strong>CRO / CFO</strong>Infrações éticas</span></div>
+    <div class="risco-item"><span class="ri-icon">🏥</span><span class="ri-txt"><strong>ANVISA</strong>Autuações sanitárias</span></div>
+  </div>
+  <button class="btn-cta" onclick="ir('tela-form')">Fazer o diagnóstico gratuito →</button>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">15</div><div class="stat-l">Perguntas</div></div>
+    <div class="stat"><div class="stat-n">5 min</div><div class="stat-l">Duração</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Gratuito</div></div>
   </div>
 </div>
 
 <!-- ② FORMULÁRIO -->
 <div id="tela-form" class="tela">
-  <div class="quiz-wrap">
-    <div class="card">
-      <div style="text-align:center;margin-bottom:28px;">
-        <div style="font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">Antes de começar</div>
-        <div style="font-family:'Cinzel',serif;font-size:clamp(17px,3vw,22px);font-weight:800;color:var(--branco);margin-bottom:8px;">Para onde enviamos seu parecer?</div>
-        <div style="font-size:13px;color:var(--texto-suave);">Preencha os dados abaixo para liberar o diagnóstico completo.</div>
-      </div>
-      <div class="form-group">
-        <div><label class="form-label">Nome completo *</label><input id="fNome" class="form-input" type="text" placeholder="Ex: Dra. Ana Lima"/></div>
-        <div><label class="form-label">E-mail *</label><input id="fEmail" class="form-input" type="email" placeholder="seuemail@exemplo.com"/></div>
-        <div><label class="form-label">WhatsApp *</label><input id="fWpp" class="form-input" type="tel" placeholder="(61) 99999-9999"/></div>
-        <div id="formErro" style="display:none;font-size:13px;color:#f87171;text-align:center;padding:8px;background:rgba(248,113,113,.1);border-radius:8px;">Preencha todos os campos para continuar.</div>
-        <button class="btn-primary" onclick="validarFormulario()" style="width:100%;margin-top:4px;">Iniciar diagnóstico →</button>
-        <div style="font-size:11px;color:var(--texto-suave);text-align:center;">🔒 Seus dados são confidenciais e não serão compartilhados.</div>
-      </div>
-      <div style="margin-top:16px;text-align:center;">
-        <button class="btn-back" onclick="ir('tela-home')">← Voltar</button>
-      </div>
+  <div class="card">
+    <div style="text-align:center;margin-bottom:22px;">
+      <div style="font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Antes de começar</div>
+      <div style="font-family:'Cinzel',serif;font-size:clamp(16px,4vw,20px);font-weight:800;color:var(--white);margin-bottom:6px;">Para onde enviamos seu parecer?</div>
+      <div style="font-size:13px;color:var(--muted);">Preencha os dados para liberar o diagnóstico.</div>
+    </div>
+    <div class="form-grp">
+      <div><label class="form-lbl">Nome completo *</label><input id="fNome" class="form-inp" type="text" placeholder="Ex: Dra. Ana Lima" autocomplete="name"/></div>
+      <div><label class="form-lbl">E-mail *</label><input id="fEmail" class="form-inp" type="email" placeholder="seuemail@exemplo.com" autocomplete="email"/></div>
+      <div><label class="form-lbl">WhatsApp *</label><input id="fWpp" class="form-inp" type="tel" placeholder="(61) 99999-9999" autocomplete="tel"/></div>
+      <div id="formErro" class="form-err">Preencha todos os campos para continuar.</div>
+      <button class="btn-cta" onclick="validarForm()" style="margin-top:4px;">Iniciar diagnóstico →</button>
+      <div style="font-size:11px;color:var(--muted);text-align:center;">🔒 Seus dados são confidenciais.</div>
+    </div>
+    <div style="text-align:center;margin-top:14px;">
+      <button class="btn-back" onclick="ir('tela-home')">← Voltar</button>
     </div>
   </div>
 </div>
 
 <!-- ③ QUIZ -->
 <div id="tela-quiz" class="tela">
-  <div class="quiz-wrap">
-    <div class="card">
-      <div class="progress-wrap">
-        <div class="progress-info">
-          <span id="progressLabel">Pergunta <strong>1</strong> de 15</span>
-          <span id="progressPct" style="color:var(--laranja);font-weight:700;">0%</span>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="card">
+    <div class="prog-wrap">
+      <div class="prog-info">
+        <span id="progLabel">Pergunta <strong>1</strong> de 15</span>
+        <span id="progPct" style="color:var(--brand);font-weight:700;">0%</span>
       </div>
-      <div id="questionArea"></div>
-      <div class="nav-btns">
-        <button class="btn-back" id="btnBack" onclick="voltarPergunta()" style="display:none;">← Voltar</button>
-        <button class="btn-next" id="btnNext" onclick="proximaPergunta()" disabled>Próxima →</button>
-      </div>
+      <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+    <div id="questionArea"></div>
+    <div class="nav-btns">
+      <button class="btn-back" id="btnBack" onclick="voltarP()" style="display:none;">← Voltar</button>
     </div>
   </div>
 </div>
 
 <!-- ④ RESULTADO -->
 <div id="tela-resultado" class="tela">
-  <div class="result-wrap">
-    <div class="result-card" id="resultContent"></div>
-  </div>
+  <div class="result-card" id="resultContent"></div>
 </div>
 
 <script>
-/* ── NAVEGAÇÃO ── */
-function ir(id){
+const ir=id=>{
   document.querySelectorAll('.tela').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-}
-
-/* ── PERGUNTAS ── */
-const perguntas=[
-  {cat:"👤 Pacientes",texto:"Seus pacientes assinam termo de consentimento informado antes de qualquer procedimento?",opcoes:[{t:"Sim, sempre e para todos os procedimentos",p:0},{t:"Apenas para procedimentos mais complexos",p:1},{t:"Raramente ou nunca utilizamos esse documento",p:3}]},
-  {cat:"👤 Pacientes",texto:"Os contratos com pacientes possuem cláusulas claras sobre honorários, prazo e resultados esperados?",opcoes:[{t:"Sim, contratos revisados e assinados sempre",p:0},{t:"Usamos contratos, mas nunca foram revisados",p:2},{t:"Não utilizamos contratos formais com pacientes",p:3}]},
-  {cat:"👤 Pacientes",texto:"Seu consultório tem protocolo documentado para lidar com reclamações e insatisfações de pacientes?",opcoes:[{t:"Sim, temos fluxo definido e documentado",p:0},{t:"Lidamos caso a caso, sem protocolo formal",p:2},{t:"Não temos nenhum protocolo definido",p:3}]},
-  {cat:"👷 Funcionários",texto:"Os contratos com funcionários, recepcionistas e assistentes estão formalizados dentro da CLT?",opcoes:[{t:"Sim, todos com CTPS assinada e contrato formal",p:0},{t:"Alguns são informais ou autônomos sem contrato",p:2},{t:"A maioria trabalha sem formalização",p:3}]},
-  {cat:"👷 Funcionários",texto:"Dentistas que atuam na sua clínica têm seu vínculo corretamente caracterizado (autônomo, sócio ou CLT)?",opcoes:[{t:"Sim, cada vínculo está claramente definido e documentado",p:0},{t:"Há dúvidas sobre como alguns vínculos estão caracterizados",p:2},{t:"Não me preocupei com essa questão ainda",p:3}]},
-  {cat:"🤝 Sócios",texto:"Existe contrato social atualizado e/ou acordo de sócios que regule o funcionamento e conflitos na clínica?",opcoes:[{t:"Sim, contrato social e acordo de sócios completos",p:0},{t:"Temos contrato social, mas sem acordo de sócios",p:1},{t:"Não temos documentos societários atualizados",p:3}]},
-  {cat:"🤝 Sócios",texto:"Em caso de saída de um sócio, há regras claras sobre o que acontece com a clínica, pacientes e ativos?",opcoes:[{t:"Sim, está previsto em contrato",p:0},{t:"Nunca discutimos esse cenário formalmente",p:2},{t:"Não há nenhuma previsão para isso",p:3}]},
-  {cat:"🔗 Parceiros",texto:"As parcerias com outros profissionais, clínicas ou indicadores são formalizadas por contrato?",opcoes:[{t:"Sim, todos com contrato assinado",p:0},{t:"Algumas parcerias são apenas verbais ou por mensagem",p:2},{t:"Nenhuma parceria é formalizada",p:3}]},
-  {cat:"🔗 Parceiros",texto:"Os contratos com fornecedores e prestadores de serviço foram revisados antes da assinatura?",opcoes:[{t:"Sim, analisamos todas as cláusulas",p:0},{t:"Assinamos sem ler com atenção",p:1},{t:"Nunca revisamos esses contratos",p:2}]},
-  {cat:"⚖️ CRO / CFO",texto:"A publicidade da clínica nas redes sociais foi avaliada quanto à conformidade com o Código de Ética Odontológica?",opcoes:[{t:"Sim, revisamos com atenção às normas do CRO/CFO",p:0},{t:"Publicamos sem verificar regularmente",p:2},{t:"Nunca avaliamos nossa comunicação sob esse aspecto",p:3}]},
-  {cat:"⚖️ CRO / CFO",texto:"Você já passou por alguma notificação, advertência ou processo no CRO/CFO?",opcoes:[{t:"Não, nunca",p:0},{t:"Recebi uma advertência, mas foi resolvida",p:1},{t:"Há processo em aberto ou histórico de notificações",p:3}]},
-  {cat:"🔒 LGPD e Dados",texto:"Prontuários e dados dos pacientes são tratados com política de privacidade adequada conforme a LGPD?",opcoes:[{t:"Sim, temos política de privacidade implementada",p:0},{t:"Conhecemos a lei, mas ainda não nos adequamos",p:2},{t:"Nunca nos preocupamos com isso",p:3}]},
-  {cat:"🏥 ANVISA / Sanitário",texto:"Seu consultório está adequado às normas da ANVISA e da vigilância sanitária?",opcoes:[{t:"Sim, com orientação especializada e documentação",p:0},{t:"Acreditamos estar adequados, mas sem verificação formal",p:1},{t:"Nunca avaliamos nossa adequação sanitária",p:3}]},
-  {cat:"🚨 Acionamentos",texto:"Se você recebesse hoje uma notificação extrajudicial ou citação judicial, saberia exatamente o que fazer?",opcoes:[{t:"Sim, tenho suporte especializado para isso",p:0},{t:"Tentaria resolver por conta própria",p:2},{t:"Não teria ideia por onde começar",p:3}]},
-  {cat:"🏦 Patrimônio",texto:"A estrutura da sua clínica foi planejada para proteger seu patrimônio pessoal em caso de ação judicial?",opcoes:[{t:"Sim, foi estruturada com orientação especializada",p:0},{t:"Tenho CNPJ, mas sem planejamento de proteção patrimonial",p:2},{t:"Atendo como pessoa física sem estrutura definida",p:3}]},
-];
-
-const categorias={
-  "👤 Pacientes":{label:"Pacientes",idxs:[0,1,2]},
-  "👷 Funcionários":{label:"Funcionários",idxs:[3,4]},
-  "🤝 Sócios":{label:"Sócios",idxs:[5,6]},
-  "🔗 Parceiros":{label:"Parceiros",idxs:[7,8]},
-  "⚖️ CRO / CFO":{label:"CRO / CFO",idxs:[9,10]},
-  "🔒 LGPD e Dados":{label:"LGPD e Dados",idxs:[11]},
-  "🏥 ANVISA / Sanitário":{label:"ANVISA",idxs:[12]},
-  "🚨 Acionamentos":{label:"Acionamentos",idxs:[13]},
-  "🏦 Patrimônio":{label:"Patrimônio",idxs:[14]},
 };
 
-let atual=0,respostas=[],selecionada=null;
-const total=perguntas.length;
+const Ps=[
+  {c:"👤 Pacientes",q:"Seus pacientes assinam termo de consentimento informado antes de qualquer procedimento?",o:[{t:"Sim, sempre e para todos os procedimentos",p:0},{t:"Apenas para procedimentos mais complexos",p:1},{t:"Raramente ou nunca utilizamos esse documento",p:3}]},
+  {c:"👤 Pacientes",q:"Os contratos com pacientes têm cláusulas claras sobre honorários, prazo e resultados?",o:[{t:"Sim, contratos revisados e assinados sempre",p:0},{t:"Usamos contratos, mas nunca foram revisados",p:2},{t:"Não utilizamos contratos formais com pacientes",p:3}]},
+  {c:"👤 Pacientes",q:"Existe protocolo documentado para lidar com reclamações e insatisfações de pacientes?",o:[{t:"Sim, temos fluxo definido e documentado",p:0},{t:"Lidamos caso a caso, sem protocolo formal",p:2},{t:"Não temos nenhum protocolo definido",p:3}]},
+  {c:"👷 Funcionários",q:"Os contratos com funcionários, recepcionistas e assistentes estão formalizados dentro da CLT?",o:[{t:"Sim, todos com CTPS assinada e contrato formal",p:0},{t:"Alguns são informais ou autônomos sem contrato",p:2},{t:"A maioria trabalha sem formalização",p:3}]},
+  {c:"👷 Funcionários",q:"Dentistas que atuam na clínica têm vínculo corretamente caracterizado (autônomo, sócio ou CLT)?",o:[{t:"Sim, cada vínculo está definido e documentado",p:0},{t:"Há dúvidas sobre como alguns vínculos estão caracterizados",p:2},{t:"Não me preocupei com essa questão ainda",p:3}]},
+  {c:"🤝 Sócios",q:"Existe contrato social atualizado e/ou acordo de sócios que regule conflitos na clínica?",o:[{t:"Sim, contrato social e acordo de sócios completos",p:0},{t:"Temos contrato social, mas sem acordo de sócios",p:1},{t:"Não temos documentos societários atualizados",p:3}]},
+  {c:"🤝 Sócios",q:"Em caso de saída de um sócio, há regras claras sobre a clínica, pacientes e ativos?",o:[{t:"Sim, está previsto em contrato",p:0},{t:"Nunca discutimos esse cenário formalmente",p:2},{t:"Não há nenhuma previsão para isso",p:3}]},
+  {c:"🔗 Parceiros",q:"As parcerias com profissionais, clínicas ou indicadores são formalizadas por contrato?",o:[{t:"Sim, todos com contrato assinado",p:0},{t:"Algumas parcerias são apenas verbais ou por mensagem",p:2},{t:"Nenhuma parceria é formalizada",p:3}]},
+  {c:"🔗 Parceiros",q:"Os contratos com fornecedores e prestadores foram revisados antes da assinatura?",o:[{t:"Sim, analisamos todas as cláusulas",p:0},{t:"Assinamos sem ler com atenção",p:1},{t:"Nunca revisamos esses contratos",p:2}]},
+  {c:"⚖️ CRO / CFO",q:"A publicidade da clínica nas redes foi avaliada quanto à conformidade com o Código de Ética Odontológica?",o:[{t:"Sim, revisamos com atenção às normas do CRO/CFO",p:0},{t:"Publicamos sem verificar regularmente",p:2},{t:"Nunca avaliamos nossa comunicação sob esse aspecto",p:3}]},
+  {c:"⚖️ CRO / CFO",q:"Você já passou por alguma notificação, advertência ou processo no CRO/CFO?",o:[{t:"Não, nunca",p:0},{t:"Recebi uma advertência, mas foi resolvida",p:1},{t:"Há processo em aberto ou histórico de notificações",p:3}]},
+  {c:"🔒 LGPD",q:"Prontuários e dados dos pacientes seguem política de privacidade adequada conforme a LGPD?",o:[{t:"Sim, temos política de privacidade implementada",p:0},{t:"Conhecemos a lei, mas ainda não nos adequamos",p:2},{t:"Nunca nos preocupamos com isso",p:3}]},
+  {c:"🏥 ANVISA",q:"Seu consultório está adequado às normas da ANVISA e da vigilância sanitária?",o:[{t:"Sim, com orientação especializada e documentação",p:0},{t:"Acreditamos estar adequados, mas sem verificação formal",p:1},{t:"Nunca avaliamos nossa adequação sanitária",p:3}]},
+  {c:"🚨 Acionamentos",q:"Se você recebesse hoje uma notificação extrajudicial ou citação judicial, saberia o que fazer?",o:[{t:"Sim, tenho suporte especializado para isso",p:0},{t:"Tentaria resolver por conta própria",p:2},{t:"Não teria ideia por onde começar",p:3}]},
+  {c:"🏦 Patrimônio",q:"A estrutura da sua clínica foi planejada para proteger seu patrimônio pessoal em caso de processo?",o:[{t:"Sim, estruturada com orientação especializada",p:0},{t:"Tenho CNPJ, mas sem planejamento de proteção",p:2},{t:"Atendo como pessoa física sem estrutura definida",p:3}]},
+];
 
-function validarFormulario(){
+const CATS={
+  "👤 Pacientes":{l:"Pacientes",i:[0,1,2]},
+  "👷 Funcionários":{l:"Funcionários",i:[3,4]},
+  "🤝 Sócios":{l:"Sócios",i:[5,6]},
+  "🔗 Parceiros":{l:"Parceiros",i:[7,8]},
+  "⚖️ CRO / CFO":{l:"CRO / CFO",i:[9,10]},
+  "🔒 LGPD":{l:"LGPD e Dados",i:[11]},
+  "🏥 ANVISA":{l:"ANVISA",i:[12]},
+  "🚨 Acionamentos":{l:"Acionamentos",i:[13]},
+  "🏦 Patrimônio":{l:"Patrimônio",i:[14]},
+};
+
+let cur=0,resp=[],lock=false;
+const TOT=Ps.length;
+
+const validarForm=()=>{
   const n=document.getElementById('fNome').value.trim();
   const e=document.getElementById('fEmail').value.trim();
   const w=document.getElementById('fWpp').value.trim();
   const err=document.getElementById('formErro');
   if(!n||!e||!w){err.style.display='block';return;}
   err.style.display='none';
-  atual=0;respostas=[];selecionada=null;
+  cur=0;resp=[];lock=false;
   ir('tela-quiz');
-  renderPergunta();
-}
+  render();
+};
 
-function renderPergunta(){
-  const p=perguntas[atual];
-  selecionada=respostas[atual]!==undefined?respostas[atual]:null;
-  const pct=Math.round((atual/total)*100);
-  document.getElementById('progressLabel').innerHTML=`Pergunta <strong>${atual+1}</strong> de ${total}`;
-  document.getElementById('progressPct').textContent=pct+'%';
-  document.getElementById('progressFill').style.width=pct+'%';
-  document.getElementById('btnBack').style.display=atual>0?'flex':'none';
-  document.getElementById('btnNext').textContent=atual===total-1?'Ver meu parecer 🎯':'Próxima →';
-  document.getElementById('btnNext').disabled=selecionada===null;
-  let html=`<div class="cat-badge">${p.cat}</div><div class="q-text">${p.texto}</div><div class="options">`;
-  p.opcoes.forEach((op,i)=>{
-    html+=`<div class="option ${selecionada===i?'selected':''}" onclick="selecionarOpcao(${i})"><div class="opt-icon">${selecionada===i?'✓':''}</div><span>${op.t}</span></div>`;
+const render=()=>{
+  const p=Ps[cur];
+  const sel=resp[cur]!==undefined?resp[cur]:null;
+  const pct=Math.round((cur/TOT)*100);
+  document.getElementById('progLabel').innerHTML=`Pergunta <strong>${cur+1}</strong> de ${TOT}`;
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('btnBack').style.display=cur>0?'inline-flex':'none';
+
+  let html=`<div class="cat-badge">${p.c}</div><div class="q-txt">${p.q}</div><div class="options">`;
+  p.o.forEach((op,i)=>{
+    const s=sel===i?'selected':'';
+    html+=`<div class="option ${s}" onclick="escolher(${i})"><div class="opt-icon">${sel===i?'✓':''}</div><span>${op.t}</span></div>`;
   });
   html+='</div>';
   document.getElementById('questionArea').innerHTML=html;
-}
+  lock=false;
+};
 
-function selecionarOpcao(i){selecionada=i;respostas[atual]=i;document.getElementById('btnNext').disabled=false;renderPergunta();}
-function proximaPergunta(){if(selecionada===null)return;respostas[atual]=selecionada;if(atual<total-1){atual++;selecionada=respostas[atual]!==undefined?respostas[atual]:null;renderPergunta();}else mostrarResultado();}
-function voltarPergunta(){if(atual>0){atual--;selecionada=respostas[atual]!==undefined?respostas[atual]:null;renderPergunta();}}
+const escolher=i=>{
+  if(lock)return;
+  lock=true;
+  resp[cur]=i;
 
-function mostrarResultado(){
-  let totalPts=0,maxPts=0;
-  respostas.forEach((r,i)=>{totalPts+=perguntas[i].opcoes[r].p;maxPts+=3;});
-  const pct=Math.round((totalPts/maxPts)*100);
-
-  const catScores={};
-  Object.entries(categorias).forEach(([key,cat])=>{
-    let s=0,m=0;
-    cat.idxs.forEach(i=>{s+=perguntas[i].opcoes[respostas[i]].p;m+=3;});
-    catScores[key]={label:cat.label,score:s,max:m,pct:Math.round((s/m)*100)};
+  // marca selecionada visualmente
+  document.querySelectorAll('.option').forEach((el,idx)=>{
+    el.classList.remove('selected');
+    if(idx===i) el.classList.add('selected');
+    el.querySelector('.opt-icon').textContent=idx===i?'✓':'';
   });
 
-  let nivel,cor,corClass,icone,titulo,desc;
-  if(pct<=20){nivel="Baixo Risco";corClass="nivel-verde";cor="#22c55e";icone="🟢";titulo="Sua clínica está bem protegida!";desc="Você demonstra atenção às boas práticas preventivas. Mantenha esse cuidado — o ambiente normativo evolui e a proteção contínua é o que separa clínicas vulneráveis das verdadeiramente blindadas.";}
-  else if(pct<=45){nivel="Risco Moderado";corClass="nivel-amarelo";cor="#facc15";icone="🟡";titulo="Sua clínica tem pontos de atenção importantes.";desc="Existem lacunas que podem se transformar em processos reais. A boa notícia: agir preventivamente agora é muito mais simples e barato do que remediar depois que o processo chega.";}
-  else if(pct<=70){nivel="Risco Elevado";corClass="nivel-laranja";cor="#fb923c";icone="🟠";titulo="Sua clínica está exposta em múltiplas frentes.";desc="Identificamos várias áreas de vulnerabilidade com risco real de processo. Cada dia sem blindagem é um dia de exposição desnecessária para você e seu patrimônio.";}
-  else{nivel="Risco Crítico";corClass="nivel-vermelho";cor="#ef4444";icone="🔴";titulo="Atenção: sua clínica precisa de proteção urgente.";desc="Sua clínica está criticamente exposta em diversas frentes. Um único acionamento agora pode ter consequências graves. É fundamental agir com rapidez e orientação especializada.";}
+  // avança automaticamente após breve delay
+  setTimeout(()=>{
+    if(cur<TOT-1){cur++;render();}
+    else resultado();
+  },420);
+};
 
-  const criticas=Object.values(catScores).filter(c=>c.pct>=50).map(c=>c.label);
-  const needleLeft=Math.max(4,Math.min(96,pct));
-  const barColor=p=>p<=20?'#22c55e':p<=45?'#facc15':p<=70?'#fb923c':'#ef4444';
-  const barIcon=p=>p<=20?'✅':p<=45?'⚠️':'🚨';
-  const barLabel=p=>p<=20?'Protegido':p<=45?'Atenção':p<=70?'Elevado':'Crítico';
+const voltarP=()=>{
+  if(cur>0){cur--;lock=false;render();}
+};
 
-  const parecerBars=Object.values(catScores).map(c=>`
+const resultado=()=>{
+  let pts=0,max=0;
+  resp.forEach((r,i)=>{pts+=Ps[i].o[r].p;max+=3;});
+  const pct=Math.round((pts/max)*100);
+
+  const cScores={};
+  Object.entries(CATS).forEach(([k,c])=>{
+    let s=0,m=0;
+    c.i.forEach(i=>{s+=Ps[i].o[resp[i]].p;m+=3;});
+    cScores[k]={l:c.l,pct:Math.round((s/m)*100)};
+  });
+
+  let nv,cl,cor,ic,ti,de;
+  if(pct<=20){nv="Blindagem Sólida";cl="nivel-v";cor="#22c55e";ic="🟢";ti="Sua clínica está bem protegida!";de="Você demonstra atenção às boas práticas preventivas. Mantenha esse cuidado — o ambiente normativo evolui e a proteção contínua é o que separa clínicas vulneráveis das verdadeiramente blindadas.";}
+  else if(pct<=45){nv="Risco Moderado";cl="nivel-a";cor="#facc15";ic="🟡";ti="Sua clínica tem pontos de atenção importantes.";de="Existem lacunas que podem se transformar em processos reais. Agir preventivamente agora é muito mais simples e barato do que remediar depois que o processo chega.";}
+  else if(pct<=70){nv="Risco Elevado";cl="nivel-o";cor="#fb923c";ic="🟠";ti="Sua clínica está exposta em múltiplas frentes.";de="Identificamos várias áreas de vulnerabilidade com risco real de processo. Cada dia sem blindagem é um dia de exposição desnecessária para você e seu patrimônio.";}
+  else{nv="Risco Crítico";cl="nivel-r";cor="#ef4444";ic="🔴";ti="Sua clínica precisa de proteção urgente.";de="Sua clínica está criticamente exposta em diversas frentes. Um único acionamento agora pode ter consequências graves. É fundamental agir com rapidez e orientação especializada.";}
+
+  const criticas=Object.values(cScores).filter(c=>c.pct>=50).map(c=>c.l);
+  const nl=Math.max(4,Math.min(96,pct));
+  const bC=p=>p<=20?'#22c55e':p<=45?'#facc15':p<=70?'#fb923c':'#ef4444';
+  const bI=p=>p<=20?'✅':p<=45?'⚠️':'🚨';
+  const bL=p=>p<=20?'Protegido':p<=45?'Atenção':p<=70?'Elevado':'Crítico';
+
+  const bars=Object.values(cScores).map(c=>`
     <div class="parecer-item">
-      <span class="parecer-icon">${barIcon(c.pct)}</span>
-      <div class="parecer-bar-wrap">
-        <div class="parecer-bar-label"><span>${c.label}</span><span>${barLabel(c.pct)}</span></div>
-        <div class="parecer-bar-track"><div class="parecer-bar-fill" style="width:0%;background:${barColor(c.pct)}" data-w="${c.pct}"></div></div>
+      <span class="p-icon">${bI(c.pct)}</span>
+      <div class="p-bar-wrap">
+        <div class="p-bar-lbl"><span>${c.l}</span><span>${bL(c.pct)}</span></div>
+        <div class="p-bar-track"><div class="p-bar-fill" style="width:0%;background:${bC(c.pct)}" data-w="${c.pct}"></div></div>
       </div>
     </div>`).join('');
 
-  const wppGrupo="https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20entrar%20no%20grupo%20gratuito.";
-  const wppAssessoria=`https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto.%20Meu%20resultado%20foi%20*${encodeURIComponent(nivel)}*%20com%20${pct}%25%20de%20exposi%C3%A7%C3%A3o.%20Quero%20conhecer%20a%20assessoria%20preventiva.`;
+  const wG="https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20entrar%20no%20grupo%20gratuito.";
+  const wA=`https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto.%20Resultado%3A%20*${encodeURIComponent(nv)}*%20(${pct}%25).%20Quero%20conhecer%20a%20assessoria.`;
 
   document.getElementById('resultContent').innerHTML=`
-    <div class="result-header">
-      <div class="result-nivel ${corClass}">${icone} ${nivel}</div>
-      <div class="result-titulo">${titulo}</div>
-      <div class="result-desc">${desc}</div>
+    <div class="res-header">
+      <div class="res-nivel ${cl}">${ic} ${nv}</div>
+      <div class="res-titulo">${ti}</div>
+      <div class="res-desc">${de}</div>
     </div>
-
-    <div class="termometro-wrap">
-      <div class="termometro-label">Índice de Exposição a Processos</div>
-      <div class="score-display" style="color:${cor}">${pct}<span style="font-size:22px">%</span></div>
-      <div class="score-max">de exposição identificada</div>
-      <div class="termometro-track">
-        <div class="termometro-needle" id="tNeedle" style="left:${needleLeft}%">
-          <div class="termometro-needle-inner">🔴</div>
-        </div>
+    <div class="termo-wrap">
+      <div class="termo-lbl">Índice de exposição a processos</div>
+      <div class="score" style="color:${cor}">${pct}<span style="font-size:clamp(16px,3vw,22px)">%</span></div>
+      <div class="score-sub">de exposição identificada</div>
+      <div class="termo-track">
+        <div class="termo-needle" id="needle" style="left:${nl}%"><div class="termo-dot"></div></div>
       </div>
-      <div class="termometro-markers"><span>Blindado</span><span>Moderado</span><span>Elevado</span><span>Crítico</span></div>
+      <div class="termo-marks"><span>Blindado</span><span>Moderado</span><span>Elevado</span><span>Crítico</span></div>
     </div>
-
-    <div class="parecer-titulo">Parecer por Frente de Risco</div>
-    <div class="parecer-grid">${parecerBars}</div>
-
-    ${criticas.length>0?`<div class="alertas-box"><h4>🚨 Áreas críticas identificadas:</h4><ul>${criticas.map(a=>`<li>${a}</li>`).join('')}</ul></div>`:''}
-
+    <div class="parecer-ttl">Parecer por frente de risco</div>
+    <div class="parecer-grid">${bars}</div>
+    ${criticas.length?`<div class="alertas-box"><h4>🚨 Áreas críticas identificadas:</h4><ul>${criticas.map(a=>`<li>${a}</li>`).join('')}</ul></div>`:''}
     <div class="inclui-box">
-      <h4>O que você recebe na assessoria preventiva:</h4>
+      <h4>O que você recebe na assessoria mensal:</h4>
       <div class="inclui-item">Diagnóstico inicial gratuito dos contratos e documentos</div>
-      <div class="inclui-item">Suporte contínuo via WhatsApp em até 24h úteis</div>
-      <div class="inclui-item">Revisão e atualização contínua de contratos</div>
-      <div class="inclui-item">Blindagem contra riscos de pacientes, funcionários, sócios e CRO</div>
+      <div class="inclui-item">Suporte via WhatsApp em até 24h úteis</div>
+      <div class="inclui-item">Revisão contínua de contratos e documentos</div>
+      <div class="inclui-item">Blindagem contra riscos de pacientes, funcionários e CRO</div>
       <div class="inclui-item">Relatório mensal com ações realizadas</div>
       <div class="inclui-item">Honorários fixos e previsíveis mensalmente</div>
     </div>
-
     <div class="cta-box">
-      <a href="${wppGrupo}" target="_blank" class="cta-wpp">
-        <span>💬</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-label">Conteúdo de prevenção exclusivo para dentistas</div></div>
-      </a>
+      <a href="${wG}" target="_blank" class="cta-wpp"><span>💬</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-lbl">Conteúdo de prevenção exclusivo para dentistas</div></div></a>
       <div class="divider">ou</div>
-      <a href="${wppAssessoria}" target="_blank" class="cta-assessoria">
-        <span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-label">Diagnóstico inicial gratuito — sem compromisso</div></div>
-      </a>
+      <a href="${wA}" target="_blank" class="cta-ass"><span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-lbl">Diagnóstico inicial gratuito — sem compromisso</div></div></a>
     </div>
-    <div style="margin-top:14px;">
-      <button class="btn-back" style="width:100%;justify-content:center;" onclick="ir('tela-home')">↺ Refazer o diagnóstico</button>
-    </div>`;
+    <button class="btn-refazer" onclick="ir('tela-home')">↺ Refazer o diagnóstico</button>`;
 
   ir('tela-resultado');
   setTimeout(()=>{
-    document.querySelectorAll('.parecer-bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});
+    document.querySelectorAll('.p-bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});
   },300);
-}
+};
 </script>
 </body>
 </html>
