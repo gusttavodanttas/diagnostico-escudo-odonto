@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diagnóstico Escudo Odonto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  /* =============================================
+     🎨 TEMA ESCUDO ODONTO — edite aqui para
+     mudar as cores em todo o documento de uma vez
+     ============================================= */
+  :root{
+    /* Cor principal (laranja) */
+    --brand-primary:        #E07B00;
+    --brand-primary-light:  #F59E0B;
+    --brand-primary-glow:   rgba(224,123,0,.35);
+
+    /* Fundos */
+    --bg-base:    #1a1a1a;   /* fundo geral */
+    --bg-card:    #232323;   /* cards principais */
+    --bg-item:    #2d2d2d;   /* itens internos */
+    --bg-deep:    #383838;   /* elementos de fundo */
+
+    /* Bordas e textos */
+    --border:         #3a3a3a;
+    --text-main:      #f0ece4;
+    --text-muted:     #a89880;
+    --text-white:     #fff;
+
+    /* Atalhos internos (não editar) */
+    --laranja:        var(--brand-primary);
+    --laranja-claro:  var(--brand-primary-light);
+    --laranja-glow:   var(--brand-primary-glow);
+    --dark:           var(--bg-base);
+    --dark2:          var(--bg-card);
+    --dark3:          var(--bg-item);
+    --dark4:          var(--bg-deep);
+    --borda:          var(--border);
+    --texto:          var(--text-main);
+    --texto-suave:    var(--text-muted);
+    --branco:         var(--text-white);
+  }
+  body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--texto);min-height:100vh;}
+  section{display:none;}
+  section.active{display:block;}
+
+  /* ── NAVEGAÇÃO ── */
+  nav{position:sticky;top:0;z-index:100;background:rgba(26,26,26,.97);border-bottom:1px solid var(--borda);padding:0 20px;display:flex;align-items:center;gap:0;}
+  .nav-logo{display:flex;align-items:center;gap:8px;padding:12px 0;margin-right:auto;}
+  .nav-logo-icon{font-size:20px;filter:drop-shadow(0 0 6px var(--laranja)) sepia(1) saturate(5) hue-rotate(5deg);}
+  .nav-logo-text{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--branco);letter-spacing:1px;}
+  .nav-logo-text span{color:var(--laranja);}
+  .nav-steps{display:flex;gap:0;}
+  .nav-step{padding:14px 14px;font-size:11px;font-weight:600;color:var(--texto-suave);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;}
+  .nav-step:hover{color:var(--laranja-claro);}
+  .nav-step.active{color:var(--laranja);border-bottom-color:var(--laranja);}
+  .nav-step.done{color:#4ade80;}
+
+  /* ── HERO / INÍCIO ── */
+  .hero{background:linear-gradient(160deg,#111 0%,#1f1f1f 60%,#2a1a00 100%);padding:60px 20px 50px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:320px;background:radial-gradient(ellipse,rgba(224,123,0,.18) 0%,transparent 70%);pointer-events:none;}
+  .logo-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;}
+  .logo-escudo{font-size:48px;filter:drop-shadow(0 0 16px var(--laranja)) sepia(1) saturate(5) hue-rotate(5deg);}
+  .logo-text{font-family:'Cinzel',serif;font-size:26px;font-weight:800;color:var(--branco);letter-spacing:3px;}
+  .logo-text span{color:var(--laranja);}
+  .badge{display:inline-block;background:rgba(224,123,0,.12);border:1px solid rgba(224,123,0,.3);border-radius:20px;padding:5px 18px;font-size:12px;color:var(--laranja-claro);letter-spacing:1px;text-transform:uppercase;margin-bottom:22px;}
+  .hero h1{font-family:'Cinzel',serif;font-size:clamp(22px,5vw,44px);font-weight:800;line-height:1.2;margin-bottom:14px;color:var(--branco);}
+  .hero h1 span{color:var(--laranja);}
+  .hero-sub{font-size:clamp(14px,2vw,17px);color:var(--texto-suave);max-width:560px;margin:0 auto 30px;line-height:1.7;}
+
+  /* RISCOS GRID */
+  .riscos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:660px;margin:0 auto 30px;text-align:left;}
+  .risco-item{background:rgba(255,255,255,.04);border:1px solid var(--borda);border-radius:12px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+  .risco-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+  .risco-text strong{display:block;color:var(--laranja-claro);font-size:11px;margin-bottom:3px;font-weight:700;}
+  .risco-text{font-size:11px;color:var(--texto-suave);line-height:1.5;}
+
+  .btn-primary{background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;font-weight:800;font-size:16px;padding:16px 44px;border:none;border-radius:50px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px var(--laranja-glow);letter-spacing:.5px;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--laranja-glow);}
+  .stats{display:flex;justify-content:center;gap:36px;margin-top:30px;flex-wrap:wrap;}
+  .stat{text-align:center;}
+  .stat-num{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--laranja);}
+  .stat-label{font-size:11px;color:var(--texto-suave);text-transform:uppercase;letter-spacing:1px;}
+
+  /* ── SOBRE ── */
+  .sobre-section{padding:60px 20px;}
+  .inner{max-width:900px;margin:0 auto;}
+  .section-title{font-family:'Cinzel',serif;font-size:clamp(18px,3vw,28px);font-weight:800;color:var(--branco);margin-bottom:6px;}
+  .section-sub{font-size:14px;color:var(--texto-suave);margin-bottom:36px;}
+  .sobre-grid{display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start;}
+  .sobre-foto{background:var(--dark3);border:2px solid var(--borda);border-radius:16px;padding:24px;text-align:center;}
+  .sobre-foto .avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 14px;}
+  .sobre-foto .nome{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--branco);margin-bottom:4px;}
+  .sobre-foto .cargo{font-size:12px;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;}
+  .sobre-cards{display:flex;flex-direction:column;gap:14px;}
+  .sobre-card{background:var(--dark3);border:1px solid var(--borda);border-left:3px solid var(--laranja);border-radius:10px;padding:16px 18px;}
+  .sobre-card h4{font-size:13px;font-weight:700;color:var(--laranja);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+  .sobre-card p{font-size:13px;color:var(--texto-suave);line-height:1.6;}
+
+  /* ── RISCOS SECTION ── */
+  .riscos-section{padding:60px 20px;background:var(--dark2);}
+  .riscos-full{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .risco-card{background:var(--dark3);border:1px solid var(--borda);border-top:2px solid var(--laranja);border-radius:12px;padding:20px;}
+  .risco-card .icon{font-size:28px;margin-bottom:10px;}
+  .risco-card h4{font-size:14px;font-weight:700;color:var(--branco);margin-bottom:8px;}
+  .risco-card p{font-size:12px;color:var(--texto-suave);line-height:1.6;}
+
+  /* ── SERVIÇOS ── */
+  .servicos-section{padding:60px 20px;}
+  .servicos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .servico-card{background:var(--dark3);border:1px solid var(--borda);border-radius:12px;padding:20px;transition:border-color .2s;}
+  .servico-card:hover{border-color:var(--laranja);}
+  .servico-card .icon{font-size:24px;margin-bottom:10px;}
+  .servico-card h4{font-size:14px;font-weight:700;color:var(--laranja-claro);margin-bottom:8px;}
+  .servico-card p{font-size:12px;color:var(--texto-suave);line-height:1.6;}
+
+  /* ── COMO FUNCIONA ── */
+  .como-section{padding:60px 20px;background:var(--dark2);}
+  .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .step-card{background:var(--dark3);border:1px solid var(--borda);border-radius:12px;padding:20px;text-align:center;}
+  .step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;font-family:'Cinzel',serif;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .step-card h4{font-size:13px;font-weight:700;color:var(--laranja-claro);margin-bottom:8px;}
+  .step-card p{font-size:12px;color:var(--texto-suave);line-height:1.6;}
+
+  /* ── QUIZ ── */
+  .quiz-section{padding:40px 20px;}
+  .card{background:var(--dark2);border:1px solid var(--borda);border-radius:20px;padding:clamp(24px,5vw,40px);box-shadow:0 8px 40px rgba(0,0,0,.5);max-width:680px;margin:0 auto;}
+  .progress-wrap{margin-bottom:28px;}
+  .progress-info{display:flex;justify-content:space-between;font-size:13px;color:var(--texto-suave);margin-bottom:10px;}
+  .progress-bar{height:5px;background:var(--dark4);border-radius:10px;overflow:hidden;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--laranja),var(--laranja-claro));border-radius:10px;transition:width .4s ease;box-shadow:0 0 8px var(--laranja-glow);}
+  .question-num{font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;}
+  .question-text{font-size:clamp(15px,2.5vw,19px);font-weight:700;color:var(--branco);margin-bottom:22px;line-height:1.5;}
+  .options{display:flex;flex-direction:column;gap:10px;}
+  .option{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid var(--borda);border-radius:12px;cursor:pointer;transition:all .2s;font-size:14px;font-weight:500;background:var(--dark3);color:var(--texto);}
+  .option:hover{border-color:var(--laranja);background:rgba(224,123,0,.08);}
+  .option.selected{border-color:var(--laranja);background:rgba(224,123,0,.14);color:var(--branco);}
+  .opt-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--borda);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all .2s;background:var(--dark4);}
+  .option.selected .opt-icon{background:var(--laranja);border-color:var(--laranja);color:#111;font-weight:700;}
+  .nav-btns{display:flex;justify-content:space-between;margin-top:26px;gap:12px;}
+  .btn-back{background:none;border:1.5px solid var(--borda);color:var(--texto-suave);padding:12px 24px;border-radius:50px;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;}
+  .btn-back:hover{border-color:var(--laranja);color:var(--laranja);}
+  .btn-next{background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;border:none;padding:12px 32px;border-radius:50px;cursor:pointer;font-size:15px;font-weight:800;transition:all .2s;margin-left:auto;box-shadow:0 4px 16px var(--laranja-glow);}
+  .btn-next:hover{transform:translateY(-1px);}
+  .btn-next:disabled{opacity:.3;cursor:not-allowed;transform:none;}
+
+  /* ── RESULTADO ── */
+  .result{text-align:center;}
+  .result-icon{font-size:56px;margin-bottom:10px;}
+  .result-nivel{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;}
+  .result-titulo{font-family:'Cinzel',serif;font-size:clamp(17px,3.5vw,24px);font-weight:800;color:var(--branco);margin-bottom:12px;line-height:1.3;}
+  .result-desc{font-size:14px;color:var(--texto-suave);line-height:1.8;margin-bottom:20px;max-width:500px;margin-left:auto;margin-right:auto;}
+  .alertas-box{background:var(--dark3);border:1px solid var(--borda);border-radius:14px;padding:18px 20px;text-align:left;margin-bottom:18px;}
+  .alertas-box h4,.inclui-box h4{font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+  .alertas-box li{font-size:13px;color:var(--texto-suave);margin-bottom:8px;list-style:none;display:flex;gap:10px;align-items:flex-start;}
+  .alertas-box li::before{content:"⚠️";flex-shrink:0;}
+  .inclui-box{background:rgba(224,123,0,.07);border:1px solid rgba(224,123,0,.2);border-radius:14px;padding:16px 20px;margin-bottom:18px;text-align:left;}
+  .inclui-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-size:13px;color:var(--texto-suave);}
+  .inclui-item::before{content:"✅";flex-shrink:0;}
+  .cta-box{display:flex;flex-direction:column;gap:12px;}
+  .cta-primary{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:16px 22px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;transition:transform .2s;box-shadow:0 4px 20px rgba(37,211,102,.25);}
+  .cta-primary:hover{transform:translateY(-2px);}
+  .cta-secondary{background:linear-gradient(135deg,var(--laranja),var(--laranja-claro));color:#111;border:none;padding:16px 22px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;transition:transform .2s;box-shadow:0 4px 20px var(--laranja-glow);}
+  .cta-secondary:hover{transform:translateY(-2px);}
+  .cta-label{font-size:11px;opacity:.8;font-weight:400;}
+  .divider{display:flex;align-items:center;gap:10px;color:var(--texto-suave);font-size:12px;}
+  .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--borda);}
+
+  .nivel-baixo{color:#4ade80;}.nivel-medio{color:#fbbf24;}.nivel-alto{color:#f87171;}
+
+  /* ── CONTATO ── */
+  .contato-section{padding:60px 20px;text-align:center;}
+  .contato-inner{max-width:600px;margin:0 auto;}
+  .contato-checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px auto;text-align:left;max-width:480px;}
+  .check-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--texto-suave);}
+  .check-item::before{content:"✅";flex-shrink:0;}
+  .contato-btns{display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;}
+  .contato-info{display:flex;justify-content:center;gap:28px;margin-top:28px;flex-wrap:wrap;}
+  .contato-info-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--texto-suave);}
+  .contato-info-item span:first-child{font-size:18px;}
+
+  /* ── FOOTER ── */
+  footer{text-align:center;padding:20px;font-size:10px;color:#4a4035;line-height:1.8;border-top:1px solid #2a2420;}
+
+  @media(max-width:700px){
+    .riscos,.riscos-full,.servicos-grid{grid-template-columns:repeat(2,1fr);}
+    .steps-grid{grid-template-columns:repeat(2,1fr);}
+    .sobre-grid{grid-template-columns:1fr;}
+    .contato-checks{grid-template-columns:1fr;}
+    .nav-steps{display:none;}
+  }
+  @media(max-width:440px){
+    .riscos,.riscos-full,.servicos-grid,.steps-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-icon">🛡️</span>
+    <span class="nav-logo-text">ESCUDO <span>ODONTO</span></span>
+  </div>
+  <div class="nav-steps">
+    <div class="nav-step active" onclick="goTo('inicio',0)">Início</div>
+    <div class="nav-step" onclick="goTo('sobre',1)">Sobre</div>
+    <div class="nav-step" onclick="goTo('riscos',2)">Riscos</div>
+    <div class="nav-step" onclick="goTo('servicos',3)">Serviços</div>
+    <div class="nav-step" onclick="goTo('como',4)">Como funciona</div>
+    <div class="nav-step" onclick="goTo('quiz',5)">Diagnóstico</div>
+    <div class="nav-step" onclick="goTo('contato',6)">Contato</div>
+  </div>
+</nav>
+
+<!-- ① INÍCIO -->
+<section id="sec-inicio" class="active">
+  <div class="hero">
+    <div class="logo-wrap">
+      <span class="logo-escudo">🛡️</span>
+      <span class="logo-text">ESCUDO <span>ODONTO</span></span>
+    </div>
+    <div class="badge">Diagnóstico preventivo gratuito</div>
+    <h1>Sua clínica está<br><span>realmente blindada?</span></h1>
+    <p class="hero-sub">Esses são os riscos mais comuns que clínicas odontológicas enfrentam sem assessoria preventiva contínua:</p>
+    <div class="riscos">
+      <div class="risco-item"><span class="risco-icon">⚠️</span><span class="risco-text"><strong>Reclamações de Pacientes</strong>Processos no Procon e ações por insatisfação</span></div>
+      <div class="risco-item"><span class="risco-icon">📄</span><span class="risco-text"><strong>Contratos Frágeis</strong>Sem cláusulas de proteção ao profissional</span></div>
+      <div class="risco-item"><span class="risco-icon">🔒</span><span class="risco-text"><strong>Descumprimento da LGPD</strong>Dados de pacientes sem política de privacidade</span></div>
+      <div class="risco-item"><span class="risco-icon">⚖️</span><span class="risco-text"><strong>Infrações no CRO</strong>Publicidade irregular e parcerias mal estruturadas</span></div>
+      <div class="risco-item"><span class="risco-icon">👤</span><span class="risco-text"><strong>Vínculos Trabalhistas</strong>Dentistas contratados sem formalização adequada</span></div>
+      <div class="risco-item"><span class="risco-icon">🏥</span><span class="risco-text"><strong>Compliance Sanitário</strong>Normas da ANVISA sem orientação especializada</span></div>
+    </div>
+    <p class="hero-sub" style="margin-bottom:26px;">Faça o diagnóstico gratuito e descubra em quais áreas sua clínica está exposta — antes que seja tarde.</p>
+    <button class="btn-primary" onclick="goTo('quiz',5)">Iniciar diagnóstico gratuito →</button>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Perguntas</div></div>
+      <div class="stat"><div class="stat-num">3 min</div><div class="stat-label">Duração</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ② SOBRE -->
+<section id="sec-sobre">
+  <div class="sobre-section">
+    <div class="inner">
+      <div class="section-title">Sobre o Especialista</div>
+      <div class="section-sub">Quem está por trás do Escudo Odonto</div>
+      <div class="sobre-grid">
+        <div class="sobre-foto">
+          <div class="avatar">⚖️</div>
+          <div class="nome">Gustavo Dantas Ferreira</div>
+          <div class="cargo">Advogado — OAB/DF 61.199</div>
+          <div style="margin-top:14px;font-size:12px;color:var(--texto-suave);line-height:1.6;">📍 Brasília / DF<br>📧 ceo@gustavodantas.adv.br<br>📱 (61) 99919-7413</div>
+        </div>
+        <div class="sobre-cards">
+          <div class="sobre-card">
+            <h4>⚖️ Especialização</h4>
+            <p>Especializado em Direito Médico e Odontológico, com foco em assessoria preventiva para clínicas odontológicas em todo o Brasil.</p>
+          </div>
+          <div class="sobre-card">
+            <h4>🛡️ Atuação</h4>
+            <p>Contencioso cível, direito do consumidor, contratos odontológicos, LGPD e compliance para profissionais de saúde. Experiência com as relações específicas entre dentista, paciente e plano de saúde.</p>
+          </div>
+          <div class="sobre-card">
+            <h4>💡 Filosofia</h4>
+            <p>Advocacia preventiva: identificar e resolver riscos antes que se tornem problemas reais para a sua clínica. Honorários fixos e previsíveis — sem surpresas no orçamento.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:36px;">
+        <button class="btn-primary" onclick="goTo('quiz',5)">Fazer o diagnóstico gratuito →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ RISCOS -->
+<section id="sec-riscos">
+  <div class="riscos-section">
+    <div class="inner">
+      <div class="section-title">Os Riscos que Sua Clínica Enfrenta</div>
+      <div class="section-sub">Problemas comuns em clínicas odontológicas sem assessoria preventiva contínua</div>
+      <div class="riscos-full">
+        <div class="risco-card"><div class="icon">⚠️</div><h4>Reclamações de Pacientes</h4><p>Processos no Procon e ações por insatisfação com tratamento ou cobrança — sem protocolo definido, você fica desprotegido.</p></div>
+        <div class="risco-card"><div class="icon">📄</div><h4>Contratos Frágeis</h4><p>Contratos de prestação de serviço sem cláusulas de proteção ao profissional expõem você a disputas desnecessárias.</p></div>
+        <div class="risco-card"><div class="icon">🔒</div><h4>Descumprimento da LGPD</h4><p>Prontuários e dados de pacientes sem política de privacidade adequada geram multas e responsabilização civil.</p></div>
+        <div class="risco-card"><div class="icon">⚖️</div><h4>Infrações Éticas no CRO</h4><p>Publicidade irregular, parcerias mal estruturadas e infrações não intencionais ao Código de Ética Odontológica.</p></div>
+        <div class="risco-card"><div class="icon">👤</div><h4>Vínculos Trabalhistas</h4><p>Vínculos empregatícios com dentistas contratados mal formalizados geram passivos trabalhistas silenciosos.</p></div>
+        <div class="risco-card"><div class="icon">🏥</div><h4>Compliance Sanitário</h4><p>Adequação às normas da ANVISA e vigilância sanitária sem orientação especializada — risco de autuações e interdição.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:36px;">
+        <button class="btn-primary" onclick="goTo('quiz',5)">Descobrir os riscos da minha clínica →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ SERVIÇOS -->
+<section id="sec-servicos">
+  <div class="servicos-section">
+    <div class="inner">
+      <div class="section-title">Nossos Serviços</div>
+      <div class="section-sub">Soluções completas de proteção e blindagem para a sua clínica</div>
+      <div class="servicos-grid">
+        <div class="servico-card"><div class="icon">📝</div><h4>Contratos Odontológicos</h4><p>Elaboração e revisão de contratos com pacientes, com cláusulas de proteção ao profissional elaboradas para a realidade odontológica.</p></div>
+        <div class="servico-card"><div class="icon">🔒</div><h4>LGPD e Proteção de Dados</h4><p>Adequação à Lei Geral de Proteção de Dados: políticas de privacidade, consentimento e gestão segura de prontuários.</p></div>
+        <div class="servico-card"><div class="icon">💬</div><h4>Gestão de Reclamações</h4><p>Análise e resposta a notificações do Procon, propostas de acordo extrajudicial e acompanhamento de disputas com pacientes.</p></div>
+        <div class="servico-card"><div class="icon">🔍</div><h4>Consultoria Preventiva</h4><p>Orientação contínua via WhatsApp e e-mail em até 24h úteis para dúvidas do dia a dia da clínica.</p></div>
+        <div class="servico-card"><div class="icon">⚖️</div><h4>Compliance Ético e Sanitário</h4><p>Orientação sobre normas do CRO, publicidade odontológica, ANVISA e vigilância sanitária.</p></div>
+        <div class="servico-card"><div class="icon">📋</div><h4>Documentação e Pareceres</h4><p>Elaboração de pareceres, revisão de documentos societários, contratos de locação e com fornecedores.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:36px;">
+        <button class="btn-primary" onclick="goTo('quiz',5)">Quero proteger minha clínica →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ COMO FUNCIONA -->
+<section id="sec-como">
+  <div class="como-section">
+    <div class="inner">
+      <div class="section-title">Como Funciona a Assessoria Mensal</div>
+      <div class="section-sub">Um processo simples e contínuo de blindagem para a sua clínica</div>
+      <div class="steps-grid">
+        <div class="step-card"><div class="step-num">01</div><h4>Diagnóstico Inicial</h4><p>Análise gratuita dos contratos, documentos e processos da clínica para mapear os pontos de exposição existentes.</p></div>
+        <div class="step-card"><div class="step-num">02</div><h4>Plano de Ação</h4><p>Elaboração de um plano personalizado para regularizar e prevenir os problemas identificados no diagnóstico.</p></div>
+        <div class="step-card"><div class="step-num">03</div><h4>Assessoria Contínua</h4><p>Suporte mensal: consultas, revisão de documentos, acompanhamento de notificações e orientações preventivas.</p></div>
+        <div class="step-card"><div class="step-num">04</div><h4>Relatório Mensal</h4><p>Relatório periódico com ações realizadas, riscos monitorados e recomendações para o próximo período.</p></div>
+      </div>
+
+      <!-- COMPARATIVO -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;">
+        <div style="background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:14px;padding:20px;">
+          <div style="font-size:13px;font-weight:800;color:#f87171;text-align:center;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;">❌ Sem Assessoria Contínua</div>
+          <div style="font-size:13px;color:var(--texto-suave);display:flex;flex-direction:column;gap:10px;">
+            <div>✕ Contrata suporte apenas quando surge o problema</div>
+            <div>✕ Contratos sem cláusulas de proteção</div>
+            <div>✕ Dados de pacientes sem política de privacidade</div>
+            <div>✕ Risco de autuações sanitárias e éticas</div>
+            <div>✕ Custos imprevisíveis e elevados</div>
+          </div>
+        </div>
+        <div style="background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-radius:14px;padding:20px;">
+          <div style="font-size:13px;font-weight:800;color:#4ade80;text-align:center;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;">✅ Com Assessoria Contínua</div>
+          <div style="font-size:13px;color:var(--texto-suave);display:flex;flex-direction:column;gap:10px;">
+            <div>✓ Suporte preventivo todo mês</div>
+            <div>✓ Contratos revisados e atualizados continuamente</div>
+            <div>✓ Adequação à LGPD com orientação especializada</div>
+            <div>✓ Blindagem contra riscos éticos e sanitários</div>
+            <div>✓ Honorários fixos e previsíveis mensalmente</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:36px;">
+        <button class="btn-primary" onclick="goTo('quiz',5)">Fazer o diagnóstico gratuito →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ QUIZ -->
+<section id="sec-quiz">
+  <div class="quiz-section">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div class="badge">Diagnóstico preventivo gratuito</div>
+      <div class="section-title" style="margin-top:10px;">Diagnóstico de Blindagem</div>
+      <div class="section-sub">Responda as perguntas abaixo e descubra os pontos de exposição da sua clínica</div>
+    </div>
+    <!-- INTRO -->
+    <div id="quizIntro" style="text-align:center;padding:20px 0;">
+      <div style="font-size:56px;margin-bottom:16px;filter:drop-shadow(0 0 12px var(--laranja)) sepia(1) saturate(5) hue-rotate(5deg);">🛡️</div>
+      <p style="font-size:15px;color:var(--texto-suave);max-width:480px;margin:0 auto 28px;line-height:1.7;">Responda 11 perguntas rápidas e descubra em quais áreas sua clínica está exposta — antes que seja tarde.</p>
+      <button class="btn-primary" onclick="mostrarFormulario()">Iniciar diagnóstico agora →</button>
+      <div class="stats" style="margin-top:24px;">
+        <div class="stat"><div class="stat-num">11</div><div class="stat-label">Perguntas</div></div>
+        <div class="stat"><div class="stat-num">3 min</div><div class="stat-label">Duração</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="card" id="quizForm" style="display:none;">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="font-size:11px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Antes de começar</div>
+        <div style="font-size:clamp(16px,3vw,20px);font-weight:700;color:var(--branco);margin-bottom:8px;">Para onde enviamos seu resultado?</div>
+        <div style="font-size:13px;color:var(--texto-suave);">Preencha os dados abaixo para liberar o diagnóstico completo.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Nome completo *</label>
+          <input id="fNome" type="text" placeholder="Ex: Dr. João Silva" style="width:100%;background:var(--dark3);border:1.5px solid var(--borda);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--branco);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--borda)'"/>
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">E-mail *</label>
+          <input id="fEmail" type="email" placeholder="seuemail@exemplo.com" style="width:100%;background:var(--dark3);border:1.5px solid var(--borda);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--branco);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--borda)'"/>
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:600;color:var(--laranja);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">WhatsApp *</label>
+          <input id="fWpp" type="tel" placeholder="(61) 99999-9999" style="width:100%;background:var(--dark3);border:1.5px solid var(--borda);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--branco);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--borda)'"/>
+        </div>
+        <div id="formErro" style="display:none;font-size:13px;color:#f87171;text-align:center;padding:8px;background:rgba(248,113,113,.1);border-radius:8px;">Preencha todos os campos para continuar.</div>
+        <button class="btn-primary" onclick="validarFormulario()" style="width:100%;margin-top:4px;">Iniciar diagnóstico →</button>
+        <div style="font-size:11px;color:var(--texto-suave);text-align:center;">🔒 Seus dados são confidenciais e não serão compartilhados.</div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="card" id="quizCard" style="display:none;">
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span id="progressLabel">Pergunta <strong>1</strong> de 11</span>
+          <span id="progressPct" style="color:var(--laranja);font-weight:700;">0%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+      <div id="questionArea"></div>
+      <div class="nav-btns">
+        <button class="btn-back" id="btnBack" onclick="voltarPergunta()" style="display:none;">← Voltar</button>
+        <button class="btn-next" id="btnNext" onclick="proximaPergunta()" disabled>Próxima →</button>
+      </div>
+    </div>
+    <div class="card" id="resultCard" style="display:none;">
+      <div class="result" id="resultContent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CONTATO -->
+<section id="sec-contato">
+  <div class="contato-section">
+    <div class="contato-inner">
+      <div class="badge">Sem compromisso</div>
+      <div class="section-title" style="margin-top:12px;">Agende uma Conversa</div>
+      <div class="section-sub">Análise gratuita dos riscos da sua clínica — sem compromisso</div>
+      <div class="contato-checks">
+        <div class="check-item">Mapeamento dos pontos de exposição da clínica</div>
+        <div class="check-item">Análise dos contratos com pacientes</div>
+        <div class="check-item">Orientação sobre adequação à LGPD</div>
+        <div class="check-item">Esclarecimento de dúvidas sem compromisso</div>
+      </div>
+      <div class="contato-btns">
+        <a href="https://wa.me/5561999197413?text=Ol%C3%A1!%20Quero%20agendar%20uma%20an%C3%A1lise%20gratuita%20com%20o%20Escudo%20Odonto." target="_blank" class="cta-secondary" style="border-radius:50px;font-size:16px;padding:18px 28px;">
+          <span>📱</span> Agendar análise gratuita pelo WhatsApp
+        </a>
+
+      </div>
+      <div class="contato-info">
+        <div class="contato-info-item"><span>📍</span><span>Brasília / DF</span></div>
+        <div class="contato-info-item"><span>📱</span><span>(61) 99919-7413</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Conteúdo de caráter exclusivamente informativo e educativo. Não configura captação de clientela nem promessa de resultado. | Gustavo Dantas Ferreira — OAB/DF nº 61.199
+</footer>
+
+<script>
+// ── NAVEGAÇÃO ──
+const secs=['inicio','sobre','riscos','servicos','como','quiz','contato'];
+function goTo(id,idx){
+  secs.forEach(s=>{
+    document.getElementById('sec-'+s).classList.remove('active');
+  });
+  document.getElementById('sec-'+id).classList.add('active');
+  document.querySelectorAll('.nav-step').forEach((el,i)=>{
+    el.classList.remove('active');
+    if(i===idx) el.classList.add('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='quiz') resetQuiz();
+}
+
+// ── QUIZ ──
+const perguntas=[
+  {area:"Reclamações de Pacientes",texto:"Seu consultório possui um protocolo documentado para lidar com reclamações, insatisfações ou disputas com pacientes?",opcoes:[{texto:"Sim, temos fluxo definido e documentado",peso:0},{texto:"Lidamos caso a caso, sem protocolo formal",peso:1},{texto:"Não temos nenhum protocolo definido",peso:2}]},
+  {area:"Contratos com Pacientes",texto:"Os contratos de prestação de serviço com pacientes possuem cláusulas de proteção ao profissional e são assinados antes dos tratamentos?",opcoes:[{texto:"Sim, contratos revisados e assinados sempre",peso:0},{texto:"Usamos contratos, mas nunca foram revisados",peso:1},{texto:"Não utilizamos contratos formais com pacientes",peso:2}]},
+  {area:"Consentimento do Paciente",texto:"Seu consultório utiliza termo de consentimento informado assinado antes de cada procedimento?",opcoes:[{texto:"Sim, para todos os procedimentos, sem exceção",peso:0},{texto:"Somente para procedimentos mais complexos",peso:1},{texto:"Raramente ou não utilizamos esse documento",peso:2}]},
+  {area:"LGPD e Proteção de Dados",texto:"Prontuários e dados dos pacientes são tratados com política de privacidade adequada, conforme a LGPD?",opcoes:[{texto:"Sim, temos política de privacidade implementada",peso:0},{texto:"Conhecemos a lei, mas ainda não nos adequamos totalmente",peso:1},{texto:"Nunca nos preocupamos com isso",peso:2}]},
+  {area:"Compliance Ético no CRO",texto:"A comunicação e publicidade do seu consultório foram avaliadas quanto à conformidade com o Código de Ética Odontológica e normas do CRO/CFO?",opcoes:[{texto:"Sim, revisamos com atenção às normas",peso:0},{texto:"Publicamos sem verificar as normas regularmente",peso:1},{texto:"Nunca avaliamos nossa comunicação sob esse aspecto",peso:2}]},
+  {area:"Vínculos Trabalhistas",texto:"Os contratos com funcionários, dentistas contratados, sócios e colaboradores estão formalizados e atualizados?",opcoes:[{texto:"Sim, todos formalizados e revisados",peso:0},{texto:"Temos contratos, mas nunca foram revisados",peso:1},{texto:"Trabalhamos sem contratos formalizados",peso:2}]},
+  {area:"Compliance Sanitário (ANVISA)",texto:"Seu consultório está adequado às normas da ANVISA e da vigilância sanitária, com orientação especializada?",opcoes:[{texto:"Sim, seguimos as normas com orientação adequada",peso:0},{texto:"Acreditamos estar adequados, mas sem verificação formal",peso:1},{texto:"Nunca avaliamos nossa adequação sanitária",peso:2}]},
+  {area:"Resposta a Notificações",texto:"Você saberia como agir diante de uma notificação extrajudicial, reclamação no Procon ou acionamento por um paciente?",opcoes:[{texto:"Sim, tenho suporte especializado para essa situação",peso:0},{texto:"Tenho uma ideia, mas agiria por conta própria",peso:1},{texto:"Não faço ideia por onde começar",peso:2}]},
+  {area:"Blindagem Patrimonial",texto:"A estrutura do seu consultório (PJ, sociedade simples, etc.) foi planejada visando a proteção do seu patrimônio pessoal?",opcoes:[{texto:"Sim, foi estruturada com orientação especializada",peso:0},{texto:"Tenho CNPJ, mas sem planejamento formal",peso:1},{texto:"Atendo como pessoa física sem estrutura definida",peso:2}]},
+  {area:"Convênios e Planos Odontológicos",texto:"Os contratos com convênios e planos odontológicos foram analisados antes da assinatura?",opcoes:[{texto:"Sim, analisamos com cuidado todas as cláusulas",peso:0},{texto:"Assinamos sem ler tudo, confiando na operadora",peso:1},{texto:"Não trabalho com planos / nunca analisei esses contratos",peso:2}]},
+  {area:"Atualização Preventiva Contínua",texto:"Você conta com suporte especializado contínuo para acompanhar mudanças nas normas do CRO, ANVISA, LGPD e legislação odontológica?",opcoes:[{texto:"Sim, tenho assessoria preventiva contínua",peso:0},{texto:"Me atualizo por conta própria quando ouço falar de mudanças",peso:1},{texto:"Não tenho acompanhado essas atualizações",peso:2}]},
+];
+
+let atual=0,respostas=[],selecionada=null;
+const total=perguntas.length;
+
+function resetQuiz(){
+  atual=0;respostas=[];selecionada=null;
+  document.getElementById('quizIntro').style.display='block';
+  document.getElementById('quizForm').style.display='none';
+  document.getElementById('quizCard').style.display='none';
+  document.getElementById('resultCard').style.display='none';
+}
+
+function mostrarFormulario(){
+  document.getElementById('quizIntro').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+}
+
+function validarFormulario(){
+  const nome=document.getElementById('fNome').value.trim();
+  const email=document.getElementById('fEmail').value.trim();
+  const wpp=document.getElementById('fWpp').value.trim();
+  const erro=document.getElementById('formErro');
+  if(!nome||!email||!wpp){erro.style.display='block';return;}
+  erro.style.display='none';
+  document.getElementById('quizForm').style.display='none';
+  document.getElementById('quizCard').style.display='block';
+  renderPergunta();
+}
+
+function renderPergunta(){
+  const p=perguntas[atual];
+  selecionada=respostas[atual]!==undefined?respostas[atual]:null;
+  const pct=Math.round((atual/total)*100);
+  document.getElementById('progressLabel').innerHTML=`Pergunta <strong>${atual+1}</strong> de ${total}`;
+  document.getElementById('progressPct').textContent=pct+'%';
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('btnBack').style.display=atual>0?'flex':'none';
+  document.getElementById('btnNext').textContent=atual===total-1?'Ver meu resultado 🎯':'Próxima →';
+  document.getElementById('btnNext').disabled=selecionada===null;
+  let html=`<div class="question-num">Área: ${p.area}</div><div class="question-text">${p.texto}</div><div class="options">`;
+  p.opcoes.forEach((op,i)=>{
+    const sel=selecionada===i?'selected':'';
+    html+=`<div class="option ${sel}" onclick="selecionarOpcao(${i})"><div class="opt-icon">${selecionada===i?'✓':''}</div><span>${op.texto}</span></div>`;
+  });
+  html+='</div>';
+  document.getElementById('questionArea').innerHTML=html;
+  document.getElementById('quizCard').style.display='block';
+  document.getElementById('resultCard').style.display='none';
+}
+
+function selecionarOpcao(i){selecionada=i;respostas[atual]=i;document.getElementById('btnNext').disabled=false;renderPergunta();}
+function proximaPergunta(){if(selecionada===null)return;respostas[atual]=selecionada;if(atual<total-1){atual++;selecionada=respostas[atual]!==undefined?respostas[atual]:null;renderPergunta();}else mostrarResultado();}
+function voltarPergunta(){if(atual>0){atual--;selecionada=respostas[atual]!==undefined?respostas[atual]:null;renderPergunta();}}
+
+function mostrarResultado(){
+  let pontos=0;const alertas=[];
+  respostas.forEach((r,i)=>{const p=perguntas[i].opcoes[r].peso;pontos+=p;if(p>=1)alertas.push(perguntas[i].area);});
+  let nivel,cor,icone,titulo,desc;
+  if(pontos<=5){nivel="Blindagem Sólida";cor="nivel-baixo";icone="🟢";titulo="Parabéns — sua clínica está bem protegida!";desc="Você demonstra atenção às boas práticas de prevenção e proteção. Lembre-se: as normas evoluem constantemente. A assessoria preventiva contínua é o que separa clínicas vulneráveis das verdadeiramente blindadas.";}
+  else if(pontos<=13){nivel="Blindagem Parcial";cor="nivel-medio";icone="🟡";titulo="Atenção — sua proteção tem falhas importantes.";desc="Sua clínica tem boas práticas, mas há pontos de exposição que podem se tornar problemas reais. Identificar e resolver riscos antes que aconteçam é muito mais simples e barato do que remediar depois.";}
+  else{nivel="Alta Exposição";cor="nivel-alto";icone="🔴";titulo="Sua clínica está exposta e precisa de blindagem urgente.";desc="Identificamos múltiplas áreas de vulnerabilidade. Isso não significa que algo ruim vai acontecer — mas, se acontecer, você pode estar completamente desprotegido. A boa notícia: tudo tem solução com a orientação preventiva certa.";}
+
+  document.getElementById('quizCard').style.display='none';
+  document.getElementById('resultCard').style.display='block';
+
+  const wppGrupo="https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20entrar%20no%20grupo%20gratuito.";
+  const wppAssessoria="https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20conhecer%20a%20assessoria%20preventiva%20mensal.";
+
+  let alertasHtml='';
+  if(alertas.length>0)alertasHtml=`<div class="alertas-box"><h4>Pontos de exposição identificados:</h4><ul>${alertas.map(a=>`<li>${a}</li>`).join('')}</ul></div>`;
+
+  document.getElementById('resultContent').innerHTML=`
+    <div class="result-icon">${icone}</div>
+    <div class="result-nivel ${cor}">${nivel}</div>
+    <div class="result-titulo">${titulo}</div>
+    <div class="result-desc">${desc}</div>
+    ${alertasHtml}
+    <div class="inclui-box">
+      <h4>O que você recebe na assessoria preventiva mensal:</h4>
+      <div class="inclui-item">Diagnóstico inicial gratuito dos contratos e documentos da clínica</div>
+      <div class="inclui-item">Suporte contínuo via WhatsApp e e-mail em até 24h úteis</div>
+      <div class="inclui-item">Revisão e atualização contínua de contratos e documentos</div>
+      <div class="inclui-item">Blindagem contra riscos éticos, sanitários e trabalhistas</div>
+      <div class="inclui-item">Relatório mensal com ações realizadas e recomendações</div>
+      <div class="inclui-item">Honorários fixos e previsíveis — sem surpresas no orçamento</div>
+    </div>
+    <div class="cta-box">
+      <a href="${wppGrupo}" target="_blank" class="cta-primary"><span>💬</span><div><div>Entrar no grupo gratuito</div><div class="cta-label">Escudo Odonto — conteúdo de prevenção para dentistas</div></div></a>
+      <div class="divider">ou</div>
+      <a href="${wppAssessoria}" target="_blank" class="cta-secondary"><span>🛡️</span><div><div>Quero minha assessoria preventiva mensal</div><div class="cta-label">Diagnóstico inicial gratuito — sem compromisso</div></div></a>
+    </div>
+    <div style="margin-top:16px;"><button class="btn-back" style="width:100%;justify-content:center;" onclick="reiniciarQuiz()">↺ Refazer o diagnóstico</button></div>`;
+
+  // marca nav como done
+  document.querySelectorAll('.nav-step')[5].classList.add('done');
+}
+
+function reiniciarQuiz(){
+  atual=0;respostas=[];selecionada=null;
+  document.getElementById('resultCard').style.display='none';
+  renderPergunta();
+}
+</script>
+</body>
+</html>
