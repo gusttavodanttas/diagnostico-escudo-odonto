@@ -147,7 +147,11 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
     <div class="form-grp">
       <div><label class="form-lbl">Nome completo *</label><input id="fNome" class="form-inp" type="text" placeholder="Ex: Dra. Ana Lima" autocomplete="name"/></div>
       <div><label class="form-lbl">E-mail *</label><input id="fEmail" class="form-inp" type="email" placeholder="seuemail@exemplo.com" autocomplete="email"/></div>
-      <div><label class="form-lbl">WhatsApp *</label><input id="fWpp" class="form-inp" type="tel" placeholder="(61) 99999-9999" autocomplete="tel"/></div>
+      <div>
+        <label class="form-lbl">WhatsApp *</label>
+        <input id="fWpp" class="form-inp" type="tel" placeholder="(61) 99999-9999" autocomplete="tel" maxlength="15" oninput="mascaraWpp(this)" onkeydown="return teclaWpp(event)"/>
+        <div id="wppErro" style="display:none;font-size:11px;color:#f87171;margin-top:4px;">Digite um número de celular válido com DDD.</div>
+      </div>
       <div id="formErro" class="form-err">Preencha todos os campos para continuar.</div>
       <button class="btn-cta" onclick="validarForm()" style="margin-top:4px;">Iniciar diagnóstico →</button>
       <div style="font-size:11px;color:var(--muted);text-align:center;">🔒 Seus dados são confidenciais.</div>
@@ -181,8 +185,33 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',
 </div>
 
 <script>
-// ── dados do formulário (acessíveis globalmente)
-var dadosLead = {};
+// ── máscara e validação WhatsApp
+function mascaraWpp(el) {
+  var v = el.value.replace(/\D/g, '').substring(0, 11);
+  if (v.length <= 2)        v = v.replace(/^(\d{0,2})/, '($1');
+  else if (v.length <= 7)   v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+  else if (v.length <= 10)  v = v.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+  else                      v = v.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+  el.value = v;
+  document.getElementById('wppErro').style.display = 'none';
+  el.style.borderColor = 'var(--border)';
+}
+
+function teclaWpp(e) {
+  // permite: backspace, delete, tab, setas, ctrl+a/c/v/x
+  var permitidos = [8,9,35,36,37,38,39,40,46];
+  if (permitidos.indexOf(e.keyCode) !== -1) return true;
+  if ((e.ctrlKey || e.metaKey) && [65,67,86,88].indexOf(e.keyCode) !== -1) return true;
+  // bloqueia qualquer tecla que não seja número
+  if (e.key < '0' || e.key > '9') { e.preventDefault(); return false; }
+  return true;
+}
+
+function wppValido(v) {
+  var nums = v.replace(/\D/g, '');
+  // celular BR: 11 dígitos, DDD 11-99, nono dígito = 9
+  return /^([1-9]{2})(9\d{8})$/.test(nums);
+}
 
 // ── navegação
 function ir(id) {
@@ -207,7 +236,13 @@ function validarForm() {
   var w = document.getElementById('fWpp').value.trim();
   var err = document.getElementById('formErro');
   if (!n || !e || !w) { err.style.display = 'block'; return; }
+  if (!wppValido(w)) {
+    document.getElementById('wppErro').style.display = 'block';
+    document.getElementById('fWpp').style.borderColor = '#f87171';
+    return;
+  }
   err.style.display = 'none';
+  document.getElementById('wppErro').style.display = 'none';
   dadosLead = {nome: n, email: e, wpp: w};
   cur = 0; resp = []; lock = false;
   ir('tela-quiz');
@@ -222,13 +257,13 @@ var Ps = [
   {c:"👷 Funcionários",q:"Os contratos com funcionários, recepcionistas e assistentes estão formalizados dentro da CLT?",o:[{t:"Sim, todos com CTPS assinada e contrato formal",p:0},{t:"Alguns são informais ou autônomos sem contrato",p:2},{t:"A maioria trabalha sem formalização",p:3}]},
   {c:"👷 Funcionários",q:"Dentistas que atuam na clínica têm vínculo corretamente caracterizado (autônomo, sócio ou CLT)?",o:[{t:"Sim, cada vínculo está definido e documentado",p:0},{t:"Há dúvidas sobre como alguns vínculos estão caracterizados",p:2},{t:"Não me preocupei com essa questão ainda",p:3}]},
   {c:"🤝 Sócios",q:"Existe contrato social atualizado e/ou acordo de sócios que regule conflitos na clínica?",o:[{t:"Sim, contrato social e acordo de sócios completos",p:0},{t:"Temos contrato social, mas sem acordo de sócios",p:1},{t:"Não temos documentos societários atualizados",p:3}]},
-  {c:"🤝 Sócios",q:"Em caso de saída de um sócio, há regras claras sobre a clínica, pacientes e ativos?",o:[{t:"Sim, está previsto em contrato",p:0},{t:"Nunca discutimos esse cenário formalmente",p:2},{t:"Não há nenhuma previsão para isso",p:3}]},
+  {c:"🤝 Sócios",q:"Em caso de saída de um sócio, há regras claras sobre a clínica, pacientes e ativos?",o:[{t:"Sim, está previsto em contrato",p:0},{t:"Nunca discutimos esse cenário formalmente",p:2},{t:"Não h0� nenhuma previsão para isso",p:3}]},
   {c:"🔗 Parceiros",q:"As parcerias com profissionais, clínicas ou indicadores são formalizadas por contrato?",o:[{t:"Sim, todos com contrato assinado",p:0},{t:"Algumas parcerias são apenas verbais ou por mensagem",p:2},{t:"Nenhuma parceria é formalizada",p:3}]},
   {c:"🔗 Parceiros",q:"Os contratos com fornecedores e prestadores foram revisados antes da assinatura?",o:[{t:"Sim, analisamos todas as cláusulas",p:0},{t:"Assinamos sem ler com atenção",p:1},{t:"Nunca revisamos esses contratos",p:2}]},
   {c:"⚖️ CRO / CFO",q:"A publicidade da clínica nas redes foi avaliada quanto à conformidade com o Código de Ética Odontológica?",o:[{t:"Sim, revisamos com atenção às normas do CRO/CFO",p:0},{t:"Publicamos sem verificar regularmente",p:2},{t:"Nunca avaliamos nossa comunicação sob esse aspecto",p:3}]},
-  {c:"⚖️ CRO / CFO",q:"Você já passou por alguma notificação, advertência ou processo no CRO/CFO?",o:[{t:"Não, nunca",p:0},{t:"Recebi uma advertência, mas foi resolvida",p:1},{t:"Há processo em aberto ou histórico de notificações",p:3}]},
+  {c:"⚖️ CRO / CFO",q:"Você já passou por alguma notificação, advertência ou processo no CRO/CFO?",o:[{t:"Não, nunca",p:0},t:"Recebi uma advertência, mas foi resolvida",p:1},{t:"Há processo em aberto ou histórico de notificações",p:3}]},
   {c:"🔒 LGPD",q:"Prontuários e dados dos pacientes seguem política de privacidade adequada conforme a LGPD?",o:[{t:"Sim, temos política de privacidade implementada",p:0},{t:"Conhecemos a lei, mas ainda não nos adequamos",p:2},{t:"Nunca nos preocupamos com isso",p:3}]},
-  {c:"🏥 ANVISA",q:"Seu consultório está adequado às normas da ANVISA e da vigilância sanitária?",o:[{t:"Sim, com orientação especializada e documentação",p:0},{t:"Acreditamos estar adequados, mas sem verificação formal",p:1},{t:"Nunca avaliamos nossa adequação sanitária",p:3}]},
+  {c:"🏥 ANVISA",q:"Seu consultório está adequado às normas da ANVISA e da vigilência sanitária?",o:[{t:"Sim, com orientação especializada e documentação",p:0},{t:"Acreditamos estar adequados, mas sem verificação formal",p:1},{t:"Nunca avaliamos nossa adequação sanitária",p:3}]},
   {c:"🚨 Acionamentos",q:"Se você recebesse hoje uma notificação extrajudicial ou citação judicial, saberia o que fazer?",o:[{t:"Sim, tenho suporte especializado para isso",p:0},{t:"Tentaria resolver por conta própria",p:2},{t:"Não teria ideia por onde começar",p:3}]},
   {c:"🏦 Patrimônio",q:"A estrutura da sua clínica foi planejada para proteger seu patrimônio pessoal em caso de processo?",o:[{t:"Sim, estruturada com orientação especializada",p:0},{t:"Tenho CNPJ, mas sem planejamento de proteção",p:2},{t:"Atendo como pessoa física sem estrutura definida",p:3}]}
 ];
@@ -237,7 +272,7 @@ var CATS = {
   "👤 Pacientes":{l:"Pacientes",i:[0,1,2]},
   "👷 Funcionários":{l:"Funcionários",i:[3,4]},
   "🤝 Sócios":{l:"Sócios",i:[5,6]},
-  "🔗 Parceiros":{l:"Parceiros",i:[7,8]},
+  "� PParceiros":{l:"Parceiros",i:[7,8]},
   "⚖️ CRO / CFO":{l:"CRO / CFO",i:[9,10]},
   "🔒 LGPD":{l:"LGPD e Dados",i:[11]},
   "🏥 ANVISA":{l:"ANVISA",i:[12]},
@@ -376,10 +411,29 @@ function resultado() {
       '<a href="' + wG + '" target="_blank" class="cta-wpp"><span>💬</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-lbl">Conteúdo de prevenção exclusivo para dentistas</div></div></a>' +
       '<div class="divider">ou</div>' +
       '<a href="' + wA + '" target="_blank" class="cta-ass"><span>🛡️</span><div><div>Quero blindar minha clínica agora</div><div class="cta-lbl">Diagnóstico inicial gratuito — sem compromisso</div></div></a>' +
-    '</div>' ;
-      ir('tela-resultado');
-        enviarFormspree(dadosLead);
-        }
-        </script>
-        </body>
-        </html>
+    '</div>' +
+    '<button class="btn-refazer" onclick="ir(\'tela-home\')">↺ Refazer o diagnóstico</button>';
+
+  ir('tela-resultado');
+
+  setTimeout(function() {
+    document.querySelectorAll('.p-bar-fill').forEach(function(b){ b.style.width = b.dataset.w + '%'; });
+  }, 300);
+
+  // envia ao Formspree após mostrar resultado
+  var areasAlerta = criticas.join(', ') || 'Nenhuma';
+  var detalhes = Object.values(cScores).map(function(c){ return c.l + ': ' + c.pct + '%'; }).join(' | ');
+  enviarFormspree({
+    'Nome': dadosLead.nome,
+    'Email': dadosLead.email,
+    'WhatsApp': dadosLead.wpp,
+    'Resultado': nv,
+    'Exposição': pct + '%',
+    'Áreas Críticas': areasAlerta,
+    'Detalhes': detalhes,
+    '_subject': 'Escudo Odonto — ' + dadosLead.nome + ' (' + nv + ')'
+  });
+}
+</script>
+</body>
+</html>
