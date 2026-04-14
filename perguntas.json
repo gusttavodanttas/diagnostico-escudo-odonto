@@ -1,102 +1,968 @@
 [
-  {"id":1,"cat":"Consentimento","norma":"CFO - Código de Ética Odontológica, Art. 8","q":"Seu consultório utiliza termo de consentimento informado antes de procedimentos eletivos?","o":[{"t":"Sim, assinado antes de todos os procedimentos","p":0},{"t":"Apenas em procedimentos cirúrgicos","p":1},{"t":"Não utilizamos termo de consentimento","p":3}]},
-  {"id":2,"cat":"Consentimento","norma":"CDC - Art. 6, III - Direito à informação","q":"Os pacientes são informados sobre riscos, alternativas e custos antes do tratamento?","o":[{"t":"Sim, sempre de forma clara e documentada","p":0},{"t":"Informamos verbalmente, sem documentação","p":2},{"t":"Não temos essa prática formalizada","p":3}]},
-  {"id":3,"cat":"Consentimento","norma":"CFO - Art. 8 - Consentimento de menores","q":"Para pacientes menores de idade, o consentimento é colhido do responsável legal?","o":[{"t":"Sim, sempre com assinatura do responsável","p":0},{"t":"Às vezes, dependendo do procedimento","p":2},{"t":"Não temos controle sobre isso","p":3}]},
-  {"id":4,"cat":"Prontuário","norma":"CFO - Resolução CFO 118/2012 - Prontuário Odontológico","q":"Os prontuários dos pacientes são preenchidos completamente após cada consulta?","o":[{"t":"Sim, com data, evolução e assinatura","p":0},{"t":"Preenchemos parcialmente","p":1},{"t":"Não temos rotina de prontuário","p":3}]},
-  {"id":5,"cat":"Prontuário","norma":"CFO - Resolução CFO 118/2012 - Guarda de prontuários","q":"Os prontuários são guardados pelo prazo mínimo de 20 anos exigido pelo CFO?","o":[{"t":"Sim, temos política de guarda definida","p":0},{"t":"Guardamos mas sem prazo definido","p":1},{"t":"Não sabemos qual o prazo legal","p":3}]},
-  {"id":6,"cat":"Prontuário","norma":"LGPD - Lei 13.709/2018 - Segurança de dados","q":"Os prontuários digitais estão armazenados com criptografia e controle de acesso?","o":[{"t":"Sim, com sistema seguro e backups","p":0},{"t":"Usamos sistema digital sem configuração de segurança","p":2},{"t":"Usamos planilhas ou documentos sem proteção","p":3}]},
-  {"id":7,"cat":"Publicidade","norma":"CFO - Código de Ética, Art. 34 - Publicidade","q":"A publicidade do consultório evita divulgar resultados de antes e depois de tratamentos?","o":[{"t":"Sim, nunca usamos esse tipo de publicidade","p":0},{"t":"Usamos raramente, sem pensar nas normas","p":2},{"t":"Usamos frequentemente nas redes sociais","p":3}]},
-  {"id":8,"cat":"Publicidade","norma":"CFO - Resolução CFO 196/2019 - Marketing Odontológico","q":"As postagens nas redes sociais evitam prometer resultados garantidos ao paciente?","o":[{"t":"Sim, revisamos o conteúdo antes de postar","p":0},{"t":"Não revisamos com esse critério","p":2},{"t":"Fazemos promessas de resultado frequentemente","p":3}]},
-  {"id":9,"cat":"Publicidade","norma":"CFO - Art. 34 - Vedação de preços em publicidade","q":"O consultório evita divulgar tabelas de preço e promoções nas redes sociais?","o":[{"t":"Sim, sabemos que isso é vedado pelo CFO","p":0},{"t":"Divulgamos preços às vezes sem saber se era permitido","p":2},{"t":"Divulgamos preços e promoções regularmente","p":3}]},
-  {"id":10,"cat":"Publicidade","norma":"CFO - Art. 38 - Uso de títulos e especialidades","q":"O consultório divulga apenas as especialidades reconhecidas pelo CFO nos materiais?","o":[{"t":"Sim, apenas especialidades com registro no CFO","p":0},{"t":"Não sabemos quais especialidades são reconhecidas","p":2},{"t":"Divulgamos títulos sem verificar reconhecimento","p":3}]},
-  {"id":11,"cat":"Contratos com Pacientes","norma":"CDC - Art. 54 - Contratos de adesão","q":"O contrato de prestação de serviços com pacientes é claro sobre o que está e não está incluído?","o":[{"t":"Sim, com cláusulas detalhadas e revisadas","p":0},{"t":"Temos contrato mas é genérico","p":1},{"t":"Não utilizamos contrato formal","p":3}]},
-  {"id":12,"cat":"Contratos com Pacientes","norma":"CC - Art. 389 - Inadimplemento contratual","q":"O contrato com o paciente prevê o que ocorre em caso de abandono do tratamento?","o":[{"t":"Sim, há cláusula específica sobre isso","p":0},{"t":"Não há previsão para esse caso","p":2},{"t":"Não utilizamos contratos formais","p":3}]},
-  {"id":13,"cat":"Contratos com Pacientes","norma":"CDC - Art. 39 - Práticas abusivas","q":"O consultório evita cobrar taxas ou multas não previstas no contrato original?","o":[{"t":"Sim, seguimos estritamente o contrato assinado","p":0},{"t":"Já cobramos valores fora do contrato algumas vezes","p":2},{"t":"Não temos controle sobre isso","p":3}]},
-  {"id":14,"cat":"Responsabilidade Civil","norma":"CC - Art. 951 - Responsabilidade do profissional de saúde","q":"O consultório possui seguro de responsabilidade civil profissional?","o":[{"t":"Sim, seguro ativo e atualizado","p":0},{"t":"Não temos mas já pensamos em contratar","p":2},{"t":"Nunca consideramos essa necessidade","p":3}]},
-  {"id":15,"cat":"Responsabilidade Civil","norma":"CC - Art. 186 - Ato ilícito e dano moral","q":"Existe protocolo documentado para registrar intercorrências durante procedimentos?","o":[{"t":"Sim, registramos qualquer intercorrência no prontuário","p":0},{"t":"Registramos apenas casos graves","p":2},{"t":"Não temos esse tipo de protocolo","p":3}]},
-  {"id":16,"cat":"LGPD","norma":"LGPD - Lei 13.709/2018 - Art. 7 - Base legal","q":"O consultório coleta dados dos pacientes com base legal definida conforme a LGPD?","o":[{"t":"Sim, com consentimento documentado ou base contratual","p":0},{"t":"Coletamos dados sem definir a base legal","p":2},{"t":"Não conhecemos as bases legais da LGPD","p":3}]},
-  {"id":17,"cat":"LGPD","norma":"LGPD - Art. 41 - Encarregado de dados (DPO)","q":"O consultório designou um responsável pelo tratamento de dados pessoais?","o":[{"t":"Sim, temos um DPO ou responsável designado","p":0},{"t":"Não designamos, mas sabemos que é recomendado","p":1},{"t":"Nunca ouvimos falar dessa obrigação","p":3}]},
-  {"id":18,"cat":"LGPD","norma":"LGPD - Art. 48 - Notificação de incidentes","q":"Existe plano de resposta caso ocorra vazamento de dados de pacientes?","o":[{"t":"Sim, com procedimento documentado de resposta","p":0},{"t":"Não temos plano formal, agiraríamos na hora","p":2},{"t":"Nunca pensamos nessa possibilidade","p":3}]},
-  {"id":19,"cat":"LGPD","norma":"LGPD - Art. 18 - Direitos do titular","q":"O consultório sabe como atender um paciente que solicite acesso ou exclusão dos seus dados?","o":[{"t":"Sim, temos procedimento definido para isso","p":0},{"t":"Não temos procedimento, tentaríamos resolver","p":2},{"t":"Não sabemos que o paciente tem esse direito","p":3}]},
-  {"id":20,"cat":"LGPD","norma":"LGPD - Art. 46 - Medidas de segurança","q":"Os sistemas usados no consultório (agenda, prontuário) possuem senha e controle de acesso?","o":[{"t":"Sim, com senhas individuais e níveis de acesso","p":0},{"t":"Usamos senha compartilhada entre a equipe","p":1},{"t":"Não há controle de acesso aos sistemas","p":3}]},
-  {"id":21,"cat":"Funcionários CLT","norma":"CLT - Art. 29 - Registro em CTPS","q":"Todos os funcionários contratados têm a CTPS assinada dentro do prazo legal de 5 dias?","o":[{"t":"Sim, registramos dentro do prazo sempre","p":0},{"t":"Já tivemos atrasos no registro","p":2},{"t":"Temos funcionários sem registro em carteira","p":3}]},
-  {"id":22,"cat":"Funcionários CLT","norma":"CLT - Art. 457 - Composição do salário","q":"As comissões e benefícios pagos aos funcionários são registrados na folha de pagamento?","o":[{"t":"Sim, tudo formalizado na folha","p":0},{"t":"Pagamos alguns benefícios informalmente","p":2},{"t":"Vários pagamentos são feitos fora da folha","p":3}]},
-  {"id":23,"cat":"Funcionários CLT","norma":"CLT - Art. 74 - Controle de jornada","q":"O consultório controla e registra a jornada de trabalho dos funcionários?","o":[{"t":"Sim, com ponto eletrônico ou manual assinado","p":0},{"t":"Controlamos informalmente, sem registro formal","p":2},{"t":"Não fazemos controle de jornada","p":3}]},
-  {"id":24,"cat":"Funcionários CLT","norma":"CLT - Art. 59 - Horas extras","q":"As horas extras realizadas pelos funcionários são compensadas ou pagas com adicional?","o":[{"t":"Sim, sempre compensadas ou pagas com adicional de 50%","p":0},{"t":"Às vezes compensamos, massem controle rigoroso","p":2},{"t":"Funcionários fazem horas extras sem compensação","p":3}]},
-  {"id":25,"cat":"Funcionários CLT","norma":"CLT - Art. 477 - Rescisão contratual","q":"O consultório conhece os procedimentos corretos para demitir um funcionário?","o":[{"t":"Sim, sempre com assessoria especializada","p":0},{"t":"Sabemos o básico mas nunca consultamos especialista","p":1},{"t":"Nunca fizemos uma demissão corretamente formalizada","p":3}]},
-  {"id":26,"cat":"Autônomos e Terceirizados","norma":"CLT - Art. 442-B - Trabalho autônomo","q":"Os dentistas contratados como autônomos assinam contrato de prestação de serviços?","o":[{"t":"Sim, contrato formal assinado por todos","p":0},{"t":"Alguns têm contrato, outros trabalham sem formalidade","p":2},{"t":"Nenhum autônomo tem contrato assinado","p":3}]},
-  {"id":27,"cat":"Autônomos e Terceirizados","norma":"CLT - Súmula TST 331 - Terceirização","q":"Os serviços terceirizados (limpeza, TI, contabilidade) possuem contrato formal?","o":[{"t":"Sim, todos com contrato assinado","p":0},{"t":"Alguns possuem contrato, outros não","p":1},{"t":"Nenhum terceirizado tem contrato formal","p":3}]},
-  {"id":28,"cat":"Autônomos e Terceirizados","norma":"CLT - Art. 9 - Fraude trabalhista","q":"Os dentistas contratados como PJ ou autônomos possuem real autonomia de horário e método?","o":[{"t":"Sim, total autonomia sem subordinação","p":0},{"t":"Há certa subordinação de horário ou método","p":2},{"t":"São tratados como funcionários mas sem registro","p":3}]},
-  {"id":29,"cat":"Sócios","norma":"CC - Art. 981 a 1141 - Direito societário","q":"O contrato social da clínica está registrado e atualizado na Junta Comercial ou Cartório?","o":[{"t":"Sim, atualizado e registrado","p":0},{"t":"Está registrado mas desatualizado","p":1},{"t":"Nunca registramos ou não sabemos o status","p":3}]},
-  {"id":30,"cat":"Sócios","norma":"CC - Art. 1085 - Exclusão de sócio","q":"O contrato social ou acordo de sócios prevê como ocorre a saída ou exclusão de um sócio?","o":[{"t":"Sim, com regras claras de apuração de haveres","p":0},{"t":"Há previsão genérica mas sem detalhes","p":1},{"t":"Não há nenhuma previsão para esse cenário","p":3}]},
-  {"id":31,"cat":"Sócios","norma":"CC - Art. 1052 - Responsabilidade dos sócios","q":"Os sócios conhecem sua responsabilidade pessoal em caso de dívidas da clínica?","o":[{"t":"Sim, consultamos especialista sobre isso","p":0},{"t":"Sabemos superficialmente mas sem assessoria","p":1},{"t":"Nunca discutimos esse assunto","p":3}]},
-  {"id":32,"cat":"Sócios","norma":"CRO - Resolução CFO 63/2005 - Sociedades odontológicas","q":"A sociedade odontológicaestá devidamente registrada no CRO da sua região?","o":[{"t":"Sim, com registro e anuidade em dia","p":0},{"t":"Está registrada mas com pendências","p":2},{"t":"Não sabemos se há obrigação de registro no CRO","p":3}]},
-  {"id":33,"cat":"Parceiros","norma":"CC - Art. 425 - Contratos atípicos","q":"Os acordos de indicação de pacientes com outros profissionais são formalizados?","o":[{"t":"Sim, com contrato definindo termos e limites","p":0},{"t":"São acordos verbais ou por mensagem","p":2},{"t":"Não fazemos formalização de indicações","p":3}]},
-  {"id":34,"cat":"Parceiros","norma":"CFO - Art. 5 - Vedação de comissão por indicação","q":"O consultório evita pagar comissão em dinheiro para quem indica pacientes?","o":[{"t":"Sim, sabemos que é vedado pelo Código de Ética","p":0},{"t":"Já pagamos comissões sem saber se era permitido","p":2},{"t":"Pagamos comissões regularmente por indicação","p":3}]},
-  {"id":35,"cat":"Parceiros","norma":"CC - Art. 927 - Responsabilidade por atos de terceiros","q":"Os parceiros que prestam serviços no consultório possuem seus próprios seguros e registros?","o":[{"t":"Sim, exigimos documentação de todos os parceiros","p":0},{"t":"Não verificamos a situação dos parceiros","p":2},{"t":"Nunca pensamos nisso como responsabilidade nossa","p":3}]},
-  {"id":36,"cat":"CRO","norma":"Lei 5.081/1966 - Exercício da Odontologia","q":"Todos os profissionais que atendem na clínica possuem registro ativo no CRO?","o":[{"t":"Sim, verificamos periodicamente","p":0},{"t":"Verificamos na contratação mas não depois","p":1},{"t":"Nunca verificamos o registro dos profissionais","p":3}]},
-  {"id":37,"cat":"CRO","norma":"CFO - Código de Ética - Delegação de atos","q":"Os atos privativos do dentista nunca são delegados ao auxiliar de saúde bucal?","o":[{"t":"Sim, nunca delegamos atos privativos","p":0},{"t":"Já ocorreu delegação de atos por sobrecarga","p":2},{"t":"Não sabemos exatamente o que é ato privativo","p":3}]},
-  {"id":38,"cat":"CRO","norma":"CFO - Resolução CFO 185/2017 - ASB e TSB","q":"Os auxiliares de saúde bucal possuem certificação válida conforme exige o CFO?","o":[{"t":"Sim, todos com certificação em dia","p":0},{"t":"Alguns possuem, outros não","p":2},{"t":"Não exigimos certificação dos auxiliares","p":3}]},
-  {"id":39,"cat":"CRO","norma":"CFO - Art. 17 - Sigilo profissional","q":"A equipe conhece e respeita as regras de sigilo profissional sobre dados dos pacientes?","o":[{"t":"Sim, todos assinaram termo de confidencialidade","p":0},{"t":"Orientamos verbalmente mas sem documentação","p":1},{"t":"Nunca tratamos esse assunto com a equipe","p":3}]},
-  {"id":40,"cat":"CRO","norma":"CFO - Art. 20 - Recusa de atendimento","q":"O consultório sabe em quais situações pode recusar atendimento sem infringir o Código de Ética?","o":[{"t":"Sim, temos orientação especializada sobre isso","p":0},{"t":"Sabemos parcialmente mas sem certeza jurídica","p":1},{"t":"Nunca nos aprofundamos nesse tema","p":3}]},
-  {"id":41,"cat":"ANVISA","norma":"RDC ANVISA 50/2002 - Projetos físicos de saúde","q":"O layout físico da clínica está em conformidade com as normas da ANVISA para estabelecimentos de saúde?","o":[{"t":"Sim, com laudo de conformidade emitido","p":0},{"t":"Acreditamos estar em conformidade mas sem laudo","p":1},{"t":"Nunca verificamos as exigências de layout","p":3}]},
-  {"id":42,"cat":"ANVISA","norma":"RDC ANVISA 222/2018 - Resíduos de serviços de saúde","q":"O descarte de resíduos sólidos de saúde (perfurocortantes, infectantes) segue as normas da ANVISA?","o":[{"t":"Sim, com empresa especializada e documentação","p":0},{"t":"Fazemos o descarte mas sem documentação formal","p":2},{"t":"Não seguimos protocolo específico de descarte","p":3}]},
-  {"id":43,"cat":"ANVISA","norma":"RDC ANVISA 15/2012 - Esterilização de produtos","q":"Os processos de esterilização dos instrumentais seguem os protocolos normativos vigentes?","o":[{"t":"Sim, com registro de cada ciclo de autoclave","p":0},{"t":"Esterilizamos mas sem registro sistematizado","p":1},{"t":"Não seguimos protocolo documentado","p":3}]},
-  {"id":44,"cat":"ANVISA","norma":"Vigilância Sanitária - Alvará de funcionamento","q":"O alvará sanitário de funcionamento da clínica está vigente e afixado em local visível?","o":[{"t":"Sim, alvará válido e exposto","p":0},{"t":"Temos alvará mas está vencido ou não exposto","p":2},{"t":"Não possuímos alvará sanitário","p":3}]},
-  {"id":45,"cat":"ANVISA","norma":"RDC ANVISA 306/2004 - PGRSS","q":"A clínica possui Plano de Gerenciamento de Resíduos de Serviços de Saúde (PGRSS)?","o":[{"t":"Sim, plano elaborado e em execução","p":0},{"t":"Não temos PGRSS formalizado","p":2},{"t":"Nunca ouvimos falar desse plano","p":3}]},
-  {"id":46,"cat":"CDC","norma":"CDC - Art. 14 - Responsabilidade pelo serviço","q":"O consultório sabe que responde objetivamente por danos causados ao paciente por defeito no serviço?","o":[{"t":"Sim, temos orientação jurídica sobre isso","p":0},{"t":"Sabemos superficialmente mas sem orientação formal","p":1},{"t":"Acreditamos que só respondemos por culpa provada","p":3}]},
-  {"id":47,"cat":"CDC","norma":"CDC - Art. 40 - Informação sobre orçamento","q":"Os orçamentos entregues aos pacientes são detalhados, assinados e guardados?","o":[{"t":"Sim, orçamento detalhado eassinado por ambas as partes","p":0},{"t":"Entregamos orçamento mas não guardamos cópia","p":1},{"t":"Não formalizamos orçamentos por escrito","p":3}]},
-  {"id":48,"cat":"CDC","norma":"CDC - Art. 49 - Direito de arrependimento","q":"O consultório sabe lidar com pacientes que desistem do tratamento após assinar o contrato?","o":[{"t":"Sim, temos cláusula contratual e orientação jurídica","p":0},{"t":"Já ocorreu mas não sabemos como agir corretamente","p":2},{"t":"Nunca consideramos essa possibilidade","p":3}]},
-  {"id":49,"cat":"CDC","norma":"CDC - Art. 42 - Cobrança de dívidas","q":"A cobrança de pacientes inadimplentes segue os limites legais do CDC?","o":[{"t":"Sim, nunca usamos meios abusivos de cobrança","p":0},{"t":"Já enviamos mensagens repetidas ou intimidadoras","p":2},{"t":"Nunca pensamos que cobrança tem limite legal","p":3}]},
-  {"id":50,"cat":"CDC","norma":"CDC - Art. 20 - Reexecução ou reembolso","q":"O consultório tem política clara para casos em que o paciente reclama do resultado do tratamento?","o":[{"t":"Sim, com protocolo documentado de resolução","p":0},{"t":"Resolvemos caso a caso sem política definida","p":2},{"t":"Nunca nos preparamos para essa situação","p":3}]},
-  {"id":51,"cat":"Patrimônio","norma":"CC - Art. 1052 - Sociedade Limitada","q":"A clínica está estruturada como pessoa jurídica para separar patrimônio pessoal do profissional?","o":[{"t":"Sim, CNPJ ativo com estrutura adequada","p":0},{"t":"Temos CNPJ mas sem planejamento patrimonial","p":1},{"t":"Atendemos como pessoa física","p":3}]},
-  {"id":52,"cat":"Patrimônio","norma":"Lei 10.406/2002 - Bem de família","q":"O dentista conhece o instituto do bem de família como forma de proteção patrimonial?","o":[{"t":"Sim, já tomamos medidas de proteção patrimonial","p":0},{"t":"Conhecemos superficialmente mas sem providências","p":1},{"t":"Não conhecemos esse mecanismo de proteção","p":3}]},
-  {"id":53,"cat":"Patrimônio","norma":"CC - Art. 50 - Desconsideração da personalidade jurídica","q":"O consultório evita misturar contas pessoais e da clínica para não sofrer desconsideração da PJ?","o":[{"t":"Sim, contas totalmente separadas","p":0},{"t":"Às vezes misturamos contas por praticidade","p":2},{"t":"Não sabemos que isso pode ser um problema jurídico","p":3}]},
-  {"id":54,"cat":"Planos de Saúde","norma":"Lei 9.656/1998 - Planos de saúde","q":"Os contratos com operadoras de plano odontológico foram analisados antes da assinatura?","o":[{"t":"Sim, com análise jurídica de todas as cláusulas","p":0},{"t":"Assinamos sem análise detalhada","p":2},{"t":"Nunca revisamos nossos contratos com planos","p":3}]},
-  {"id":55,"cat":"Planos de Saúde","norma":"ANS - Resolução Normativa 465/2021","q":"O consultório conhece os prazos máximos de atendimento exigidos pelos planos?","o":[{"t":"Sim, estamos dentro dos prazos regulamentares","p":0},{"t":"Não sabemos os prazos exatos exigidos","p":2},{"t":"Nunca verificamos obrigações de prazo com planos","p":3}]},
-  {"id":56,"cat":"Planos de Saúde","norma":"Lei 9.656/1998 - Art. 17 - Descredenciamento","q":"O consultório conhece os prazos e condições para sair de um plano odontológico?","o":[{"t":"Sim, o contrato tem essa cláusula bem definida","p":0},{"t":"Não sabemos como seria o processo de saída","p":2},{"t":"Nunca pensamos em sair dos planos que atendemos","p":3}]},
-  {"id":57,"cat":"Notificações","norma":"CPC - Art. 248 - Citação e intimação","q":"Existe responsável designado para receber notificações e correspondências oficiais da clínica?","o":[{"t":"Sim, com procedimento claro de encaminhamento","p":0},{"t":"Recebemos mas sem procedimento definido","p":1},{"t":"Já ignoramos notificações sem saber a gravidade","p":3}]},
-  {"id":58,"cat":"Notificações","norma":"Lei 8.078/1990 - PROCON - Defesa do consumidor","q":"O consultório sabe o prazo para responder uma reclamação no Procon?","o":[{"t":"Sim, 10 dias úteis e temos como responder","p":0},{"t":"Sabemos que existe prazo mas não o exato","p":1},{"t":"Nunca recebemos e não sabemos como agir","p":3}]},
-  {"id":59,"cat":"Notificações","norma":"CPC - Art. 319 - Elementos da petição inicial","q":"Se receber uma petição inicial de processo judicial, o consultório sabe o que fazer imediatamente?","o":[{"t":"Sim, acionar assessoria especializada imediatamente","p":0},{"t":"Tentaríamos resolver sozinhos","p":2},{"t":"Não saberíamos nem por onde começar","p":3}]},
-  {"id":60,"cat":"Notificações","norma":"CC - Art. 397 - Mora e notificação extrajudicial","q":"O consultório tem modelo de resposta a notificações extrajudiciais de pacientes?","o":[{"t":"Sim, com suporte especializado para redigir","p":0},{"t":"Não temos modelo, responderíamos por conta própria","p":2},{"t":"Nunca recebemos e não nos preparamos para isso","p":3}]},
-  {"id":61,"cat":"Tributário","norma":"Lei Complementar 116/2003 - ISS","q":"A clínica está enquadrada no regime tributário mais vantajoso para sua atividade?","o":[{"t":"Sim, com planejamento tributário especializado","p":0},{"t":"Estamos num regime mas sem análise se é o melhor","p":1},{"t":"Não temos planejamento tributário algum","p":3}]},
-  {"id":62,"cat":"Tributário","norma":"RFB - Nota fiscal de serviços","q":"O consultório emite nota fiscal para todos os serviços prestados aos pacientes?","o":[{"t":"Sim, sempre emitimos nota fiscal","p":0},{"t":"Emitimos apenas quando o paciente solicita","p":2},{"t":"Não emitimos nota fiscal","p":3}]},
-  {"id":63,"cat":"Segurança do Trabalho","norma":"NR 32 - Segurança em serviços de saúde","q":"Os funcionários recebem EPIs adequados e treinamento em biossegurança?","o":[{"t":"Sim, EPIs fornecidos e treinamento documentado","p":0},{"t":"Fornecemos EPIs mas sem treinamento formal","p":1},{"t":"Não temos controle formal de EPIs e biossegurança","p":3}]},
-  {"id":64,"cat":"Segurança do Trabalho","norma":"NR 7 - PCMSO","q":"A clínica realiza os exames médicos admissional, periódico e demissional dos funcionários?","o":[{"t":"Sim, todos os exames realizados e documentados","p":0},{"t":"Realizamos o admissional mas não os periódicos","p":2},{"t":"Nunca realizamos exames ocupacionais","p":3}]},
-  {"id":65,"cat":"Segurança do Trabalho","norma":"NR 9 - PPRA / PCMSO","q":"A clínica tem Programa de Prevenção de Riscos Ambientais elaborado por profissional habilitado?","o":[{"t":"Sim, PPRA ou PGR elaborado e implementado","p":0},{"t":"Não temos esse programa","p":2},{"t":"Nunca ouvimos falar dessa obrigação","p":3}]},
-  {"id":66,"cat":"Documentação","norma":"CFC - Resolução 1.330/2011 - Escrituração contábil","q":"A clínica mantém escrituração contábil regular com contador habilitado?","o":[{"t":"Sim, contador responsável e contabilidade em dia","p":0},{"t":"Temos contador mas sem controle rigoroso","p":1},{"t":"Fazemos o controle financeiro por conta própria","p":3}]},
-  {"id":67,"cat":"Documentação","norma":"CC - Art. 1.194 - Guarda de documentos empresariais","q":"Contratos, notas fiscais e documentos trabalhistas são guardados pelos prazos legais?","o":[{"t":"Sim, com política de arquivo definida","p":0},{"t":"Guardamos mas sem critério de prazo legal","p":1},{"t":"Descartamos documentos sem saber os prazos","p":3}]},
-  {"id":68,"cat":"Ética Profissional","norma":"CFO - Art. 6 - Relação com colegas","q":"O consultório evita qualquer tipo de concorrência desleal com outros profissionais?","o":[{"t":"Sim, sempre pautados na ética profissional","p":0},{"t":"Já ocorreram situações cinzas nesse aspecto","p":1},{"t":"Nunca pensamos nisso como questão ética e legal","p":3}]},
-  {"id":69,"cat":"Ética Profissional","norma":"CFO - Art. 15 - Honorários profissionais","q":"Os honorários cobrados são condizentes com a tabela de honorários do CFO?","o":[{"t":"Sim, usamos a tabela como referência","p":0},{"t":"Cobramos por referência de mercado sem conhecer a tabela","p":1},{"t":"Nunca consultamos a tabela do CFO","p":3}]},
-  {"id":70,"cat":"Ética Profissional","norma":"CFO - Art. 25 - Atestados e documentos","q":"O consultório emiteatestados e declarações apenas quando fundamentados clinicamente?","o":[{"t":"Sim, nunca emitimos documentos sem embasamento","p":0},{"t":"Já emitimos documentos a pedido sem critério clínico","p":2},{"t":"Não sabemos as restrições para emissão de atestados","p":3}]},
-  {"id":71,"cat":"Ética Profissional","norma":"CFO - Art. 30 - Perícias odontológicas","q":"O consultório sabe como proceder ao receber solicitação de perícia odontológica judicial?","o":[{"t":"Sim, sabemos nossos direitos e deveres como perito","p":0},{"t":"Já recebemos solicitação e não soubemos como agir","p":2},{"t":"Nunca pensamos que poderíamos ser acionados como peritos","p":3}]},
-  {"id":72,"cat":"Contrato de Locação","norma":"Lei 8.245/1991 - Locações comerciais","q":"O contrato de locação do imóvel da clínica foi revisado por especialista antes da assinatura?","o":[{"t":"Sim, com análise jurídica completa","p":0},{"t":"Assinamos sem revisão especializada","p":2},{"t":"Somos proprietários, não temos contrato de locação","p":0}]},
-  {"id":73,"cat":"Contrato de Locação","norma":"Lei 8.245/1991 - Art. 51 - Renovatória comercial","q":"O consultório conhece seu direito à renovação do contrato de locação comercial?","o":[{"t":"Sim, e já tomamos as providências necessárias","p":0},{"t":"Sabemos que existe esse direito mas sem providências","p":1},{"t":"Nunca ouvimos falar do direito à renovatória","p":3}]},
-  {"id":74,"cat":"Acidente de Trabalho","norma":"Lei 8.213/1991 - Acidente de trabalho","q":"O consultório sabe o que fazer em caso de acidente de trabalho de um funcionário?","o":[{"t":"Sim, sabemos emitir CAT e encaminhar ao INSS","p":0},{"t":"Sabemos superficialmente mas sem processo definido","p":1},{"t":"Nunca nos preparamos para esse cenário","p":3}]},
-  {"id":75,"cat":"Acidente de Trabalho","norma":"NR 32 - EPI contra perfurocortantes","q":"Há protocolo documentado para acidentes com perfurocortantes contaminados?","o":[{"t":"Sim, protocolo afixado e equipe treinada","p":0},{"t":"Sabemos o que fazer mas sem protocolo escrito","p":1},{"t":"Não temos protocolo para esse tipo de acidente","p":3}]},
-  {"id":76,"cat":"Ambiental","norma":"CONAMA 358/2005 - Resíduos de saúde","q":"O consultório possui licença ambiental para funcionamento, quando exigida pelo município?","o":[{"t":"Sim, licença vigente e renovada","p":0},{"t":"Não sabemos se precisamos de licença ambiental","p":2},{"t":"Nunca verificamos essa exigência","p":3}]},
-  {"id":77,"cat":"Radiologia","norma":"CNEN - Norma NN 3.01 - Proteção radiológica","q":"O equipamento de raio-X possui licença da ANVISA/CNEN vigente?","o":[{"t":"Sim, licença válida e equipamento calibrado","p":0},{"t":"Temos equipamento mas sem verificar licença","p":2},{"t":"Nunca verificamos a regularidade do equipamento","p":3}]},
-  {"id":78,"cat":"Radiologia","norma":"CFO - Resolução CFO 145/2009 - Radiologia","q":"Os laudos radiológicos são arquivados junto ao prontuário do paciente pelo prazo correto?","o":[{"t":"Sim, arquivados e associados ao prontuário","p":0},{"t":"Arquivamos mas sem associar ao prontuário","p":1},{"t":"Não arquivamos laudos de imagem","p":3}]},
-  {"id":79,"cat":"Acessibilidade","norma":"Lei 10.098/2000 e ABNT NBR 9050 - Acessibilidade","q":"A clínica possui estrutura de acessibilidade para pessoas com deficiência ou mobilidade reduzida?","o":[{"t":"Sim, com rampa, banheiro e espaços adaptados","p":0},{"t":"Temos algumas adaptações mas não todas","p":1},{"t":"A clínica não possui estrutura de acessibilidade","p":3}]},
-  {"id":80,"cat":"Acessibilidade","norma":"Lei 13.146/2015 - Estatuto da Pessoa com Deficiência","q":"O consultório recusa atendimento a pessoas com deficiência por falta de estrutura?","o":[{"t":"Não, atendemos todos com as adaptações necessárias","p":0},{"t":"Já houve situação de dificuldade de atendimento","p":2},{"t":"Já recusamos atendimento por falta de estrutura","p":3}]},
-  {"id":81,"cat":"LGPD","norma":"LGPD - Art. 9 - Transparência ao titular","q":"O consultório informa ao paciente como seus dados serão usados no momento da coleta?","o":[{"t":"Sim, com aviso de privacidade na recepção ou digital","p":0},{"t":"Não informamos formalmente sobre o uso dos dados","p":2},{"t":"Nunca pensamos em comunicar isso ao paciente","p":3}]},
-  {"id":82,"cat":"LGPD","norma":"LGPD - Art. 11 - Dados sensíveis de saúde","q":"O consultório sabe que dados de saúde são dados sensíveis com proteção especial na LGPD?","o":[{"t":"Sim, tratamos com nível de proteção elevado","p":0},{"t":"Sabemos que são dados sensíveis mas sem medidas extras","p":1},{"t":"Não sabemos dessa distinção na LGPD","p":3}]},
-  {"id":83,"cat":"Contrato de Trabalho","norma":"CLT - Art. 468 - Alteração contratual","q":"Mudanças nas funções ou salários dos funcionários são formalizadas em aditivo contratual?","o":[{"t":"Sim, sempre com aditivo assinado","p":0},{"t":"Fazemos mudanças verbalmente sem formalizar","p":2},{"t":"Não sabemos que mudanças precisam ser formalizadas","p":3}]},
-  {"id":84,"cat":"Contrato de Trabalho","norma":"CLT - Art. 444 - Cláusulas contratuais","q":"O contrato de trabalho dos funcionários tem cláusula de confidencialidade e não concorrência?","o":[{"t":"Sim, com cláusulas específicas de proteção","p":0},{"t":"Não temos essas cláusulas nos contratos","p":2},{"t":"Não sabemos que é possível incluir essas cláusulas","p":3}]},
-  {"id":85,"cat":"Responsabilidade Civil","norma":"CC - Art. 927 - Responsabilidade extracontratual","q":"O consultório mantém registro fotográfico clínico antes e depois dos procedimentos?","o":[{"t":"Sim, sempre com autorização do paciente documentada","p":0},{"t":"Fazemos fotos mas sem autorização formal","p":2},{"t":"Não fazemos registro fotográfico dos casos","p":3}]},
-  {"id":86,"cat":"Responsabilidade Civil","norma":"CC - Art. 186 - Nexo de causalidade","q":"Em caso de complicação pós-procedimento, há protocolo de acompanhamento documentado?","o":[{"t":"Sim, com retornos agendados e registros no prontuário","p":0},{"t":"Fazemos acompanhamento mas sem documentação","p":1},{"t":"Não temos protocolo de acompanhamento pós-procedimento","p":3}]},
-  {"id":87,"cat":"Ética Profissional","norma":"CFO - Art. 11 - Atualização profissional","q":"Os profissionais da clínica mantêm atualização contínua comprovada por cursos e certificados?","o":[{"t":"Sim, com certificados arquivados e atualização regular","p":0},{"t":"Fazemos cursos mas sem arquivar comprovantes","p":1},{"t":"Não temos política de atualização profissional","p":3}]},
-  {"id":88,"cat":"Planos de Saúde","norma":"ANS - Resolução Normativa 566/2022","q":"O consultório conhece os procedimentos cobertos e as exclusões do plano que atende?","o":[{"t":"Sim, conhecemos bem o rol de procedimentos","p":0},{"t":"Conhecemos parcialmente, já tivemos glosas por isso","p":2},{"t":"Não temos domínio sobre o que cada plano cobre","p":3}]},
-  {"id":89,"cat":"Documentação","norma":"CFO - Resolução CFO 118/2012 - Transferência de paciente","q":"Quando um paciente é transferido para outro profissional, o prontuário é entregue formalmente?","o":[{"t":"Sim, com protocolo de entrega e recibo assinado","p":0},{"t":"Entregamos informalmente, sem documentar","p":1},{"t":"Nunca tivemos essa situação e não sabemos como agir","p":3}]},
-  {"id":90,"cat":"Tributário","norma":"Lei Complementar 123/2006 - Simples Nacional","q":"A clínica verifica periodicamente se o Simples Nacional ainda é o melhor regime tributário?","o":[{"t":"Sim, com revisão anual do planejamento tributário","p":0},{"t":"Estamos no Simples mas nunca revisamos se é ideal","p":1},{"t":"Não temos planejamento tributário definido","p":3}]},
-  {"id":91,"cat":"ANVISA","norma":"RDC ANVISA 44/2009 - Produtos saneantes","q":"Os produtos de limpeza e desinfecção usados na clínica são registrados na ANVISA?","o":[{"t":"Sim, verificamos o registro antes de comprar","p":0},{"t":"Usamos produtos comerciais sem verificar registro","p":2},{"t":"Não sabemos que produtos de limpeza precisam de registro","p":3}]},
-  {"id":92,"cat":"Parceiros","norma":"CC - Art. 265 - Solidariedade passiva","q":"O consultório sabe que pode ser responsabilizado por danos causados por parceiros no espaço da clínica?","o":[{"t":"Sim, tomamos medidas contratuais de proteção","p":0},{"t":"Sabemos mas não tomamos medidas específicas","p":1},{"t":"Não sabemos que podemos ser responsabilizados por isso","p":3}]},
-  {"id":93,"cat":"Segurança do Trabalho","norma":"NR 17 - Ergonomia","q":"As cadeiras, equipamentos e postos de trabalho seguem normas ergonômicas para proteger a equipe?","o":[{"t":"Sim, com laudo ergonômico e ajustes implementados","p":0},{"t":"Nos preocupamos com ergonomia mas sem laudo formal","p":1},{"t":"Nunca avaliamos a ergonomia do consultório","p":3}]},
-  {"id":94,"cat":"CDC","norma":"CDC - Art. 30 - Oferta vinculante","q":"O consultório sabe que publicidade e orçamentos vinculam juridicamente a clínica?","o":[{"t":"Sim, temos cuidado com o que publicamos e orçamos","p":0},{"t":"Sabemos superficialmente mas sem controle rigoroso","p":1},{"t":"Não sabemos que publicidade tem força jurídica","p":3}]},
-  {"id":95,"cat":"Radiologia","norma":"CNEN NE 3.01 - Uso de avental plumbífero","q":"Os aventais plumbíferos e protetores de tireoide são usados e inspecionados periodicamente?","o":[{"t":"Sim, com inspeção semestral documentada","p":0},{"t":"Usamos mas sem inspeção periódica formal","p":1},{"t":"Não seguimos protocolo para esses equipamentos","p":3}]},
-  {"id":96,"cat":"Sócios","norma":"CC - Art. 1.007 - Participação nos lucros e perdas","q":"A distribuição de lucros entre sócios está formalizada e de acordo com o contrato social?","o":[{"t":"Sim, conforme contrato e com documentação","p":0},{"t":"Distribuímos informalmente sem seguir o contrato","p":2},{"t":"Não temos regra definida para distribuição de lucros","p":3}]},
-  {"id":97,"cat":"Ética Profissional","norma":"CFO - Art. 13 - Consulta e segunda opinião","q":"O consultório permite e facilita que o paciente busque segunda opinião sem constrangimento?","o":[{"t":"Sim, sempre respeitamos o direito do paciente","p":0},{"t":"Já houve situação de pressão ao paciente para não buscar outra opinião","p":2},{"t":"Não sabemos que isso é um direito garantido ao paciente","p":3}]},
-  {"id":98,"cat":"Funcionários CLT","norma":"CLT - Art. 134 - Férias anuais","q":"Os funcionários usufruem de férias dentro do período concessivo de 12 meses?","o":[{"t":"Sim, sempre dentro do prazo legal","p":0},{"t":"Já atrasamos férias sem formalizar a postergação","p":2},{"t":"Funcionários ficam sem férias por anos","p":3}]},
-  {"id":99,"cat":"Acessibilidade","norma":"Lei 10.048/2000 - Atendimento prioritário","q":"O consultório dá atendimento prioritário a idosos, gestantes e pessoas com deficiência?","o":[{"t":"Sim, com política clara de atendimento prioritário","p":0},{"t":"Priorizamos na prática mas sem política formal","p":1},{"t":"Não temos política de atendimento prioritário","p":3}]},
-  {"id":100,"cat":"Notificações","norma":"CPC - Art. 223 - Prazo processual","q":"O consultório sabe que prazos processuais são fatais e não podem ser perdidos?","o":[{"t":"Sim, por isso mantemos assessoria especializada ativa","p":0},{"t":"Sabemos que são importantes mas sem assessoria contínua","p":2},{"t":"Não sabemos que perder um prazo pode ser irreversível","p":3}]}
+  {
+    "id": 1,
+    "cat": "Consentimento",
+    "geral": "Consentimento Informado",
+    "norma": "CFO - Código de Ética Odontológica, Art. 8",
+    "q": "Seu consultório utiliza termo de consentimento informado antes de procedimentos eletivos?",
+    "o": [
+      {
+        "t": "Sim, assinado antes de todos os procedimentos",
+        "p": 0
+      },
+      {
+        "t": "Apenas em procedimentos cirúrgicos",
+        "p": 1
+      },
+      {
+        "t": "Não utilizamos termo de consentimento",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "cat": "Consentimento",
+    "geral": "Consentimento Informado",
+    "norma": "CDC - Art. 6, III - Direito à informação",
+    "q": "Os pacientes são informados sobre riscos, alternativas e custos antes do tratamento?",
+    "o": [
+      {
+        "t": "Sim, sempre de forma clara e documentada",
+        "p": 0
+      },
+      {
+        "t": "Informamos verbalmente, sem documentação",
+        "p": 2
+      },
+      {
+        "t": "Não temos essa prática formalizada",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "cat": "Consentimento",
+    "geral": "Consentimento Informado",
+    "norma": "CFO - Art. 8 - Consentimento de menores",
+    "q": "Para pacientes menores de idade, o consentimento é colhido do responsável legal?",
+    "o": [
+      {
+        "t": "Sim, sempre com assinatura do responsável",
+        "p": 0
+      },
+      {
+        "t": "Às vezes, dependendo do procedimento",
+        "p": 2
+      },
+      {
+        "t": "Não temos controle sobre isso",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "cat": "Prontuário",
+    "geral": "Documentação",
+    "norma": "CFO - Resolução CFO 118/2012 - Prontuário Odontológico",
+    "q": "Os prontuários dos pacientes são preenchidos completamente após cada consulta?",
+    "o": [
+      {
+        "t": "Sim, com data, evolução e assinatura",
+        "p": 0
+      },
+      {
+        "t": "Preenchemos parcialmente",
+        "p": 1
+      },
+      {
+        "t": "Não temos rotina de prontuário",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "cat": "Prontuário",
+    "geral": "Documentação",
+    "norma": "CFO - Resolução CFO 118/2012 - Guarda de prontuários",
+    "q": "Os prontuários são guardados pelo prazo mínimo de 20 anos exigido pelo CFO?",
+    "o": [
+      {
+        "t": "Sim, temos política de guarda definida",
+        "p": 0
+      },
+      {
+        "t": "Guardamos mas sem prazo definido",
+        "p": 1
+      },
+      {
+        "t": "Não sabemos qual o prazo legal",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "cat": "Prontuário",
+    "geral": "Documentação",
+    "norma": "LGPD - Lei 13.709/2018 - Segurança de dados",
+    "q": "Os prontuários digitais estão armazenados com criptografia e controle de acesso?",
+    "o": [
+      {
+        "t": "Sim, com sistema seguro e backups",
+        "p": 0
+      },
+      {
+        "t": "Usamos sistema digital sem configuração de segurança",
+        "p": 2
+      },
+      {
+        "t": "Usamos planilhas ou documentos sem proteção",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "cat": "Publicidade",
+    "geral": "Marketing e Publicidade",
+    "norma": "CFO - Código de Ética, Art. 34 - Publicidade",
+    "q": "A publicidade do consultório evita divulgar resultados de antes e depois de tratamentos?",
+    "o": [
+      {
+        "t": "Sim, nunca usamos esse tipo de publicidade",
+        "p": 0
+      },
+      {
+        "t": "Usamos raramente, sem pensar nas normas",
+        "p": 2
+      },
+      {
+        "t": "Usamos frequentemente nas redes sociais",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "cat": "Publicidade",
+    "geral": "Marketing e Publicidade",
+    "norma": "CFO - Resolução CFO 196/2019 - Marketing Odontológico",
+    "q": "As postagens nas redes sociais evitam prometer resultados garantidos ao paciente?",
+    "o": [
+      {
+        "t": "Sim, revisamos o conteúdo antes de postar",
+        "p": 0
+      },
+      {
+        "t": "Não revisamos com esse critério",
+        "p": 2
+      },
+      {
+        "t": "Fazemos promessas de resultado frequentemente",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "cat": "Publicidade",
+    "geral": "Marketing e Publicidade",
+    "norma": "CFO - Art. 34 - Vedação de preços em publicidade",
+    "q": "O consultório evita divulgar tabelas de preço e promoções nas redes sociais?",
+    "o": [
+      {
+        "t": "Sim, sabemos que isso é vedado pelo CFO",
+        "p": 0
+      },
+      {
+        "t": "Divulgamos preços às vezes sem saber se era permitido",
+        "p": 2
+      },
+      {
+        "t": "Divulgamos preços e promoções regularmente",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "cat": "Publicidade",
+    "geral": "Marketing e Publicidade",
+    "norma": "CFO - Art. 38 - Uso de títulos e especialidades",
+    "q": "O consultório divulga apenas as especialidades reconhecidas pelo CFO nos materiais?",
+    "o": [
+      {
+        "t": "Sim, apenas especialidades com registro no CFO",
+        "p": 0
+      },
+      {
+        "t": "Não sabemos quais especialidades são reconhecidas",
+        "p": 2
+      },
+      {
+        "t": "Divulgamos títulos sem verificar reconhecimento",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "cat": "Contratos com Pacientes",
+    "geral": "Pacientes",
+    "norma": "CDC - Art. 54 - Contratos de adesão",
+    "q":"O contrato de prestação de serviços com pacientes é claro sobre o que está e não está incluído?",
+    "o": [
+      {
+        "t": "Sim, com cláusulas detalhadas e revisadas",
+        "p": 0
+      },
+      {
+        "t": "Temos contrato mas é genérico",
+        "p": 1
+      },
+      {
+        "t": "Não utilizamos contrato formal",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "cat": "Contratos com Pacientes",
+    "geral": "Pacientes",
+    "norma": "CC - Art. 389 - Inadimplemento contratual",
+    "q": "O contrato com o paciente prevê o que ocorre em caso de abandono do tratamento?",
+    "o": [
+      {
+        "t": "Sim, há cláusula específica sobre isso",
+        "p": 0
+      },
+      {
+        "t": "Não há previsão para esse caso",
+        "p": 2
+      },
+      {
+        "t": "Não utilizamos contratos formais",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "cat": "Contratos com Pacientes",
+    "geral": "Pacientes",
+    "norma": "CDC - Art. 39 - Práticas abusivas",
+    "q": "O consultório evita cobrar taxas ou multas não previstas no contrato original?",
+    "o": [
+      {
+        "t": "Sim, seguimos estritamente o contrato assinado",
+        "p": 0
+      },
+      {
+        "t": "Já cobramos valores fora do contrato algumas vezes",
+        "p": 2
+      },
+      {
+        "t": "Não temos controle sobre isso",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "cat": "Responsabilidade Civil",
+    "geral": "Pacientes",
+    "norma": "CC - Art. 951 - Responsabilidade do profissional de saúde",
+    "q": "O consultório possui seguro de responsabilidade civil profissional?",
+    "o": [
+      {
+        "t": "Sim, seguro ativo e atualizado",
+        "p": 0
+      },
+      {
+        "t": "Não temos mas já pensamos em contratar",
+        "p": 2
+      },
+      {
+        "t": "Nunca consideramos essa necessidade",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "cat": "Responsabilidade Civil",
+    "geral": "Pacientes",
+    "norma": "CC - Art. 186 - Ato ilícito e dano moral",
+    "q": "Existe protocolo documentado para registrar intercorrências durante procedimentos?",
+    "o": [
+      {
+        "t": "Sim, registramos qualquer intercorrência no prontuário",
+        "p": 0
+      },
+      {
+        "t": "Registramos apenas casos graves",
+        "p": 2
+      },
+      {
+        "t": "Não temos esse tipo de protocolo",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "cat": "Funcionários CLT",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 29 - Registro em CTPS",
+    "q": "Todos os funcionários contratados têm a CTPS assinada dentro do prazo legal de 5 dias?",
+    "o": [
+      {
+        "t": "Sim, registramos dentro do prazo sempre",
+        "p": 0
+      },
+      {
+        "t": "Já tivemos atrasos no registro",
+        "p": 2
+      },
+      {
+        "t": "Temos funcionários sem registro em carteira",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "cat": "Funcionários CLT",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 457 - Composição do salário",
+    "q": "As comissões e benefícios pagos aos funcionários são registrados na folha de pagamento?",
+    "o": [
+      {
+        "t": "Sim, tudo formalizado na folha",
+        "p": 0
+      },
+      {
+        "t": "Pagamos alguns benefícios informalmente",
+        "p": 2
+      },
+      {
+        "t": "Vários pagamentos são feitos fora da folha",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "cat": "Funcionários CLT",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 74 - Controle de jornada",
+    "q": "O consultório controla e registra a jornada de trabalho dos funcionários?",
+    "o": [
+      {
+        "t": "Sim, com ponto eletrônico ou manual assinado",
+        "p": 0
+      },
+      {
+        "t": "Controlamos informalmente, sem registro formal",
+        "p": 2
+      },
+      {
+        "t": "Não fazemos controle de jornada",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "cat": "Funcionários CLT",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 59 - Horas extras",
+    "q": "As horas extras realizadas pelos funcionários são compensadas ou pagas com adicional?",
+    "o": [
+      {
+        "t": "Sim, sempre compensadas ou pagas com adicional de 50%",
+        "p": 0
+      },
+      {
+        "t": "Às vezes compensamos, mas sem controle rigoroso",
+        "p": 2
+      },
+      {
+        "t": "Funcionários fazem horas extras sem compensação",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "cat": "Funcionários CLT",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 477 - Rescisão contratual",
+    "q": "O consultório conhece os procedimentos corretos para demitir um funcionário?",
+    "o": [
+      {
+        "t": "Sim, sempre com assessoria especializada",
+        "p": 0
+      },
+      {
+        "t": "Sabemos o básico mas nunca consultamos especialista",
+        "p": 1
+      },
+      {
+        "t": "Nunca fizemos uma demissão corretamente formalizada",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "cat": "Autônomos e Terceirizados",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 442-B - Trabalho autônomo",
+    "q": "Os dentistas contratados como autônomos assinam contrato de prestação de serviços?",
+    "o": [
+      {
+        "t": "Sim, contrato formal assinado por todos",
+        "p": 0
+      },
+      {
+        "t": "Alguns têm contrato, outros trabalham sem formalidade",
+        "p": 2
+      },
+      {
+        "t": "Nenhum autônomo tem contrato assinado",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "cat": "Autônomos e Terceirizados",
+    "geral": "Funcionários",
+    "norma": "CLT - Súmula TST 331 - Terceirização",
+    "q": "Os serviços terceirizados (limpeza, TI, contabilidade) possuem contrato formal?",
+    "o": [
+      {
+        "t": "Sim, todos com contrato assinado",
+        "p": 0
+      },
+      {
+        "t": "Alguns possuem contrato, outros não",
+        "p": 1
+      },
+      {
+        "t": "Nenhum terceirizado tem contrato formal",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "cat": "Autônomos e Terceirizados",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 9 - Fraude trabalhista",
+    "q": "Os dentistas contratados como PJ ou autônomos possuem real autonomia de horário e método?",
+    "o": [
+      {
+        "t": "Sim, total autonomia sem subordinação",
+        "p": 0
+      },
+      {
+        "t": "Há certa subordinação de horário ou método",
+        "p": 2
+      },
+      {
+        "t": "São tratados como funcionários mas sem registro",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "cat": "Parceiros",
+    "geral": "Parceiros e Fornecedores",
+    "norma": "CC - Art. 425 - Contratos atípicos",
+    "q": "Os acordos de indicação de pacientes com outros profissionais são formalizados?",
+    "o": [
+      {
+        "t": "Sim, com contrato definindo termos e limites",
+        "p": 0
+      },
+      {
+        "t": "São acordos verbais ou por mensagem",
+        "p": 2
+      },
+      {
+        "t": "Não fazemos formalização de indicações",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "cat": "Parceiros",
+    "geral": "Parceiros e Fornecedores",
+    "norma": "CFO - Art. 5 - Vedação de comissão por indicação",
+    "q": "O consultório evita pagar comissão em dinheiro para quem indica pacientes?",
+    "o": [
+      {
+        "t": "Sim, sabemos que é vedado pelo Código de Ética",
+        "p": 0
+      },
+      {
+        "t": "Já pagamos comissões sem saber se era permitido",
+        "p": 2
+      },
+      {
+        "t": "Pagamos comissões regularmente por indicação",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "cat": "Parceiros",
+    "geral": "Parceiros e Fornecedores",
+    "norma": "CC - Art. 927 - Responsabilidade por atos de terceiros",
+    "q": "Os parceiros que prestam serviços no consultório possuem seus próprios seguros e registros?",
+    "o": [
+      {
+        "t": "Sim, exigimos documentação de todos os parceiros",
+        "p": 0
+      },
+      {
+        "t": "Não verificamos a situação dos parceiros",
+        "p": 2
+      },
+      {
+        "t": "Nunca pensamos nisso como responsabilidade nossa",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "cat": "CRO",
+    "geral": "Ética Odontológica",
+    "norma": "Lei 5.081/1966 - Exercício da Odontologia",
+    "q": "Todos os profissionais que atendem na clínica possuem registro ativo no CRO?",
+    "o": [
+      {
+        "t": "Sim, verificamos periodicamente",
+        "p": 0
+      },
+      {
+        "t": "Verificamos na contratação mas não depois",
+        "p": 1
+      },
+      {
+        "t": "Nunca verificamos o registro dos profissionais",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "cat": "CRO",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Código de Ética - Delegação de atos",
+    "q": "Os atos privativos do dentista nunca são delegados ao auxiliar de saúde bucal?",
+    "o": [
+      {
+        "t": "Sim, nunca delegamos atos privativos",
+        "p": 0
+      },
+      {
+        "t": "Já ocorreu delegação de atos por sobrecarga",
+        "p": 2
+      },
+      {
+        "t": "Não sabemos exatamente o que é ato privativo",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "cat": "CRO",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Resolução CFO 185/2017 - ASB e TSB",
+    "q": "Os auxiliares de saúde bucal possuem certificação válida conforme exige o CFO?",
+    "o": [
+      {
+        "t": "Sim, todos com certificação em dia",
+        "p": 0
+      },
+      {
+        "t": "Alguns possuem, outros não",
+        "p": 2
+      },
+      {
+        "t": "Não exigimos certificação dos auxiliares",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "cat": "CRO",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 17 - Sigilo profissional",
+    "q": "A equipe conhece e respeita as regras de sigilo profissional sobre dados dos pacientes?",
+    "o": [
+      {
+        "t": "Sim, todos assinaram termo de confidencialidade",
+        "p": 0
+      },
+      {
+        "t": "Orientamos verbalmente mas sem documentação",
+        "p": 1
+      },
+      {
+        "t": "Nunca tratamos esse assunto com a equipe",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "cat": "CRO",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 20 - Recusa de atendimento",
+    "q": "O consultório sabe em quais situações pode recusar atendimento sem infringir o Código de Ética?",
+    "o": [
+      {
+        "t": "Sim, temos orientação especializada sobre isso",
+        "p": 0
+      },
+      {
+        "t": "Sabemos parcialmente mas sem certeza jurídica",
+        "p": 1
+      },
+      {
+        "t": "Nunca nos aprofundamos nesse tema",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "cat": "Documentação",
+    "geral": "Documentação",
+    "norma": "CFC - Resolução 1.330/2011 - Escrituração contábil",
+    "q": "A clínica mantém escrituração contábil regular com contador habilitado?",
+    "o": [
+      {
+        "t": "Sim, contador responsável e contabilidade em dia",
+        "p": 0
+      },
+      {
+        "t": "Temos contador mas sem controle rigoroso",
+        "p": 1
+      },
+      {
+        "t": "Fazemos o controle financeiro por conta própria",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "cat": "Documentação",
+    "geral": "Documentação",
+    "norma": "CC - Art. 1.194 - Guarda de documentos empresariais",
+    "q": "Contratos, notas fiscais e documentos trabalhistas são guardados pelos prazos legais?",
+    "o": [
+      {
+        "t": "Sim, com política de arquivo definida",
+        "p": 0
+      },
+      {
+        "t": "Guardamos mas sem critério de prazo legal",
+        "p": 1
+      },
+      {
+        "t": "Descartamos documentos sem saber os prazos",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "cat": "Ética Profissional",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 6 - Relação com colegas",
+    "q": "O consultório evita qualquer tipo de concorrência desleal com outros profissionais?",
+    "o": [
+      {
+        "t": "Sim, sempre pautados na ética profissional",
+        "p": 0
+      },
+      {
+        "t": "Já ocorreram situações cinzas nesse aspecto",
+        "p": 1
+      },
+      {
+        "t": "Nunca pensamos nisso como questão ética e legal",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "cat": "Ética Profissional",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 15 - Honorários profissionais",
+    "q": "Os honorários cobrados são condizentes com a tabela de honorários do CFO?",
+    "o": [
+      {
+        "t": "Sim, usamos a tabela como referência",
+        "p": 0
+      },
+      {
+        "t": "Cobramos por referência de mercado sem conhecer a tabela",
+        "p": 1
+      },
+      {
+        "t": "Nunca consultamos a tabela do CFO",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "cat": "Ética Profissional",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 25 - Atestados e documentos",
+    "q": "O consultório emite atestados e declarações apenas quando fundamentados clinicamente?",
+    "o": [
+      {
+        "t": "Sim, nunca emitimos documentos sem embasamento",
+        "p": 0
+      },
+      {
+        "t": "Já emitimos documentos a pedido sem critério clínico",
+        "p": 2
+      },
+      {
+        "t": "Não sabemos as restrições para emissão de atestados",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "cat": "Ética Profissional",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 30 - Perícias odontológicas",
+    "q": "O consultório sabe como proceder ao receber solicitação de perícia odontológica judicial?",
+    "o": [
+      {
+        "t": "Sim, sabemos nossos direitos e deveres como perito",
+        "p": 0
+      },
+      {
+        "t": "Já recebemos solicitação e não soubemos como agir",
+        "p": 2
+      },
+      {
+        "t": "Nunca pensamos que poderíamos ser acionados como peritos",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "cat": "Contrato de Trabalho",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 468 - Alteração contratual",
+    "q": "Mudanças nas funções ou salários dos funcionários são formalizadas em aditivo contratual?",
+    "o": [
+      {
+        "t": "Sim, sempre com aditivo assinado",
+        "p": 0
+      },
+      {
+        "t": "Fazemos mudanças verbalmente sem formalizar",
+        "p": 2
+      },
+      {
+        "t": "Não sabemos que mudanças precisam ser formalizadas",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "cat": "Contrato de Trabalho",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 444 - Cláusulas contratuais",
+    "q": "O contrato de trabalho dos funcionários tem cláusula de confidencialidade e não concorrência?",
+    "o": [
+      {
+        "t": "Sim, com cláusulas específicas de proteção",
+        "p": 0
+      },
+      {
+        "t": "Não temos essas cláusulas nos contratos",
+        "p": 2
+      },
+      {
+        "t": "Não sabemos que é possível incluir essas cláusulas",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "cat": "Responsabilidade Civil",
+    "geral": "Pacientes",
+    "norma": "CC - Art. 927 - Responsabilidade extracontratual",
+    "q": "O consultório mantém registro fotográfico clínico antes e depois dos procedimentos?",
+    "o": [
+      {
+        "t": "Sim, sempre com autorização do paciente documentada",
+        "p": 0
+      },
+      {
+        "t": "Fazemos fotos mas sem autorização formal",
+        "p": 2
+      },
+      {
+        "t": "Não fazemos registro fotográfico dos casos",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "cat": "Responsabilidade Civil",
+    "geral": "Pacientes",
+    "norma": "CC - Art. 186 - Nexo de causalidade",
+    "q": "Em caso de complicação pós-procedimento, há protocolo de acompanhamento documentado?",
+    "o": [
+      {
+        "t": "Sim, com retornos agendados e registros no prontuário",
+        "p": 0
+      },
+      {
+        "t": "Fazemos acompanhamento mas sem documentação",
+        "p": 1
+      },
+      {
+        "t": "Não temos protocolo de acompanhamento pós-procedimento",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "cat": "Ética Profissional",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 11 - Atualização profissional",
+    "q": "Os profissionais da clínica mantêm atualização contínua comprovada por cursos e certificados?",
+    "o": [
+      {
+        "t": "Sim, com certificados arquivados e atualização regular",
+        "p": 0
+      },
+      {
+        "t": "Fazemos cursos mas sem arquivar comprovantes",
+        "p": 1
+      },
+      {
+        "t": "Não temos política de atualização profissional",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "cat": "Documentação",
+    "geral": "Documentação",
+    "norma": "CFO - Resolução CFO 118/2012 - Transferência de paciente",
+    "q": "Quando um paciente é transferido para outro profissional, o prontuário é entregue formalmente?",
+    "o": [
+      {
+        "t": "Sim, com protocolo de entrega e recibo assinado",
+        "p": 0
+      },
+      {
+        "t": "Entregamos informalmente, sem documentar",
+        "p": 1
+      },
+      {
+        "t": "Nunca tivemos essa situação e não sabemos como agir",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "cat": "Parceiros",
+    "geral": "Parceiros e Fornecedores",
+    "norma": "CC - Art. 265 - Solidariedade passiva",
+    "q": "O consultório sabe que pode ser responsabilizado por danos causados por parceiros no espaço da clínica?",
+    "o": [
+      {
+        "t": "Sim, tomamos medidas contratuais de proteção",
+        "p": 0
+      },
+      {
+        "t": "Sabemos mas não tomamos medidas específicas",
+        "p": 1
+      },
+      {
+        "t": "Não sabemos que podemos ser responsabilizados por isso",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "cat": "Ética Profissional",
+    "geral": "Ética Odontológica",
+    "norma": "CFO - Art. 13 - Consulta e segunda opinião",
+    "q": "O consultório permite e facilita que o paciente busque segunda opinião sem constrangimento?",
+    "o": [
+      {
+        "t": "Sim, sempre respeitamos o direito do paciente",
+        "p": 0
+      },
+      {
+        "t": "Já houve situação de pressão ao paciente para não buscar outra opinião",
+        "p": 2
+      },
+      {
+        "t": "Não sabemos que isso é um direito garantido ao paciente",
+        "p": 3
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "cat": "Funcionários CLT",
+    "geral": "Funcionários",
+    "norma": "CLT - Art. 134 - Férias anuais",
+    "q": "Os funcionários usufruem de férias dentro do período concessivo de 12 meses?",
+    "o": [
+      {
+        "t": "Sim, sempre dentro do prazo legal",
+        "p": 0
+      },
+      {
+        "t": "Já atrasamos férias sem formalizar a postergação",
+        "p": 2
+      },
+      {
+        "t": "Funcionários ficam sem férias por anos",
+        "p": 3
+      }
+    ]
+  }
 ]
