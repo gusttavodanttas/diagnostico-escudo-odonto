@@ -289,7 +289,7 @@ function fail(msg){document.getElementById('doc').innerHTML=`<div class="state">
   try{
     const r=await fetch(SHEET_URL+'?p='+encodeURIComponent(p),{cache:'no-store'});
     const d=await r.json();
-    if(!d||!d.ok){fail('Este link não corresponde a nenhuma proposta ativa.');return}
+    if(!d||!d.ok||d.servico||!d.clinica){fail('Este link não corresponde a nenhuma proposta ativa.');return}
     render(d);
   }catch(e){fail('Não foi possível carregar agora. Tente de novo em alguns instantes.')}
 })();
