@@ -191,6 +191,8 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <script>
 const WHATS='5561998457701';
+/* Endereço do app da planilha (Apps Script). Vazio = não grava. */
+const SHEET_URL='https://script.google.com/macros/s/AKfycbyEiMwLhcyG8GpRB-VxDB6UY_j0QZFcWEgDnlTYdjctbshL_1bgNR2iUku1iJ82jA/exec';
 const KEY='diag-odonto-dentista-v1';
 
 const SECTIONS=[
@@ -430,6 +432,17 @@ function thermo(sc,animate){
   else fill.style.width=sc.pct+'%';
 }
 
+function sendSheet(){
+  if(!SHEET_URL)return;
+  try{
+    if(!S.id){S.id=Date.now().toString(36)+Math.random().toString(36).slice(2,8);save()}
+    const vis=visible(),sc=score(vis),pts=vis.filter(i=>i.type==='yn'&&i.bad&&get(i.id)===i.bad);
+    const g=k=>String(get(k)||'').trim();
+    const p={id:S.id,clinica:g('nome'),nome:g('resp'),whats:g('whats'),email:g('email'),doc:g('doc'),porte:g('porte'),fat:g('fat'),cnae:g('cnae'),espec:g('espec'),demanda:g('demanda'),motivo:g('motivo'),
+      pct:sc?sc.pct:'',nivel:sc?level(sc.pct)[1]:'',nAlertas:pts.length,alertas:pts.map(attn).join('\n'),texto:textOut(vis,sc),news:!!S.c.news,hp:''};
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p),keepalive:true}).catch(()=>{});
+  }catch(e){}
+}
 function missing(step){
   const sec=SECTIONS[step],out={req:[],yn:[]};if(!sec)return out;
   sec.items.forEach(it=>{if(it.req&&!(get(it.id)||'').trim())out.req.push(it.id)});
@@ -479,6 +492,7 @@ document.addEventListener('click',e=>{
     if(sb.getAttribute('aria-disabled')==='true'){e.preventDefault();return}
     S.sent=true;S.step=RES;save();show();
     thermo(score(visible()),true);
+    sendSheet();
     return;
   }
   const b=e.target.closest('[data-act]');if(!b)return;
