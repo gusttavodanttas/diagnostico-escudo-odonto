@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<title>Diagnóstico da Clínica Odontológica</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: cabeçalho fixo com progresso · coluna única de perguntas Sim/Não por área · resultado e envio no fim */
+:root{
+  --bg:#0F0E0D; --surface:#181614; --raise:#211E1B; --line:#2E2925;
+  --fg:#EEE8E1; --muted:#A69C91; --accent:#E87C1E; --copper:#C08350; --on-accent:#140C05;
+  --ok:#62B184; --warn:#E3A63E; --crit:#E8605A;
+  --display:"Cinzel",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F6F2ED; --surface:#FFFFFF; --raise:#F1EBE4; --line:#E2D9CF;
+  --fg:#1D1915; --muted:#6A6057; --accent:#B95A0C; --copper:#94582B; --on-accent:#FFFFFF;
+  --ok:#2C7A4D; --warn:#94650C; --crit:#B4372E; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#F6F2ED; --surface:#FFFFFF; --raise:#F1EBE4; --line:#E2D9CF;
+  --fg:#1D1915; --muted:#6A6057; --accent:#B95A0C; --copper:#94582B; --on-accent:#FFFFFF;
+  --ok:#2C7A4D; --warn:#94650C; --crit:#B4372E; color-scheme:light }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15.5px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:.01em}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.top::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--accent),var(--copper))}
+.top-in{max-width:760px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:8px}
+.top-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.top small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:600}
+.top .cnt{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:5px;background:var(--raise);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+
+.wrap{max-width:760px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
+.hero h1{font-size:clamp(26px,6vw,36px);line-height:1.15;margin-bottom:12px}
+.hero p{color:var(--muted);margin:0 0 8px;max-width:60ch}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:14px}
+.hero .meta b{color:var(--fg);font-weight:600}
+
+section.sec{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px 6px;scroll-margin-top:84px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:4px}
+.sec h2{font-size:21px}
+.sec-d{color:var(--muted);font-size:13.5px;margin:6px 0 10px;max-width:60ch}
+
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 16px;padding:6px 0 18px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.wide{grid-column:1/-1}
+.field>span{font-size:13px;font-weight:500;color:var(--muted)}
+.field>span em{font-style:normal;color:var(--accent)}
+input,select,textarea{font:inherit;font-size:15px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{resize:vertical;min-height:76px;field-sizing:content}
+::placeholder{color:color-mix(in srgb,var(--muted) 70%,transparent)}
+
+.item{border-top:1px solid var(--line);padding:16px 0;display:flex;flex-direction:column;gap:10px}
+.q{margin:0;font-weight:500;max-width:62ch}
+.yn{display:flex;gap:8px}
+.yn button{flex:0 0 96px;border:1px solid var(--line);background:var(--bg);padding:9px 0;border-radius:8px;font-size:14.5px;color:var(--muted)}
+.yn button:hover{border-color:var(--copper);color:var(--fg)}
+.yn button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.kids{border-left:2px solid var(--copper);margin:4px 0 0 2px;padding-left:14px}
+.kids .item:first-child{border-top:0;padding-top:6px}
+.kids .fields{padding-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--bg);padding:7px 12px;border-radius:99px;font-size:13.5px;color:var(--muted)}
+.chip:hover{border-color:var(--copper);color:var(--fg)}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);font-weight:600;background:color-mix(in srgb,var(--accent) 10%,var(--bg))}
+.chip[aria-pressed="true"]::before{content:"✓ "}
+
+#enviar,#resultado{padding-bottom:22px}
+.thermo{margin:18px 0 24px}
+.t-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.t-num{font-family:var(--display);font-size:52px;line-height:1;font-variant-numeric:tabular-nums}
+.t-num small{font-size:22px}
+.t-lvl{font-weight:600;font-size:17px}
+.t-sub{color:var(--muted);font-size:13.5px;flex-basis:100%}
+.t-track{position:relative;height:18px;border-radius:99px;background:var(--raise);border:1px solid var(--line);overflow:hidden}
+.t-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:99px;background:linear-gradient(90deg,var(--crit),var(--warn) 55%,var(--ok));background-size:var(--full,100%) 100%;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.t-scale{display:grid;grid-template-columns:50fr 30fr 20fr;font-size:12px;color:var(--muted);margin-top:6px}
+.t-scale span{border-left:1px solid var(--line);padding-left:6px}
+.t-scale span:first-child{border-left:0;padding-left:0}
+.lv-crit{color:var(--crit)}.lv-warn{color:var(--warn)}.lv-ok{color:var(--ok)}
+.areas{display:flex;flex-direction:column;gap:14px;margin:10px 0 18px}
+.area h3{font-family:var(--body);font-size:14.5px;font-weight:600;display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}
+.area h3 span{font-size:12.5px;font-weight:500;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.area h3 span.w{color:var(--warn)} .area h3 span.k{color:var(--ok)}
+.area ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:3px}
+.next{font-size:15px;font-weight:500;margin:0 0 16px;max-width:60ch;padding:14px 16px;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.disclaimer{font-size:13px;color:var(--muted);border-left:2px solid var(--copper);padding:2px 0 2px 12px;margin:0 0 18px;max-width:62ch}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin-bottom:10px;cursor:pointer}
+.check input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--accent)}
+.send{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.btn{border:1px solid var(--line);background:var(--raise);padding:12px 18px;border-radius:9px;font-size:15px;font-weight:600;text-decoration:none;color:var(--fg);display:inline-flex;align-items:center;gap:8px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+.nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.nav #nextBtn{margin-left:auto}
+.navmsg{flex-basis:100%;margin:0;font-size:13.5px;color:var(--warn);min-height:1em}
+.item.miss .q{color:var(--warn)}
+.item.miss .q::after{content:" · sem resposta";font-size:12.5px;font-weight:400}
+.field.miss>span{color:var(--warn)}
+.field.miss input{border-color:var(--warn)}
+#out{position:absolute;left:-9999px;width:1px;height:1px}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;line-height:1.6}
+@media (max-width:520px){section.sec{padding:18px 16px 4px}.yn button{flex:1 1 0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="top"><div class="top-in">
+  <div class="top-row"><small>Escudo Odonto</small><span class="cnt" id="stepLbl"></span></div>
+  <div class="bar"><i id="bar"></i></div>
+</div></header>
+
+<div class="wrap">
+  <div class="hero" id="hero">
+    <div class="eyebrow">Para clínicas e consultórios odontológicos</div>
+    <h1>Diagnóstico jurídico da sua clínica</h1>
+    <p>Responda com Sim ou Não sobre a estrutura, a publicidade, os documentos e a rotina da clínica. Ao enviar, você recebe o termômetro de proteção da sua clínica e a lista dos pontos de alerta.</p>
+    <div class="meta"><span><b>Cerca de 10 minutos</b></span><span>As respostas ficam salvas neste aparelho até o envio</span></div>
+  </div>
+  <div id="secs" style="display:contents"></div>
+
+  <section class="sec" id="enviar">
+    <div class="eyebrow">Envio</div>
+    <h2>Enviar e ver o resultado</h2>
+    <p class="sec-d">Confira os dados de contato e autorize o envio. Logo depois do envio, aparecem o termômetro e os pontos de alerta.</p>
+    <label class="check"><input type="checkbox" id="okContato" data-cons="ok"><span>Autorizo o Escudo Odonto a usar estes dados para analisar minhas respostas e entrar em contato comigo sobre elas. <em style="font-style:normal;color:var(--accent)">Obrigatório para enviar.</em></span></label>
+    <label class="check"><input type="checkbox" id="okConteudo" data-cons="news"><span>Também quero receber conteúdos informativos sobre a gestão de clínicas. (Opcional)</span></label>
+    <div class="send">
+      <a class="btn pri" id="sendBtn" href="#" target="_blank" rel="noopener" aria-disabled="true">Enviar e ver meu resultado</a>
+    </div>
+    <p class="hint" id="hint"></p>
+  </section>
+
+  <div class="nav" id="nav">
+    <button type="button" class="btn" data-act="back" id="backBtn">Voltar</button>
+    <button type="button" class="btn pri" data-act="next" id="nextBtn">Continuar</button>
+    <p class="navmsg" id="navMsg" role="status"></p>
+  </div>
+
+  <section class="sec" id="resultado" hidden>
+    <div class="eyebrow">Seu resultado</div>
+    <h2>Termômetro de proteção da clínica</h2>
+    <div class="thermo">
+      <div class="t-head"><span class="t-num" id="tNum">0<small>%</small></span><span class="t-lvl" id="tLvl"></span><span class="t-sub" id="tSub"></span></div>
+      <div class="t-track" role="meter" aria-label="Índice de proteção da clínica" aria-valuemin="0" aria-valuemax="100" id="tMeter"><div class="t-fill" id="tFill"></div></div>
+      <div class="t-scale"><span>Exposta · até 49%</span><span>Atenção · 50 a 79%</span><span>Protegida · 80%+</span></div>
+    </div>
+    <h3 style="font-size:17px;margin-bottom:4px">Pontos de alerta</h3>
+    <div class="areas" id="areas"></div>
+    <p class="next" id="nextStep">Se quiser entender o que cada ponto significa para a sua clínica, responda a mensagem que você enviou pelo WhatsApp.</p>
+    <p class="disclaimer">Resultado gerado automaticamente a partir das suas respostas. É uma leitura inicial e não substitui a análise individual da situação da clínica.</p>
+    <div class="send" style="margin-top:0">
+      <a class="btn" id="resendBtn" href="#" target="_blank" rel="noopener">Abrir o WhatsApp de novo</a>
+      <button type="button" class="btn" data-act="copy">Copiar respostas</button>
+    </div>
+    <p class="hint" id="hint2">Se o WhatsApp não abriu, toque em “Abrir o WhatsApp de novo” ou copie as respostas e envie para (61) 99845-7701.</p>
+    <div class="send"><button type="button" class="btn" data-act="review">Revisar respostas</button></div>
+    <textarea id="out" readonly tabindex="-1" aria-hidden="true"></textarea>
+  </section>
+
+  <footer>
+    Escudo Odonto · Gustavo Dantas Ferreira, OAB/DF 61.199
+  </footer>
+</div>
+
+<script>
+const WHATS='5561998457701';
+const KEY='diag-odonto-dentista-v1';
+
+const SECTIONS=[
+{id:'sobre',eb:'Etapa 1',t:'Sobre você e a clínica',items:[
+ {id:'nome',type:'text',q:'Nome da clínica ou do profissional',req:1},
+ {id:'resp',type:'text',q:'Seu nome',req:1},
+ {id:'whats',type:'tel',q:'WhatsApp para contato',req:1,ph:'(61) 90000-0000'},
+ {id:'email',type:'text',q:'E-mail'},
+ {id:'doc',type:'text',q:'CPF ou CNPJ'},
+ {id:'porte',type:'select',q:'Forma de atuação',opts:['Pessoa física (autônomo)','Empresa no Simples Nacional','Empresa estruturada (outro regime)']},
+ {id:'fat',type:'select',q:'Faturamento médio mensal da clínica',opts:['Até R$ 20 mil','De R$ 20 mil a R$ 50 mil','De R$ 50 mil a R$ 100 mil','De R$ 100 mil a R$ 200 mil','De R$ 200 mil a R$ 500 mil','Acima de R$ 500 mil','Prefiro não informar']},
+ {id:'cnae',type:'text',q:'CNAE registrado no CNPJ',ph:'Se souber'},
+ {id:'espec',type:'area',q:'Especialidades atendidas e procedimentos realizados'},
+ {id:'demanda',type:'area',q:'O que você precisa resolver hoje?'},
+ {id:'motivo',type:'area',q:'O que te motivou a procurar uma assessoria jurídica?'},
+]},
+{id:'p1',eb:'Pilar 1',t:'Estrutura da clínica',d:'Registros, licenças, equipe, equipamentos e inadimplência.',items:[
+ {id:'a1',q:'A clínica tem Responsável Técnico registrado no CRO?',s:'Responsável Técnico registrado no CRO',bad:'N'},
+ {id:'a2',q:'O registro da clínica e o dos profissionais no CRO estão ativos e regulares?',s:'Registro no CRO ativo',bad:'N'},
+ {id:'a3',q:'O alvará sanitário (Vigilância Sanitária) está atualizado?',s:'Alvará sanitário atualizado',bad:'N'},
+ {id:'a4',q:'O alvará de funcionamento e as demais licenças municipais estão em dia?',s:'Alvará de funcionamento e licenças',bad:'N'},
+ {id:'a5',q:'Há outros dentistas atendendo na clínica além de você?',s:'Outros dentistas na clínica',kids:[
+   {id:'a5a',type:'chips',q:'Qual o vínculo deles?',opts:['CLT','Locação de cadeira','Sublocação','Prestador de serviço']},
+   {id:'a5b',q:'Há contrato escrito com todos?',s:'Contrato com os dentistas',bad:'N'},
+   {id:'a5c',q:'Quem atende em especialidade tem o registro de especialista no CRO?',s:'Registro de especialidade no CRO',bad:'N'},
+ ]},
+ {id:'a6',q:'Há auxiliares (ASB) ou técnicos (TSB) em saúde bucal na equipe?',s:'ASB ou TSB na equipe',kids:[
+   {id:'a6a',type:'chips',q:'Qual o vínculo deles?',opts:['CLT','Prestador de serviço','Outro']},
+   {id:'a6b',q:'Todos têm registro ativo no CRO?',s:'Registro de ASB/TSB no CRO',bad:'N'},
+   {id:'a6c',q:'Há contrato com todos?',s:'Contrato com ASB/TSB',bad:'N'},
+ ]},
+ {id:'a7',q:'Há outros colaboradores (recepção, limpeza, administrativo)?',s:'Outros colaboradores',kids:[
+   {id:'a7a',type:'text',q:'Quantos e em quais funções?'},
+   {id:'a7b',q:'Há contrato com todos?',s:'Contrato com os demais colaboradores',bad:'N'},
+ ]},
+ {id:'a8',q:'Os equipamentos odontológicos têm registro na ANVISA?',s:'Registro dos equipamentos na ANVISA',bad:'N'},
+ {id:'a9',q:'A clínica aluga algum equipamento?',s:'Aluga equipamentos',kids:[
+   {id:'a9a',q:'Há contrato com o locador?',s:'Contrato de locação de equipamentos',bad:'N'},
+ ]},
+ {id:'a10',q:'Há pacientes inadimplentes hoje?',s:'Pacientes inadimplentes',bad:'S',kids:[
+   {id:'a10a',type:'text',q:'Qual o valor médio em aberto, aproximadamente?'},
+ ]},
+]},
+{id:'p2',eb:'Pilar 2',t:'Marketing e publicidade',d:'Redes sociais, materiais de divulgação e identificação da clínica.',items:[
+ {id:'b1',q:'A clínica tem perfil em redes sociais?',s:'Perfil em redes sociais',kids:[
+   {id:'b1a',type:'area',q:'Quais perfis? Informe o nome ou o link.'},
+ ]},
+ {id:'b2',q:'Publica fotos de antes e depois?',s:'Publica fotos de antes e depois',bad:'S',kids:[
+   {id:'b2a',q:'Tem autorização de uso de imagem assinada pelo paciente?',s:'Autorização de uso de imagem',bad:'N'},
+ ]},
+ {id:'b3',q:'Você considera que o conteúdo publicado segue o Código de Ética do CFO?',s:'Conteúdo de acordo com o Código de Ética do CFO',bad:'N'},
+ {id:'b4',q:'Algum material de divulgação fala em resultado garantido do tratamento?',s:'Divulgação com resultado garantido',bad:'S'},
+ {id:'b5',q:'Faz publicidade em outros meios (rádio, panfleto, outdoor, sites)?',s:'Publicidade em outros meios',kids:[
+   {id:'b5a',type:'text',q:'Quais?'},
+ ]},
+ {id:'b6',q:'Atestados, receituários, fachada e outdoors trazem nome e CRO da clínica e do Responsável Técnico?',s:'Nome e CRO do Responsável Técnico nos materiais',bad:'N'},
+]},
+{id:'p3',eb:'Pilar 3',t:'Relacionamento',d:'Pacientes, sócios, profissionais, laboratórios, planos e convênios.',items:[
+ {id:'c1',q:'Existe hoje algum conflito, reclamação ou insatisfação de paciente?',s:'Conflito ou reclamação de paciente',bad:'S',kids:[
+   {id:'c1a',type:'area',q:'Conte brevemente o que aconteceu.'},
+ ]},
+ {id:'c2',q:'Antes dos procedimentos, você explica ao paciente o que esperar e quais são os riscos?',s:'Explica expectativas e riscos antes do procedimento',bad:'N',kids:[
+   {id:'c2a',type:'area',q:'Como isso é feito? (opcional)'},
+ ]},
+ {id:'c3',q:'Há conflito com sócios, associados ou outros profissionais?',s:'Conflito com sócios ou profissionais',bad:'S'},
+ {id:'c4',q:'Há contrato com laboratórios e fornecedores?',s:'Contrato com laboratórios e fornecedores',bad:'N'},
+ {id:'c5',q:'O paciente tem um canal claro para tirar dúvidas depois do procedimento?',s:'Canal de dúvidas pós-procedimento',bad:'N'},
+ {id:'c6',q:'A clínica atende por plano odontológico?',s:'Atende por plano odontológico',kids:[
+   {id:'c6a',type:'text',q:'Quais planos?'},
+   {id:'c6b',q:'Há contrato assinado com cada operadora?',s:'Contrato com as operadoras',bad:'N'},
+ ]},
+ {id:'c7',q:'A clínica tem convênio com empresas ou entidades?',s:'Tem convênios',kids:[
+   {id:'c7a',type:'text',q:'Quais convênios?'},
+   {id:'c7b',q:'Há contrato com cada um?',s:'Contrato de convênio',bad:'N'},
+ ]},
+]},
+{id:'p4',eb:'Pilar 4',t:'Documentos odontológicos',d:'Contratos, prontuário, termos e anamnese.',items:[
+ {id:'d1',q:'Usa contrato de prestação de serviços odontológicos com os pacientes?',s:'Contrato de prestação de serviços com o paciente',bad:'N'},
+ {id:'d2',type:'select',q:'O prontuário é',opts:['Físico','Eletrônico','Físico e eletrônico']},
+ {id:'d2a',type:'text',q:'Se eletrônico: qual sistema e quem tem acesso a ele?'},
+ {id:'d3',q:'O prontuário é preenchido por completo e atualizado a cada consulta?',s:'Prontuário completo e atualizado',bad:'N'},
+ {id:'d4',q:'Usa termo de consentimento (TCLE) específico para cada tipo de procedimento?',s:'TCLE específico por procedimento',bad:'N'},
+ {id:'d5',q:'A anamnese é detalhada e revisada periodicamente?',s:'Anamnese detalhada e revisada',bad:'N'},
+ {id:'d6',type:'chips',q:'Quais destes documentos a clínica já usa? Marque todos.',opts:['Ficha de anamnese','Orçamento','Plano de tratamento','Autorização de uso de imagem','Autorização para acrilização de prótese','Finalização de tratamento','Desistência de tratamento','Abandono de tratamento','Recebimento de prótese']},
+ {id:'d7',q:'Atestados e receituários seguem o padrão exigido pelas normas?',s:'Atestados e receituários no padrão',bad:'N'},
+]},
+{id:'p5',eb:'Pilar 5',t:'Processos internos',d:'Protocolos, treinamento e biossegurança.',items:[
+ {id:'e1',q:'Existem protocolos de atendimento escritos e seguidos pela equipe?',s:'Protocolos de atendimento escritos',bad:'N'},
+ {id:'e2',q:'Colaboradores e prestadores foram treinados nesses protocolos?',s:'Equipe treinada nos protocolos',bad:'N'},
+ {id:'e3',q:'A equipe recebe treinamento regular sobre procedimentos e conduta?',s:'Treinamento regular da equipe',bad:'N'},
+ {id:'e4',q:'Agendamento, atendimento e pós-atendimento seguem fluxos definidos?',s:'Fluxos de atendimento definidos',bad:'N'},
+ {id:'e5',q:'Os protocolos de biossegurança estão atualizados e documentados?',s:'Biossegurança atualizada e documentada',bad:'N'},
+ {id:'e6',q:'Há checklists para procedimentos críticos?',s:'Checklists de procedimentos críticos',bad:'N'},
+]},
+{id:'hist',eb:'Histórico',t:'Processos e autuações',d:'Inclua situações já encerradas.',items:[
+ {id:'h1',q:'A clínica já respondeu a processo ético no CRO?',s:'Processo ético no CRO',bad:'S',kids:[{id:'h1a',type:'text',q:'Qual o motivo?'}]},
+ {id:'h2',q:'A clínica já respondeu a processo judicial?',s:'Processo judicial',bad:'S',kids:[{id:'h2a',type:'text',q:'Motivo e número do processo, se tiver'}]},
+ {id:'h3',q:'A clínica já foi autuada por fiscal do CRO?',s:'Autuação por fiscal do CRO',bad:'S',kids:[{id:'h3a',type:'text',q:'Qual o motivo?'}]},
+ {id:'h4',q:'A clínica já respondeu a processo administrativo no Procon?',s:'Processo no Procon',bad:'S',kids:[{id:'h4a',type:'text',q:'Qual o motivo?'}]},
+]},
+{id:'fim',eb:'Para fechar',t:'Sua visão da clínica',items:[
+ {id:'f1',type:'area',q:'Há algo na clínica que você sente que precisa melhorar? O quê?'},
+ {id:'f2',type:'area',q:'Como é o caminho do paciente na clínica, do primeiro contato ao fim do tratamento?'},
+]},
+];
+
+const IDX={};
+(function walk(list,parent,sec){list.forEach(it=>{it.type=it.type||'yn';it.parent=parent;it.sec=sec;IDX[it.id]=it;if(it.kids)walk(it.kids,it,sec)})})([],null,null);
+SECTIONS.forEach(sec=>(function walk(list,parent){list.forEach(it=>{it.type=it.type||'yn';it.parent=parent;it.sec=sec;IDX[it.id]=it;if(it.kids)walk(it.kids,it)})})(sec.items,null));
+
+let S=load();
+function load(){try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);if(o&&o.f)return {f:o.f,c:o.c||{},sent:!!o.sent,step:+o.step||0}}}catch(e){}return {f:{},c:{},sent:false,step:0}}
+const NS=SECTIONS.length, ENVIO=NS, RES=NS+1;
+const warned={};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const get=id=>S.f[id];
+const isOpen=it=>!it.parent||(get(it.parent.id)==='S'&&isOpen(it.parent));
+
+function fieldHTML(it){
+  const v=get(it.id)||'',id='f-'+it.id,ph=esc(it.ph||''),lab=`<span>${esc(it.q)}${it.req?' <em>*</em>':''}</span>`;
+  let c;
+  if(it.type==='area')c=`<textarea id="${id}" data-fld placeholder="${ph}">${esc(v)}</textarea>`;
+  else if(it.type==='select')c=`<select id="${id}" data-fld><option value="">Selecione</option>${it.opts.map(o=>`<option${o===v?' selected':''}>${esc(o)}</option>`).join('')}</select>`;
+  else c=`<input id="${id}" type="${it.type==='tel'?'tel':'text'}" data-fld value="${esc(v)}" placeholder="${ph}"${it.type==='tel'?' inputmode="tel" autocomplete="tel"':''}>`;
+  return `<label class="field${it.type==='area'?' wide':''}" data-id="${it.id}">${lab}${c}</label>`;
+}
+function chipsHTML(it){
+  const v=get(it.id)||[];
+  return `<div class="item" data-id="${it.id}"><p class="q">${esc(it.q)}</p><div class="chips" role="group" aria-label="${esc(it.q)}">${it.opts.map(o=>`<button type="button" class="chip" data-act="chip" data-k="${esc(o)}" aria-pressed="${v.includes(o)}">${esc(o)}</button>`).join('')}</div></div>`;
+}
+function ynHTML(it){
+  const v=get(it.id);
+  return `<div class="item" data-id="${it.id}"><p class="q">${esc(it.q)}</p>
+   <div class="yn" role="group" aria-label="${esc(it.q)}"><button type="button" data-act="yn" data-k="S" aria-pressed="${v==='S'}">Sim</button><button type="button" data-act="yn" data-k="N" aria-pressed="${v==='N'}">Não</button></div>
+   ${it.kids?`<div class="kids" data-for="${it.id}"${v==='S'?'':' hidden'}>${listHTML(it.kids)}</div>`:''}</div>`;
+}
+function listHTML(items){
+  let h='',buf=[];
+  const flush=()=>{if(buf.length){h+=`<div class="fields">${buf.join('')}</div>`;buf=[]}};
+  items.forEach(it=>{
+    if(['text','tel','area','select'].includes(it.type)){buf.push(fieldHTML(it));return}
+    flush();h+=it.type==='chips'?chipsHTML(it):ynHTML(it);
+  });flush();return h;
+}
+function render(){
+  document.getElementById('secs').innerHTML=SECTIONS.map(sec=>`<section class="sec" id="${sec.id}"><div class="eyebrow">${sec.eb}</div><h2>${esc(sec.t)}</h2>${sec.d?`<p class="sec-d">${esc(sec.d)}</p>`:''}${listHTML(sec.items)}</section>`).join('');
+  document.getElementById('okContato').checked=!!S.c.ok;
+  document.getElementById('okConteudo').checked=!!S.c.news;
+}
+
+function visible(){const out=[];SECTIONS.forEach(sec=>(function w(list){list.forEach(it=>{if(!isOpen(it))return;out.push(it);if(it.kids)w(it.kids)})})(sec.items));return out}
+
+function update(){
+  const vis=visible(),yn=vis.filter(i=>i.type==='yn');
+
+  const pil=SECTIONS.filter(s=>s.items.some(i=>i.type==='yn'));
+  document.getElementById('areas').innerHTML=pil.map(sec=>{
+    const q=yn.filter(i=>i.sec===sec),a=q.filter(i=>get(i.id)).length;
+    const pts=q.filter(i=>i.bad&&get(i.id)===i.bad);
+    const tag=!a?`<span>Não respondido</span>`:pts.length?`<span class="w">${pts.length} ponto${pts.length>1?'s':''} de alerta</span>`:`<span class="k">Nenhum ponto de alerta</span>`;
+    return `<div class="area"><h3>${esc(sec.t)}${tag}</h3>${pts.length?`<ul>${pts.map(p=>`<li>${esc(attn(p))}</li>`).join('')}</ul>`:''}</div>`;
+  }).join('');
+
+  const sc=score(vis);
+  const txt=textOut(vis,sc);
+  document.getElementById('out').value=txt;
+  const ready=S.c.ok&&(get('nome')||'').trim()&&(get('resp')||'').trim()&&(get('whats')||'').trim();
+  const btn=document.getElementById('sendBtn'),link=`https://wa.me/${WHATS}?text=${encodeURIComponent(txt)}`;
+  btn.setAttribute('aria-disabled',ready?'false':'true');
+  btn.href=ready?link:'#';
+  document.getElementById('resendBtn').href=link;
+  thermo(sc,false);
+  const miss=[];if(!(get('nome')||'').trim())miss.push('nome da clínica');if(!(get('resp')||'').trim())miss.push('seu nome');if(!(get('whats')||'').trim())miss.push('WhatsApp');if(!S.c.ok)miss.push('autorização de contato');
+  document.getElementById('hint').textContent=miss.length?'Para enviar, preencha: '+miss.join(', ')+'.':'Ao tocar em enviar, o WhatsApp abre com as respostas prontas. É só confirmar o envio.';
+}
+const ALERT={
+ a1:'A clínica não tem Responsável Técnico registrado no CRO',
+ a2:'O registro no CRO da clínica ou de profissionais não está regular',
+ a3:'O alvará sanitário não está atualizado',
+ a4:'Há pendência no alvará de funcionamento ou nas licenças municipais',
+ a5b:'Não há contrato escrito com todos os dentistas',
+ a5c:'Há dentista atendendo em especialidade sem registro de especialista no CRO',
+ a6b:'Há ASB ou TSB sem registro ativo no CRO',
+ a6c:'Não há contrato com todos os ASB e TSB',
+ a7b:'Não há contrato com todos os colaboradores',
+ a8:'Há equipamentos sem registro na ANVISA',
+ a9a:'Há equipamento alugado sem contrato com o locador',
+ a10:'Há pacientes inadimplentes',
+ b2:'A clínica publica fotos de antes e depois',
+ b2a:'Fotos de pacientes são publicadas sem autorização de uso de imagem assinada',
+ b3:'O conteúdo publicado pode não seguir o Código de Ética do CFO',
+ b4:'Há material de divulgação que fala em resultado garantido',
+ b6:'Atestados, receituários ou fachada sem nome e CRO da clínica e do Responsável Técnico',
+ c1:'Há conflito ou reclamação de paciente em andamento',
+ c2:'Expectativas e riscos não são explicados ao paciente antes do procedimento',
+ c3:'Há conflito com sócios ou outros profissionais',
+ c4:'Não há contrato com laboratórios e fornecedores',
+ c5:'O paciente não tem um canal claro para dúvidas depois do procedimento',
+ c6b:'A clínica atende plano odontológico sem contrato assinado com a operadora',
+ c7b:'Há convênio sem contrato',
+ d1:'Não há contrato de prestação de serviços com o paciente',
+ d3:'O prontuário não é completo e atualizado a cada consulta',
+ d4:'Não há TCLE específico para cada tipo de procedimento',
+ d5:'A anamnese não é detalhada nem revisada periodicamente',
+ d7:'Atestados e receituários fora do padrão exigido pelas normas',
+ e1:'Não há protocolos de atendimento escritos',
+ e2:'A equipe não foi treinada nos protocolos',
+ e3:'A equipe não recebe treinamento regular',
+ e4:'Agendamento, atendimento e pós-atendimento não seguem fluxos definidos',
+ e5:'Os protocolos de biossegurança não estão atualizados e documentados',
+ e6:'Não há checklists para procedimentos críticos',
+ h1:'A clínica já respondeu a processo ético no CRO',
+ h2:'A clínica já respondeu a processo judicial',
+ h3:'A clínica já foi autuada por fiscal do CRO',
+ h4:'A clínica já respondeu a processo no Procon',
+};
+function attn(it){return ALERT[it.id]||it.s}
+
+function score(vis){
+  const q=vis.filter(i=>i.type==='yn'&&i.bad&&get(i.id));if(!q.length)return null;
+  const good=q.filter(i=>get(i.id)!==i.bad).length;
+  return {pct:Math.round(good/q.length*100),n:q.length,bad:q.length-good};
+}
+function level(p){return p>=80?['ok','Clínica protegida']:p>=50?['warn','Atenção moderada']:['crit','Clínica exposta']}
+function thermo(sc,animate){
+  if(!S.sent)return;
+  const fill=document.getElementById('tFill'),num=document.getElementById('tNum'),lvl=document.getElementById('tLvl'),sub=document.getElementById('tSub');
+  if(!sc){num.innerHTML='–';lvl.textContent='Sem respostas suficientes';lvl.className='t-lvl';sub.textContent='';fill.style.width='0';return}
+  const [c,l]=level(sc.pct);
+  num.innerHTML=`${sc.pct}<small>%</small>`;num.className='t-num lv-'+c;
+  lvl.textContent=l;lvl.className='t-lvl lv-'+c;
+  sub.textContent=`Calculado sobre ${sc.n} respostas. ${sc.bad?sc.bad+' ponto'+(sc.bad>1?'s':'')+' de alerta encontrado'+(sc.bad>1?'s':'')+'.':'Nenhum ponto de alerta encontrado.'}`;
+  document.getElementById('tMeter').setAttribute('aria-valuenow',sc.pct);
+  fill.style.backgroundSize=sc.pct>0?(10000/sc.pct)+'% 100%':'100% 100%';
+  if(animate){fill.style.width='0';requestAnimationFrame(()=>requestAnimationFrame(()=>{fill.style.width=sc.pct+'%'}))}
+  else fill.style.width=sc.pct+'%';
+}
+
+function missing(step){
+  const sec=SECTIONS[step],out={req:[],yn:[]};if(!sec)return out;
+  sec.items.forEach(it=>{if(it.req&&!(get(it.id)||'').trim())out.req.push(it.id)});
+  visible().filter(i=>i.sec===sec&&i.type==='yn'&&!get(i.id)).forEach(i=>out.yn.push(i.id));
+  return out;
+}
+function show(){
+  if(S.step===RES&&!S.sent)S.step=ENVIO;
+  if(S.step<0||S.step>RES)S.step=0;
+  document.querySelectorAll('#secs > section').forEach((el,i)=>el.hidden=i!==S.step);
+  document.getElementById('hero').hidden=S.step!==0;
+  document.getElementById('enviar').hidden=S.step!==ENVIO;
+  document.getElementById('resultado').hidden=S.step!==RES;
+  document.getElementById('nav').hidden=S.step===RES;
+  document.getElementById('backBtn').hidden=S.step===0;
+  document.getElementById('nextBtn').hidden=S.step>=ENVIO;
+  document.getElementById('navMsg').textContent='';
+  const total=NS+1,pct=S.step===RES?100:Math.round(S.step/total*100);
+  document.getElementById('bar').style.width=pct+'%';
+  document.getElementById('stepLbl').textContent=S.step===RES?'Concluído · 100%':`Etapa ${S.step+1} de ${total} · ${pct}%`;
+  window.scrollTo({top:0});
+}
+
+function textOut(vis,sc){
+  const L=['Olá! Preenchi o diagnóstico jurídico da clínica. Seguem as respostas:',''];
+  vis.forEach(it=>{});
+  SECTIONS.forEach(sec=>{
+    const rows=[];
+    vis.filter(i=>i.sec===sec).forEach(it=>{
+      const v=get(it.id);
+      if(it.type==='yn'){if(v)rows.push(`- ${it.s}: ${v==='S'?'Sim':'Não'}`)}
+      else if(it.type==='chips'){if(v&&v.length)rows.push(`- ${it.q.replace(/\?.*$/,'?')} ${v.join(', ')}`)}
+      else if(v&&String(v).trim())rows.push(`- ${it.q.replace(/[?:]$/,'')}: ${String(v).trim()}`);
+    });
+    if(rows.length){L.push(`*${sec.t.toUpperCase()}*`,...rows,'')}
+  });
+  const pts=vis.filter(i=>i.type==='yn'&&i.bad&&get(i.id)===i.bad);
+  if(sc)L.push(`*TERMÔMETRO DE PROTEÇÃO:* ${sc.pct}% (${level(sc.pct)[1]})`,'');
+  L.push('*PONTOS DE ALERTA*',...(pts.length?pts.map(p=>`- ${attn(p)}`):['- Nenhum nas respostas marcadas']),'');
+  L.push(`Autorizo o contato sobre estas respostas.${S.c.news?' Quero receber conteúdos informativos.':''}`);
+  return L.join('\n');
+}
+
+document.addEventListener('click',e=>{
+  const sb=e.target.closest('#sendBtn');
+  if(sb){
+    if(sb.getAttribute('aria-disabled')==='true'){e.preventDefault();return}
+    S.sent=true;S.step=RES;save();show();
+    thermo(score(visible()),true);
+    return;
+  }
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const act=b.dataset.act;
+  if(act==='next'){
+    const msg=document.getElementById('navMsg');
+    const m=missing(S.step);
+    if(S.step===0&&m.req.length){
+      m.req.forEach(id=>document.querySelector(`.field[data-id="${id}"]`)?.classList.add('miss'));
+      msg.textContent='Preencha os campos obrigatórios: nome da clínica, seu nome e WhatsApp.';
+      document.querySelector('.field.miss input')?.focus();return;
+    }
+    if(m.yn.length&&!warned[S.step]){
+      warned[S.step]=1;
+      m.yn.forEach(id=>document.querySelector(`.item[data-id="${id}"]`)?.classList.add('miss'));
+      msg.textContent=`Falta${m.yn.length>1?'m':''} ${m.yn.length} resposta${m.yn.length>1?'s':''} nesta etapa. Toque em Continuar de novo para seguir assim mesmo.`;
+      document.querySelector('.item.miss')?.scrollIntoView({block:'center'});return;
+    }
+    S.step=Math.min(S.step+1,ENVIO);save();show();return;
+  }
+  if(act==='back'){S.step=Math.max(S.step-1,0);save();show();return}
+  if(act==='review'){S.step=0;save();show();return}
+  if(act==='yn'){
+    const el=b.closest('.item'),id=el.dataset.id,k=b.dataset.k;
+    el.classList.remove('miss');
+    S.f[id]=S.f[id]===k?undefined:k;
+    el.querySelectorAll(':scope > .yn button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.k===S.f[id])));
+    const kids=el.querySelector(`:scope > .kids`);if(kids)kids.hidden=S.f[id]!=='S';
+    save();update();return;
+  }
+  if(act==='chip'){
+    const id=b.closest('.item').dataset.id,k=b.dataset.k,arr=Array.isArray(S.f[id])?S.f[id]:(S.f[id]=[]);
+    const i=arr.indexOf(k);i<0?arr.push(k):arr.splice(i,1);
+    b.setAttribute('aria-pressed',String(i<0));save();update();return;
+  }
+  if(act==='copy'){
+    const out=document.getElementById('out'),h=document.getElementById('hint2');
+    const fb=()=>{out.style.cssText='position:static;width:100%;height:160px;margin-top:10px';out.removeAttribute('aria-hidden');out.focus();out.select();h.textContent='Texto selecionado. Copie e cole no WhatsApp ou no e-mail.'};
+    try{navigator.clipboard.writeText(out.value).then(()=>{h.textContent='Respostas copiadas.'},fb)}catch(err){fb()}
+  }
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset&&t.dataset.cons){S.c[t.dataset.cons]=t.checked;save();update();return}
+  if(!t.hasAttribute||!t.hasAttribute('data-fld'))return;
+  const h=t.closest('[data-id]');if(!h)return;h.classList.remove('miss');S.f[h.dataset.id]=t.value;save();update();
+});
+render();show();update();
+</script>
+
+</body>
+</html>
