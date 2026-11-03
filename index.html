@@ -14,6 +14,7 @@
 <title>Diagnóstico Escudo Odonto</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Responda em cerca de 10 minutos e veja o termômetro de proteção da sua clínica odontológica, com os pontos que merecem atenção.">
+<script>(function(){try{var t=localStorage.getItem('eo-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
 <style>
@@ -137,10 +138,18 @@ footer .in{text-align:center}
   .btn{width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+.theme-btn{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--raise);color:var(--fg);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.theme-btn:hover{border-color:var(--copper)}
+.theme-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.theme-btn .i-moon{display:none}
+:root[data-theme="dark"] .theme-btn .i-sun{display:none}:root[data-theme="dark"] .theme-btn .i-moon{display:block}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme-btn .i-sun{display:none}:root:not([data-theme="light"]) .theme-btn .i-moon{display:block}}
 </style>
 
 <header class="band topbar"><div class="in">
   <div class="logo"><svg viewBox="0 0 22 26" aria-hidden="true"><path d="M11 1 2 4.5v7.2C2 18 6 22.6 11 25c5-2.4 9-7 9-13.3V4.5L11 1Z" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--accent)"/><path d="M7.5 9.5c0-1.6 1.4-2.6 3.5-1.4 2.1-1.2 3.5-.2 3.5 1.4 0 2.4-1 6.6-1.9 6.6-.8 0-.9-3-1.6-3s-.8 3-1.6 3c-.9 0-1.9-4.2-1.9-6.6Z" fill="var(--copper)"/></svg>Escudo Odonto</div>
+  <button type="button" class="theme-btn" id="themeBtn" aria-label="Alternar tema claro e escuro" title="Tema claro ou escuro"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"/></svg></button>
 </div></header>
 
 <section class="band hero" style="padding-top:clamp(48px,8vw,88px)">
@@ -244,6 +253,11 @@ document.querySelectorAll('[data-cta]').forEach(a=>{a.href=FORM_URL});
 const f=document.getElementById('demoFill');
 f.style.backgroundSize=(10000/64)+'% 100%';
 requestAnimationFrame(()=>requestAnimationFrame(()=>{f.style.width='64%'}));
+
+(function(){var r=document.documentElement,b=document.getElementById('themeBtn');if(!b)return;
+function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function lab(){b.setAttribute('aria-label',cur()==='dark'?'Mudar para o tema claro':'Mudar para o tema escuro')}
+lab();b.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('eo-theme',n)}catch(e){}lab()});})();
 </script>
 
 </body>
