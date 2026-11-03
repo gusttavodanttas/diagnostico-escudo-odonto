@@ -1,459 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<meta name="theme-color" content="#1a1a1a"/>
-<title>Diagnóstico Escudo Odonto</title>
-<link rel="icon" type="image/png" href="favicon.png"/>
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Diagnóstico Escudo Odonto — Sua clínica está protegida?"/>
-<meta property="og:description" content="Descubra em 5 minutos o nível de risco da sua clínica sofrer um processo. Gratuito."/>
-<meta property="og:image" content="og-image.png"/>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-:root{
-  --brand:#E07B00;--brand-l:#F59E0B;--glow:rgba(224,123,0,.3);
-  --bg:#1a1a1a;--card:#232323;--item:#2d2d2d;--deep:#383838;
-  --border:#3a3a3a;--txt:#f0ece4;--muted:#a89880;--white:#ffffff;
-}
-html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;}
-.tela{display:none;min-height:100vh;}
-.tela.active{display:flex;flex-direction:column;}
-#tela-home{background:linear-gradient(160deg,#111111 0%,#1e1e1e 55%,#251800 100%);align-items:center;justify-content:center;padding:clamp(28px,6vw,60px) clamp(16px,5vw,40px);text-align:center;}
-.logo-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
-.escudo-svg{width:clamp(36px,7vw,52px);height:auto;filter:drop-shadow(0 0 10px var(--brand));}
-.logo-txt{font-family:'Cinzel',serif;font-size:clamp(18px,4vw,26px);font-weight:800;letter-spacing:3px;color:var(--white);}
-.logo-txt b{color:var(--brand);font-weight:800;}
-.badge{display:inline-block;background:rgba(224,123,0,.12);border:1px solid rgba(224,123,0,.28);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--brand-l);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
-.hero-h1{font-family:'Cinzel',serif;font-size:clamp(20px,5vw,40px);font-weight:800;line-height:1.2;color:var(--white);margin-bottom:10px;}
-.hero-h1 b{color:var(--brand);font-weight:800;}
-.hero-sub{font-size:clamp(13px,2vw,16px);color:var(--muted);max-width:520px;margin:0 auto 20px;line-height:1.7;}
-.riscos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:580px;margin:0 auto 24px;}
-.ri{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;text-align:left;}
-.ri-ic{font-size:16px;flex-shrink:0;line-height:1.4;}
-.ri-tx{font-size:11px;color:var(--muted);line-height:1.4;}
-.ri-tx strong{display:block;color:var(--brand-l);font-size:11px;font-weight:700;margin-bottom:1px;}
-.btn-cta{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111111;font-weight:800;font-size:clamp(14px,3vw,16px);padding:15px clamp(28px,6vw,44px);border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px var(--glow);letter-spacing:.3px;width:100%;max-width:340px;}
-.stats{display:flex;justify-content:center;gap:clamp(20px,5vw,40px);margin-top:20px;}
-.stat-n{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--brand);}
-.stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
-#tela-form,#tela-quiz{align-items:center;justify-content:center;padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
-.flbl{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:5px;}
-.finp{width:100%;background:var(--item);border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;font-size:15px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-.finp:focus{border-color:var(--brand);}
-.fgrp{display:flex;flex-direction:column;gap:12px;}
-.ferr{display:none;font-size:13px;color:#f87171;text-align:center;padding:8px;background:rgba(248,113,113,.1);border-radius:8px;}
-.prog-wrap{margin-bottom:20px;}
-.prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px;}
-.prog-bar{height:5px;background:var(--deep);border-radius:10px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-l));border-radius:10px;transition:width .4s ease;}
-.cat-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(224,123,0,.1);border:1px solid rgba(224,123,0,.22);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;}
-.norma-ref{font-size:10px;color:var(--brand);opacity:.75;margin-bottom:10px;}
-.q-txt{font-size:clamp(14px,3vw,18px);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.45;}
-.opts{display:flex;flex-direction:column;gap:8px;}
-.opt{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1.5px solid var(--border);border-radius:11px;cursor:pointer;font-size:clamp(13px,2.5vw,14px);font-weight:500;background:var(--item);color:var(--txt);transition:border-color .15s,background .15s;user-select:none;}
-.opt.sel{border-color:var(--brand);background:rgba(224,123,0,.13);color:var(--white);}
-.opt-ic{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:var(--deep);transition:all .15s;}
-.opt.sel .opt-ic{background:var(--brand);border-color:var(--brand);color:#111111;font-weight:800;}
-.nav-btns{margin-top:16px;}
-.btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:11px 20px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;}
-#tela-resultado{align-items:center;justify-content:flex-start;padding:clamp(16px,4vw,32px) clamp(12px,4vw,20px);}
-.rcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:clamp(20px,5vw,36px);width:100%;max-width:600px;box-shadow:0 6px 32px rgba(0,0,0,.45);}
-.res-hd{text-align:center;margin-bottom:22px;}
-.res-nv{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
-.res-ti{font-family:'Cinzel',serif;font-size:clamp(16px,3.5vw,22px);font-weight:800;color:var(--white);margin-bottom:10px;line-height:1.3;}
-.res-de{font-size:13px;color:var(--muted);line-height:1.75;}
-.termo-wrap{margin:20px 0;text-align:center;}
-.termo-lbl{font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
-.score{font-family:'Cinzel',serif;font-size:clamp(32px,7vw,44px);font-weight:800;margin:6px 0 3px;}
-.score-sub{font-size:12px;color:var(--muted);margin-bottom:14px;}
-.ttrack{width:100%;height:20px;border-radius:50px;background:linear-gradient(90deg,#22c55e 0%,#facc15 40%,#f97316 70%,#dc2626 100%);position:relative;}
-.tneedle{position:absolute;top:50%;transform:translate(-50%,-50%);transition:left 1.2s cubic-bezier(.34,1.56,.64,1);}
-.tdot{width:28px;height:28px;border-radius:50%;background:var(--white);border:3px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.5);}
-.tmarks{display:flex;justify-content:space-between;margin-top:6px;}
-.tmarks span{font-size:10px;color:var(--muted);}
-.par-ttl{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-.par-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
-.par-item{background:var(--item);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;}
-.p-ic{font-size:18px;flex-shrink:0;}
-.p-bw{flex:1;min-width:0;}
-.p-bl{display:flex;justify-content:space-between;margin-bottom:5px;}
-.p-bl span:first-child{font-size:12px;font-weight:600;color:var(--txt);}
-.p-bl span:last-child{font-size:11px;color:var(--muted);}
-.p-bt{height:5px;background:var(--deep);border-radius:10px;overflow:hidden;}
-.p-bf{height:100%;border-radius:10px;transition:width 1s ease;}
-.alert-box{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
-.alert-box h4{font-size:11px;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-.alert-box li{font-size:13px;color:var(--muted);margin-bottom:7px;list-style:none;display:flex;gap:8px;}
-.alert-box li::before{content:"!";font-weight:800;color:#f87171;flex-shrink:0;}
-.inc-box{background:rgba(224,123,0,.07);border:1px solid rgba(224,123,0,.18);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
-.inc-box h4{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-.inc-item{display:flex;gap:8px;font-size:13px;color:var(--muted);margin-bottom:7px;}
-.inc-item::before{content:"v";font-weight:800;color:#22c55e;flex-shrink:0;}
-.cta-box{display:flex;flex-direction:column;gap:10px;}
-.cta-w{background:linear-gradient(135deg,#25D366,#128C7E);color:#ffffff;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;}
-.cta-a{background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#111111;border:none;padding:16px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;}
-.cta-lb{font-size:11px;opacity:.8;font-weight:400;}
-.divider{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin:2px 0;}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
-.btn-ref{width:100%;margin-top:10px;background:none;border:1.5px solid var(--border);color:var(--muted);padding:12px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:600;}
-.persuasivo{background:var(--item);border:1px solid var(--border);border-left:3px solid var(--brand);border-radius:12px;padding:18px 20px;margin-bottom:18px;}
-.persuasivo p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:10px;}
-.persuasivo p:last-child{margin-bottom:0;}
-.persuasivo strong{color:var(--white);}
-.persuasivo.alerta{border-left-color:#ef4444;background:rgba(239,68,68,.05);}
-.nv{color:#22c55e;}.na{color:#facc15;}.no{color:#fb923c;}.nr{color:#ef4444;}
-@media(max-width:480px){.riscos-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:320px){.riscos-grid{grid-template-columns:1fr;}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diagnóstico Escudo Odonto">
+<meta property="og:description" content="Responda em cerca de 10 minutos e veja o termômetro de proteção da sua clínica odontológica.">
+<meta property="og:url" content="https://www.escudoodonto.com.br/">
+<meta name="theme-color" content="#0F0E0D">
 </head>
 <body>
+<title>Diagnóstico Escudo Odonto</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Responda em cerca de 10 minutos e veja o termômetro de proteção da sua clínica odontológica, com os pontos que merecem atenção.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: página única de conversão · hero dividido (texto + termômetro de exemplo) · faixas alternadas · CTA repetido 3x · sem navegação */
+:root{
+  --bg:#0F0E0D; --surface:#181614; --raise:#211E1B; --line:#2E2925;
+  --fg:#EEE8E1; --muted:#A69C91; --accent:#E87C1E; --copper:#C08350; --on-accent:#140C05;
+  --ok:#62B184; --warn:#E3A63E; --crit:#E8605A;
+  --display:"Cinzel",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F6F2ED; --surface:#FFFFFF; --raise:#F1EBE4; --line:#E2D9CF;
+  --fg:#1D1915; --muted:#6A6057; --accent:#B95A0C; --copper:#94582B; --on-accent:#FFFFFF;
+  --ok:#2C7A4D; --warn:#94650C; --crit:#B4372E; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#F6F2ED; --surface:#FFFFFF; --raise:#F1EBE4; --line:#E2D9CF;
+  --fg:#1D1915; --muted:#6A6057; --accent:#B95A0C; --copper:#94582B; --on-accent:#FFFFFF;
+  --ok:#2C7A4D; --warn:#94650C; --crit:#B4372E; color-scheme:light }
 
-<!-- HOME -->
-<div id="tela-home" class="tela active">
-  <div class="logo-wrap">
-    <svg class="escudo-svg" viewBox="0 0 48 56" fill="none">
-      <path d="M24 2L44 11V31C44 42 24 54 24 54C24 54 4 42 4 31V11L24 2Z" fill="#E07B00"/>
-      <path d="M24 2L24 54C24 54 4 42 4 31V11L24 2Z" fill="#F5C842"/>
-    </svg>
-    <div class="logo-txt">ESCUDO <b>ODONTO</b></div>
-  </div>
-  <div class="badge">Diagnóstico preventivo gratuito</div>
-  <h1 class="hero-h1">Sua clínica está prestes a<br><b>sofrer um processo?</b></h1>
-  <p class="hero-sub">Pacientes, funcionários, sócios, parceiros, CRO e ANVISA podem acionar sua clínica. Descubra agora seu nível real de exposição.</p>
-  <div class="riscos-grid">
-    <div class="ri"><span class="ri-ic">&#128100;</span><span class="ri-tx"><strong>Pacientes</strong>Insatisfação e contratos</span></div>
-    <div class="ri"><span class="ri-ic">&#128119;</span><span class="ri-tx"><strong>Funcionários</strong>Vínculos informais</span></div>
-    <div class="ri"><span class="ri-ic">&#129309;</span><span class="ri-tx"><strong>Sócios</strong>Conflitos contratuais</span></div>
-    <div class="ri"><span class="ri-ic">&#128279;</span><span class="ri-tx"><strong>Parceiros</strong>Acordos sem formalização</span></div>
-    <div class="ri"><span class="ri-ic">&#9878;&#65039;</span><span class="ri-tx"><strong>CRO / CFO</strong>Infrações éticas</span></div>
-    <div class="ri"><span class="ri-ic">&#127973;</span><span class="ri-tx"><strong>ANVISA</strong>Autuações sanitárias</span></div>
-  </div>
-  <button class="btn-cta" onclick="ir('tela-form')">Fazer o diagnóstico gratuito</button>
-  <div class="stats">
-    <div><div class="stat-n">15</div><div class="stat-l">Perguntas</div></div>
-    <div><div class="stat-n">5 min</div><div class="stat-l">Duração</div></div>
-    <div><div class="stat-n">100%</div><div class="stat-l">Gratuito</div></div>
-  </div>
-</div>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:.01em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-<!-- FORMULÁRIO -->
-<div id="tela-form" class="tela">
-  <div class="card">
-    <div style="text-align:center;margin-bottom:22px;">
-      <div style="font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Antes de começar</div>
-      <div style="font-family:'Cinzel',serif;font-size:clamp(16px,4vw,20px);font-weight:800;color:var(--white);margin-bottom:6px;">Para onde enviamos seu parecer?</div>
-      <div style="font-size:13px;color:var(--muted);">Preencha os dados para liberar o diagnóstico.</div>
-    </div>
-    <div class="fgrp">
-      <div><label class="flbl">Nome completo</label><input id="fNome" class="finp" type="text" placeholder="Ex: Dra. Ana Lima" autocomplete="name"/></div>
-      <div><label class="flbl">E-mail</label><input id="fEmail" class="finp" type="email" placeholder="seuemail@exemplo.com" autocomplete="email"/></div>
-      <div>
-        <label class="flbl">WhatsApp</label>
-        <input id="fWpp" class="finp" type="tel" placeholder="(61) 99999-9999" autocomplete="tel" maxlength="15" oninput="mascaraWpp(this)" onkeydown="return teclaWpp(event)"/>
-        <div id="wppErro" style="display:none;font-size:11px;color:#f87171;margin-top:4px;">Digite um número de celular válido com DDD.</div>
+.band{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1080px;margin:0 auto}
+.band.alt{background:var(--surface);border-block:1px solid var(--line)}
+section.band{padding-block:clamp(56px,9vw,96px)}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:10px}
+.h2{font-size:clamp(26px,4.4vw,38px);line-height:1.15;max-width:22ch}
+.lead{color:var(--muted);font-size:17px;max-width:58ch;margin-top:14px}
+
+.topbar{border-bottom:1px solid var(--line)}
+.topbar::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--accent),var(--copper))}
+.topbar .in{display:flex;align-items:center;justify-content:space-between;padding-block:16px}
+.logo{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo svg{width:22px;height:26px;flex:none}
+
+/* Hero */
+.hero{padding-block:clamp(48px,8vw,88px) clamp(56px,9vw,96px)}
+.hero .in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,6vw,72px);align-items:center}
+.hero h1{font-size:clamp(34px,6.2vw,58px);line-height:1.06}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:18px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:10px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:16.5px;text-decoration:none;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn svg{width:18px;height:18px}
+.micro{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:var(--muted)}
+.micro span{display:inline-flex;align-items:center;gap:6px}
+.micro span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--copper)}
+
+/* Card do termômetro (exemplo) */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative}
+.demo .tag{position:absolute;top:-11px;right:18px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:var(--bg);border:1px solid var(--line);color:var(--muted);padding:3px 9px;border-radius:99px}
+.demo .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:600}
+.demo .ttl{font-family:var(--display);font-size:19px;margin:4px 0 14px}
+.demo .num{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.demo .num b{font-family:var(--display);font-size:52px;line-height:1;color:var(--warn);font-variant-numeric:tabular-nums}
+.demo .num b small{font-size:22px}
+.demo .num span{color:var(--warn);font-weight:600}
+.track{height:14px;border-radius:99px;background:var(--raise);border:1px solid var(--line);overflow:hidden;margin:14px 0 6px}
+.track i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--crit),var(--warn) 85%);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.scale{display:grid;grid-template-columns:50fr 30fr 20fr;font-size:11.5px;color:var(--muted)}
+.scale span+span{border-left:1px solid var(--line);padding-left:5px}
+.demo ul{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px;font-size:14px}
+.demo li{display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
+.demo li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--warn);margin-top:7px}
+
+/* Pontos que passam despercebidos */
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px}
+.pt{border-top:2px solid var(--copper);padding-top:16px}
+.pt h3{font-family:var(--body);font-size:17px;font-weight:600;margin-bottom:6px}
+.pt p{color:var(--muted);font-size:15px}
+
+/* Pilares */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:40px}
+.pillar{background:var(--bg);padding:24px 22px;display:flex;flex-direction:column;gap:8px}
+.band.alt .pillar{background:var(--surface)}
+.pillar .n{font-family:var(--display);color:var(--accent);font-size:14px;letter-spacing:.08em}
+.pillar h3{font-family:var(--body);font-size:17px;font-weight:600}
+.pillar p{color:var(--muted);font-size:14.5px}
+
+/* Como funciona */
+.steps{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:8px}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-size:40px;line-height:1;color:var(--accent)}
+.steps h3{font-family:var(--body);font-size:17.5px;font-weight:600}
+.steps p{color:var(--muted);font-size:15px}
+
+/* FAQ */
+.faq{margin-top:32px;max-width:760px;display:flex;flex-direction:column}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 36px 18px 0;font-weight:600;font-size:16.5px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:24px;font-weight:400;color:var(--accent);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding:0 0 18px;max-width:64ch}
+
+/* CTA final */
+.final .in{text-align:center;display:flex;flex-direction:column;align-items:center}
+.final .h2{max-width:20ch}
+.final .lead{margin-inline:auto}
+.final .cta-row{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding-block:22px;font-size:12.5px;color:var(--muted)}
+footer .in{text-align:center}
+
+@media (max-width:860px){
+  .hero .in{grid-template-columns:minmax(0,1fr)}
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:minmax(0,1fr);gap:26px}
+}
+@media (max-width:560px){
+  .grid2,.pillars{grid-template-columns:minmax(0,1fr)}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="band topbar"><div class="in">
+  <div class="logo"><svg viewBox="0 0 22 26" aria-hidden="true"><path d="M11 1 2 4.5v7.2C2 18 6 22.6 11 25c5-2.4 9-7 9-13.3V4.5L11 1Z" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--accent)"/><path d="M7.5 9.5c0-1.6 1.4-2.6 3.5-1.4 2.1-1.2 3.5-.2 3.5 1.4 0 2.4-1 6.6-1.9 6.6-.8 0-.9-3-1.6-3s-.8 3-1.6 3c-.9 0-1.9-4.2-1.9-6.6Z" fill="var(--copper)"/></svg>Escudo Odonto</div>
+</div></header>
+
+<section class="band hero" style="padding-top:clamp(48px,8vw,88px)">
+  <div class="in">
+    <div>
+      <div class="eyebrow">Diagnóstico para clínicas e consultórios odontológicos</div>
+      <h1>Sua clínica está <em>protegida</em>? Descubra em 10 minutos.</h1>
+      <p class="lead">Responda perguntas de Sim ou Não sobre registros, equipe, publicidade, documentos e rotina. No fim, você vê o termômetro de proteção da sua clínica e os pontos que merecem atenção.</p>
+      <div class="cta-row">
+        <a class="btn" href="#" data-cta>Fazer meu diagnóstico<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="micro"><span>Cerca de 10 minutos</span><span>Pelo celular</span><span>Sem enviar documentos</span></div>
       </div>
-      <div id="formErro" class="ferr">Preencha todos os campos para continuar.</div>
-      <button class="btn-cta" id="btnIniciar" onclick="validarForm()" style="margin-top:4px;">Iniciar diagnóstico</button>
-      <div style="font-size:11px;color:var(--muted);text-align:center;">🔒 Seus dados são confidenciais.</div>
     </div>
-    <div style="text-align:center;margin-top:14px;">
-      <button class="btn-back" onclick="ir('tela-home')">← Voltar</button>
-    </div>
-  </div>
-</div>
-
-<!-- QUIZ -->
-<div id="tela-quiz" class="tela">
-  <div class="card">
-    <div class="prog-wrap">
-      <div class="prog-info">
-        <span id="progTxt">Pergunta 1 de 15</span>
-        <span id="progPct" style="color:var(--brand);font-weight:700;">0%</span>
-      </div>
-      <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
-    </div>
-    <div id="qArea"></div>
-    <div class="nav-btns">
-      <button class="btn-back" id="btnBack" onclick="voltarP()" style="display:none;">← Voltar</button>
+    <div class="demo" aria-label="Exemplo de resultado do diagnóstico">
+      <span class="tag">Exemplo</span>
+      <div class="lbl">Resultado</div>
+      <div class="ttl">Termômetro de proteção da clínica</div>
+      <div class="num"><b>64<small>%</small></b><span>Atenção moderada</span></div>
+      <div class="track"><i id="demoFill"></i></div>
+      <div class="scale"><span>Exposta</span><span>Atenção</span><span>Protegida</span></div>
+      <ul>
+        <li>Não há contrato escrito com todos os dentistas</li>
+        <li>Fotos de pacientes são publicadas sem autorização de uso de imagem assinada</li>
+        <li>Não há TCLE específico para cada tipo de procedimento</li>
+      </ul>
     </div>
   </div>
-</div>
+</section>
 
-<!-- RESULTADO -->
-<div id="tela-resultado" class="tela">
-  <div class="rcard" id="rContent"></div>
-</div>
+<section class="band alt">
+  <div class="in">
+    <div class="eyebrow">Por que fazer</div>
+    <h2 class="h2">Alguns pontos só aparecem quando já viraram problema.</h2>
+    <p class="lead">Na rotina da clínica, é comum que alguns cuidados fiquem para depois. O diagnóstico ajuda a enxergar esses pontos com antecedência.</p>
+    <div class="grid2">
+      <div class="pt"><h3>Contratos com a equipe</h3><p>Dentistas parceiros, ASB e TSB atendendo sem contrato escrito ou com vínculo pouco claro.</p></div>
+      <div class="pt"><h3>Documentos do paciente</h3><p>Prontuário incompleto, TCLE genérico e ausência de contrato de prestação de serviços.</p></div>
+      <div class="pt"><h3>Publicidade nas redes</h3><p>Fotos de antes e depois sem autorização assinada e conteúdo fora das regras do Código de Ética do CFO.</p></div>
+      <div class="pt"><h3>Registros e licenças</h3><p>Responsável Técnico, inscrição no CRO e alvarás que precisam estar em dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="in">
+    <div class="eyebrow">O que é avaliado</div>
+    <h2 class="h2">Cinco pilares da clínica, mais o histórico.</h2>
+    <div class="pillars">
+      <div class="pillar"><span class="n">01</span><h3>Estrutura da clínica</h3><p>CRO, alvarás, equipe, equipamentos e inadimplência.</p></div>
+      <div class="pillar"><span class="n">02</span><h3>Marketing e publicidade</h3><p>Redes sociais, antes e depois, uso de imagem e identificação nos materiais.</p></div>
+      <div class="pillar"><span class="n">03</span><h3>Relacionamento</h3><p>Pacientes, sócios, laboratórios, planos odontológicos e convênios.</p></div>
+      <div class="pillar"><span class="n">04</span><h3>Documentos odontológicos</h3><p>Contrato com o paciente, prontuário, TCLE, anamnese e termos.</p></div>
+      <div class="pillar"><span class="n">05</span><h3>Processos internos</h3><p>Protocolos, treinamento da equipe, fluxos e biossegurança.</p></div>
+      <div class="pillar"><span class="n">+</span><h3>Histórico</h3><p>Processos éticos, judiciais, autuações e Procon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="in">
+    <div class="eyebrow">Como funciona</div>
+    <h2 class="h2">Três passos, direto do celular.</h2>
+    <ol class="steps">
+      <li><h3>Responda por etapas</h3><p>Uma área por vez, com uma barra mostrando quanto falta. Dá para parar e voltar depois.</p></li>
+      <li><h3>Envie as respostas</h3><p>Com um toque, as respostas seguem pelo WhatsApp para o Escudo Odonto.</p></li>
+      <li><h3>Veja o resultado na hora</h3><p>O termômetro de proteção e a lista de pontos de alerta aparecem logo depois do envio.</p></li>
+    </ol>
+    <div class="cta-row"><a class="btn" href="#" data-cta>Começar o diagnóstico</a></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="in">
+    <div class="eyebrow">Dúvidas</div>
+    <h2 class="h2">Antes de começar</h2>
+    <div class="faq">
+      <details><summary>Quanto tempo leva?</summary><p>Cerca de 10 minutos. As respostas ficam salvas no aparelho, então você pode parar e continuar depois.</p></details>
+      <details><summary>Preciso enviar algum documento?</summary><p>Não. O diagnóstico é feito só com as suas respostas de Sim ou Não e alguns campos curtos.</p></details>
+      <details><summary>O que acontece com as minhas respostas?</summary><p>Elas são usadas apenas para gerar o resultado e retornar o contato, se você autorizar. São tratadas com sigilo.</p></details>
+      <details><summary>Serve para consultório de um dentista só?</summary><p>Sim. As perguntas se ajustam: o que não se aplica à sua realidade simplesmente não aparece.</p></details>
+      <details><summary>O resultado é definitivo?</summary><p>Não. É uma leitura inicial a partir das suas respostas e não substitui a análise individual da clínica.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band alt final">
+  <div class="in">
+    <div class="eyebrow">Diagnóstico Escudo Odonto</div>
+    <h2 class="h2">Veja como está a proteção da sua clínica hoje.</h2>
+    <p class="lead">Leva cerca de 10 minutos e o resultado aparece assim que você termina.</p>
+    <div class="cta-row"><a class="btn" href="#" data-cta>Fazer meu diagnóstico<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
+</section>
+
+<footer class="band"><div class="in">Escudo Odonto · Gustavo Dantas Ferreira, OAB/DF 61.199</div></footer>
 
 <script>
-var lead = {};
-var cur = 0;
-var resp = [];
-var lock = false;
-var Ps = [];
-var CATS = [];
-var TOTAL = 15;
-
-function ir(id) {
-  var telas = document.querySelectorAll('.tela');
-  for (var i = 0; i < telas.length; i++) {
-    telas[i].classList.remove('active');
-  }
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
-}
-
-function mascaraWpp(el) {
-  var v = el.value.replace(/\D/g, '').substring(0, 11);
-  if (v.length <= 2) { v = '(' + v; }
-  else if (v.length <= 7) { v = '(' + v.substring(0,2) + ') ' + v.substring(2); }
-  else { v = '(' + v.substring(0,2) + ') ' + v.substring(2,7) + '-' + v.substring(7); }
-  el.value = v;
-  document.getElementById('wppErro').style.display = 'none';
-  el.style.borderColor = 'var(--border)';
-}
-
-function teclaWpp(e) {
-  var ok = [8,9,35,36,37,38,39,40,46];
-  for (var i = 0; i < ok.length; i++) { if (e.keyCode === ok[i]) return true; }
-  if ((e.ctrlKey || e.metaKey) && (e.keyCode===65||e.keyCode===67||e.keyCode===86||e.keyCode===88)) return true;
-  if (e.key >= '0' && e.key <= '9') return true;
-  e.preventDefault(); return false;
-}
-
-function wppOk(v) {
-  var n = v.replace(/\D/g, '');
-  return n.length === 11 && n.charAt(2) === '9';
-}
-
-function sortear(banco) {
-  var copia = banco.slice();
-  for (var i = copia.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = copia[i]; copia[i] = copia[j]; copia[j] = tmp;
-  }
-  var sel = copia.slice(0, TOTAL);
-  Ps = [];
-  for (var k = 0; k < sel.length; k++) {
-    Ps.push({c: sel[k].geral, q: sel[k].q, o: sel[k].o});
-  }
-  var catMap = {};
-  for (var m = 0; m < Ps.length; m++) {
-    var cat = Ps[m].c;
-    if (!catMap[cat]) catMap[cat] = [];
-    catMap[cat].push(m);
-  }
-  CATS = [];
-  var catKeys = Object.keys(catMap);
-  for (var n = 0; n < catKeys.length; n++) {
-    CATS.push({l: catKeys[n], i: catMap[catKeys[n]]});
-  }
-}
-
-function carregarBanco(callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'perguntas.json', true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        try { var banco = JSON.parse(xhr.responseText); sortear(banco); callback(true); }
-        catch(e) { callback(false); }
-      } else { callback(false); }
-    }
-  };
-  xhr.send();
-}
-
-function validarForm() {
-  var n = document.getElementById('fNome').value.trim();
-  var e = document.getElementById('fEmail').value.trim();
-  var w = document.getElementById('fWpp').value.trim();
-  var ferr = document.getElementById('formErro');
-  var werr = document.getElementById('wppErro');
-  ferr.style.display = 'none'; werr.style.display = 'none';
-  if (!n || !e || !w) { ferr.style.display = 'block'; return; }
-  if (!wppOk(w)) {
-    werr.style.display = 'block';
-    document.getElementById('fWpp').style.borderColor = '#f87171';
-    return;
-  }
-  lead = {nome: n, email: e, wpp: w};
-  cur = 0; resp = []; lock = false;
-  var btn = document.getElementById('btnIniciar');
-  btn.textContent = 'Carregando...'; btn.disabled = true;
-  carregarBanco(function(ok) {
-    btn.textContent = 'Iniciar diagnóstico'; btn.disabled = false;
-    if (ok) { ir('tela-quiz'); render(); }
-    else { ferr.textContent = 'Erro ao carregar. Verifique sua conexão.'; ferr.style.display = 'block'; }
-  });
-}
-
-function render() {
-  var p = Ps[cur];
-  var sel = (resp[cur] !== undefined) ? resp[cur] : -1;
-  var pct = Math.round((cur / TOTAL) * 100);
-  document.getElementById('progTxt').textContent = 'Pergunta ' + (cur+1) + ' de ' + TOTAL;
-  document.getElementById('progPct').textContent = pct + '%';
-  document.getElementById('progFill').style.width = pct + '%';
-  document.getElementById('btnBack').style.display = cur > 0 ? 'inline-block' : 'none';
-  var h = '<div class="cat-badge">' + p.c + '</div><div class="q-txt">' + p.q + '</div><div class="opts">';
-  for (var i = 0; i < p.o.length; i++) {
-    var s = sel === i ? ' sel' : '';
-    var c = sel === i ? '&#10003;' : '';
-    h += '<div class="opt' + s + '" onclick="escolher(' + i + ')"><div class="opt-ic">' + c + '</div><span>' + p.o[i].t + '</span></div>';
-  }
-  h += '</div>';
-  document.getElementById('qArea').innerHTML = h;
-  lock = false;
-}
-
-function escolher(i) {
-  if (lock) return;
-  lock = true;
-  resp[cur] = i;
-  var opts = document.querySelectorAll('.opt');
-  for (var j = 0; j < opts.length; j++) {
-    opts[j].classList.remove('sel');
-    opts[j].querySelector('.opt-ic').innerHTML = '';
-  }
-  opts[i].classList.add('sel');
-  opts[i].querySelector('.opt-ic').innerHTML = '&#10003;';
-  setTimeout(function() {
-    if (cur < TOTAL - 1) { cur++; render(); }
-    else { resultado(); }
-  }, 420);
-}
-
-function voltarP() {
-  if (cur > 0) { cur--; lock = false; render(); }
-}
-
-function bCor(p) { return p<=20?'#22c55e':p<=45?'#facc15':p<=70?'#fb923c':'#ef4444'; }
-function bIco(p) { return p<=20?'&#10003;':p<=45?'!':'!!'; }
-function bLbl(p) { return p<=20?'Protegido':p<=45?'Atenção':p<=70?'Elevado':'Crítico'; }
-
-function resultado() {
-  var pts = 0, max = 0;
-  for (var i = 0; i < resp.length; i++) { pts += Ps[i].o[resp[i]].p; max += 3; }
-  var pct = Math.round((pts / max) * 100);
-
-  var scores = [];
-  for (var c = 0; c < CATS.length; c++) {
-    var s = 0, m = 0;
-    for (var j = 0; j < CATS[c].i.length; j++) {
-      var idx = CATS[c].i[j];
-      s += Ps[idx].o[resp[idx]].p; m += 3;
-    }
-    scores.push({l: CATS[c].l, pct: Math.round((s/m)*100)});
-  }
-
-  var nv, cl, cor, ti, de;
-  if (pct <= 20) {
-    nv="Blindagem Sólida"; cl="nv"; cor="#22c55e";
-    ti="Sua clínica está bem protegida!";
-    de="Você demonstra atenção às boas práticas preventivas. Mantenha esse cuidado — o ambiente normativo evolui e a proteção contínua é o que separa clínicas vulneráveis das verdadeiramente blindadas.";
-  } else if (pct <= 45) {
-    nv="Risco Moderado"; cl="na"; cor="#facc15";
-    ti="Sua clínica tem pontos de atenção importantes.";
-    de="Existem lacunas que podem se transformar em processos reais. Agir preventivamente agora é muito mais simples e barato do que remediar depois que o processo chega.";
-  } else if (pct <= 70) {
-    nv="Risco Elevado"; cl="no"; cor="#fb923c";
-    ti="Sua clínica está exposta em múltiplas frentes.";
-    de="Identificamos várias áreas de vulnerabilidade com risco real de processo. Cada dia sem blindagem é um dia de exposição desnecessária para você e seu patrimônio.";
-  } else {
-    nv="Risco Crítico"; cl="nr"; cor="#ef4444";
-    ti="Sua clínica precisa de proteção urgente.";
-    de="Sua clínica está criticamente exposta em diversas frentes. Um único acionamento agora pode ter consequências graves. É fundamental agir com rapidez e orientação especializada.";
-  }
-
-  var criticas = [];
-  for (var k = 0; k < scores.length; k++) { if (scores[k].pct >= 50) criticas.push(scores[k].l); }
-  var nl = Math.max(4, Math.min(96, pct));
-
-  // textos persuasivos por nível
-  var persuasivo, ctaTxt;
-  if (pct <= 20) {
-    persuasivo =
-      '<div class="persuasivo">' +
-      '<p>Clínicas que chegam a processos raramente foram descuidadas do dia para a noite. A maioria tinha boas práticas, mas deixou de atualizar um contrato, ignorou uma mudança de norma ou não documentou uma situação pontual.</p>' +
-      '<p>Um único descuido custou, em média, entre <strong>R$ 15&nbsp;mil e R$ 80&nbsp;mil</strong>.</p>' +
-      '<p>Você quer garantir que isso não aconteça com você?</p>' +
-      '</div>';
-    ctaTxt = 'Quero manter minha clínica protegida';
-  } else if (pct <= 45) {
-    persuasivo =
-      '<div class="persuasivo">' +
-      '<p>Os pontos identificados no seu diagnóstico são exatamente os que mais geram processos trabalhistas, reclamações no Procon e notificações do CRO.</p>' +
-      '<p>Um processo trabalhista perdido custa, em média, <strong>R$ 15&nbsp;mil</strong>. Uma ação de paciente, entre <strong>R$ 20&nbsp;mil e R$ 60&nbsp;mil</strong>. E o pior: a maioria dos dentistas só descobre a vulnerabilidade quando a notificação já chegou.</p>' +
-      '<p>Você quer saber o que precisa ser resolvido primeiro?</p>' +
-      '</div>';
-    ctaTxt = 'Quero saber o que resolver primeiro';
-  } else if (pct <= 70) {
-    persuasivo =
-      '<div class="persuasivo">' +
-      '<p>Com o nível de exposição identificado, qualquer um dos agentes mapeados — paciente, funcionário, sócio, CRO — já tem elementos suficientes para acionar sua clínica.</p>' +
-      '<p>Um processo nesse estágio não é uma possibilidade distante. <strong>É uma questão de tempo.</strong> Dentistas nessa situação que agiram rapidamente conseguiram resolver antes que qualquer notificação chegasse.</p>' +
-      '<p>Você ainda está a tempo.</p>' +
-      '</div>';
-    ctaTxt = 'Quero agir antes que seja tarde';
-  } else {
-    persuasivo =
-      '<div class="persuasivo alerta">' +
-      '<p>O que você acabou de ver não é um alerta teórico. É um mapa real das frentes em que sua clínica está desprotegida <strong>hoje</strong>.</p>' +
-      '<p>Um único acionamento pode custar entre <strong>R$ 30&nbsp;mil e R$ 150&nbsp;mil</strong>, além de processos no CRO que podem resultar em suspensão do seu registro.</p>' +
-      '<p>Nenhum dentista planejou chegar nessa situação. Mas todos que saíram dela tomaram uma atitude <strong>antes de receber a primeira notificação</strong>. Você ainda pode fazer isso.</p>' +
-      '</div>';
-    ctaTxt = 'Preciso de proteção agora';
-  }
-
-  var bars = '';
-  for (var b = 0; b < scores.length; b++) {
-    bars += '<div class="par-item"><span class="p-ic">' + bIco(scores[b].pct) + '</span><div class="p-bw"><div class="p-bl"><span>' + scores[b].l + '</span><span>' + bLbl(scores[b].pct) + '</span></div><div class="p-bt"><div class="p-bf" style="width:0%;background:' + bCor(scores[b].pct) + '" data-w="' + scores[b].pct + '"></div></div></div></div>';
-  }
-
-  var alertH = '';
-  if (criticas.length > 0) {
-    alertH = '<div class="alert-box"><h4>Áreas críticas identificadas:</h4><ul>';
-    for (var a = 0; a < criticas.length; a++) { alertH += '<li>' + criticas[a] + '</li>'; }
-    alertH += '</ul></div>';
-  }
-
-  var wG = 'https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20do%20Escudo%20Odonto%20e%20quero%20entrar%20no%20grupo%20gratuito.';
-  var wA = 'https://wa.me/5561999197413?text=Ol%C3%A1!%20Fiz%20o%20diagn%C3%B3stico%20Escudo%20Odonto.%20Resultado%3A%20' + encodeURIComponent(nv) + '%20(' + pct + '%25).%20Quero%20conhecer%20a%20assessoria.';
-
-  document.getElementById('rContent').innerHTML =
-    '<div class="res-hd"><div class="res-nv ' + cl + '">' + nv + '</div><div class="res-ti">' + ti + '</div><div class="res-de">' + de + '</div></div>' +
-    '<div class="termo-wrap"><div class="termo-lbl">Índice de exposição a processos</div><div class="score" style="color:' + cor + '">' + pct + '%</div><div class="score-sub">de exposição identificada</div><div class="ttrack"><div class="tneedle" id="needle" style="left:' + nl + '%"><div class="tdot"></div></div></div><div class="tmarks"><span>Blindado</span><span>Moderado</span><span>Elevado</span><span>Crítico</span></div></div>' +
-    '<div class="par-ttl">Parecer por frente de risco</div><div class="par-grid">' + bars + '</div>' +
-    alertH + persuasivo +
-    '<div class="cta-box">' +
-    '<a href="' + wA + '" target="_blank" class="cta-a"><span>&#128737;</span><div><div>' + ctaTxt + '</div><div class="cta-lb">Conversa gratuita de 15 minutos — sem compromisso</div></div></a>' +
-    '<div class="divider">ou</div>' +
-    '<a href="' + wG + '" target="_blank" class="cta-w"><span>&#128172;</span><div><div>Entrar no grupo gratuito Escudo Odonto</div><div class="cta-lb">Conteúdo de prevenção exclusivo para dentistas</div></div></a>' +
-    '</div>' +
-    '<button class="btn-ref" onclick="ir(\'tela-home\')">&#8635; Refazer o diagnóstico</button>';
-
-  ir('tela-resultado');
-  setTimeout(function() {
-    var fills = document.querySelectorAll('.p-bf');
-    for (var f = 0; f < fills.length; f++) { fills[f].style.width = fills[f].getAttribute('data-w') + '%'; }
-  }, 300);
-
-  var det = '';
-  for (var d = 0; d < scores.length; d++) { det += scores[d].l + ': ' + scores[d].pct + '% | '; }
-  enviar({Nome:lead.nome, Email:lead.email, WhatsApp:lead.wpp, Resultado:nv, Exposicao:pct+'%', Areas:criticas.join(', ')||'Nenhuma', Detalhes:det});
-}
-
-function enviar(d) {
-  fetch('https://formspree.io/f/mzdkqepj', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(d)
-  }).catch(function(){});
-}
+/* Link do formulário: troque pelo endereço definitivo quando publicar no escudoodonto.com.br */
+const FORM_URL='diagnostico/';
+document.querySelectorAll('[data-cta]').forEach(a=>{a.href=FORM_URL});
+const f=document.getElementById('demoFill');
+f.style.backgroundSize=(10000/64)+'% 100%';
+requestAnimationFrame(()=>requestAnimationFrame(()=>{f.style.width='64%'}));
 </script>
+
 </body>
 </html>
