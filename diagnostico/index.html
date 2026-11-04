@@ -206,7 +206,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 <script>
 const WHATS='5561998457701';
 /* Endereço do app da planilha (Apps Script). Vazio = não grava. */
-const ORIGEM=(function(){var o='';try{var q=new URLSearchParams(location.search);o=(q.get('origem')||q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);if(o)localStorage.setItem('eo-origem',o);else o=localStorage.getItem('eo-origem')||'';}catch(e){}if(!o){try{var r=document.referrer;if(r&&r.indexOf('escudoodonto.com.br')<0)o=new URL(r).hostname.replace(/^www\./,'').slice(0,40);}catch(e){}}return o||'direto';})();
+const ORIGEM=(function(){var o='';try{var q=new URLSearchParams(location.search);o=(q.get('r')||q.get('origem')||q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);if(o){localStorage.setItem('eo-origem',o);['r','origem','utm_source'].forEach(function(k){q.delete(k)});var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);}else o=localStorage.getItem('eo-origem')||'';}catch(e){}if(!o){try{var r=document.referrer;if(r&&r.indexOf('escudoodonto.com.br')<0)o=new URL(r).hostname.replace(/^www\./,'').slice(0,40);}catch(e){}}return o||'direto';})();
 const SHEET_URL='https://script.google.com/macros/s/AKfycbyEiMwLhcyG8GpRB-VxDB6UY_j0QZFcWEgDnlTYdjctbshL_1bgNR2iUku1iJ82jA/exec';
 const KEY='diag-odonto-dentista-v1';
 
