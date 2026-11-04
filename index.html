@@ -258,6 +258,7 @@ footer .in{text-align:center}
 <script>
 /* Link do formulário: troque pelo endereço definitivo quando publicar no escudoodonto.com.br */
 const FORM_URL='diagnostico/';
+(function(){try{var q=new URLSearchParams(location.search);var o=(q.get('origem')||q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);if(o)localStorage.setItem('eo-origem',o);}catch(e){}})();
 document.querySelectorAll('[data-cta]').forEach(a=>{a.href=FORM_URL});
 const f=document.getElementById('demoFill');
 requestAnimationFrame(()=>requestAnimationFrame(()=>{f.style.width='64%'}));
