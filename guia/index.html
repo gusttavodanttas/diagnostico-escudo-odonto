@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Clínica Protegida · Guia jurídico completo para donos de clínica odontológica</title>
+<meta name="description" content="Guia de 38 páginas para organizar a parte jurídica da clínica odontológica: estrutura, equipe, contrato com o paciente, prontuário, publicidade, LGPD, reclamações e um plano de 30 dias.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clínica Protegida: guia jurídico completo para donos de clínica odontológica">
+<meta property="og:description" content="12 capítulos, checklists para imprimir e um plano de 30 dias para organizar a sua clínica.">
+<meta property="og:url" content="https://www.escudoodonto.com.br/guia/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://www.escudoodonto.com.br/guia/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0E0D">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#0F0E0D;--surface:#181614;--raise:#211E1B;--line:#2E2925;
+  --fg:#EEE8E1;--muted:#A69C91;--accent:#E87C1E;--copper:#C08350;--on-accent:#140C05;--ok:#4CB87E;--crit:#EF5A52;
+  --display:"Cinzel",Georgia,serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;letter-spacing:.01em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+header{padding:22px 0}
+.brand{font-family:var(--display);letter-spacing:.18em;font-size:14px;color:var(--accent);font-weight:600;text-decoration:none}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:14px}
+.h2{font-size:clamp(24px,3.8vw,34px);line-height:1.15;max-width:26ch}
+.sub2{color:var(--muted);margin-top:12px;max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:var(--on-accent);border:0;border-radius:10px;padding:16px 28px;font:700 16px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(232,124,30,.25)}
+
+/* Hero */
+.top{overflow:hidden}
+.hero{position:relative;display:grid;grid-template-columns:1.05fr .95fr;column-gap:40px;align-items:center;padding:24px 0 72px}
+.hero:before{content:"";position:absolute;right:-12%;top:-10%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(232,124,30,.20),transparent 62%);pointer-events:none}
+.hero>*{position:relative}
+h1{font-size:clamp(36px,6vw,60px);line-height:1.04}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{color:var(--muted);font-size:18px;margin-top:18px;max-width:46ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.meta span{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:rgba(255,255,255,.02)}
+.buy{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}
+.price{display:flex;flex-direction:column;line-height:1.1}
+.price small{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.price b{font-family:var(--display);font-size:34px;color:#fff}
+.note{font-size:13px;color:var(--muted);margin-top:14px}
+.note b{color:var(--ok);font-weight:600}
+
+.stage{display:flex;justify-content:center;perspective:1400px}
+.tablet{width:min(360px,78vw);aspect-ratio:1/1.36;background:linear-gradient(145deg,#2a2725,#141312 55%,#1d1b19);border-radius:30px;padding:16px;position:relative;
+  box-shadow:0 0 0 1px #3a3531,inset 0 0 0 2px #0a0909,0 40px 80px rgba(0,0,0,.6),0 18px 30px rgba(0,0,0,.45);
+  transform:rotateY(-14deg) rotateX(5deg) rotateZ(1deg);animation:float 7s ease-in-out infinite}
+.tablet:before{content:"";position:absolute;top:7px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#0b0b0b}
+.screen{width:100%;height:100%;border-radius:14px;overflow:hidden;background:#0F0E0D;position:relative}
+.screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.screen:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.10),rgba(255,255,255,0) 38%)}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@media (prefers-reduced-motion:reduce){.tablet{animation:none}}
+
+/* Seções */
+section{padding:72px 0}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.dores{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.dor{background:var(--raise);border:1px solid var(--line);border-left:3px solid var(--crit);border-radius:12px;padding:18px 20px;color:var(--fg);font-size:15.5px}
+.ponte{margin-top:26px;color:var(--muted);max-width:62ch}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.cap{background:var(--raise);border:1px solid var(--line);border-radius:14px;padding:20px}
+.cap .n{font-family:var(--display);color:var(--accent);font-size:24px;line-height:1}
+.cap h3{font-family:var(--body);font-size:15.5px;font-weight:600;margin:10px 0 6px}
+.cap p{color:var(--muted);font-size:14px;line-height:1.5}
+.extras{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.ex{border:1px solid var(--line);border-radius:14px;padding:20px;background:rgba(255,255,255,.015)}
+.ex .ic{width:38px;height:38px;border-radius:10px;background:rgba(232,124,30,.12);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px}
+.ex h3{font-family:var(--body);font-size:15px;font-weight:600;margin-bottom:6px}
+.ex p{color:var(--muted);font-size:14px;line-height:1.5}
+.preview{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.preview figure{margin:0}
+.preview img{width:100%;aspect-ratio:210/297;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line);display:block;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.preview figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+.para{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.lst{background:var(--raise);border:1px solid var(--line);border-radius:14px;padding:22px}
+.lst h3{font-family:var(--body);font-size:15px;font-weight:600;margin-bottom:12px}
+.lst ul{margin:0;padding:0;list-style:none}
+.lst li{padding-left:26px;position:relative;margin-bottom:9px;color:var(--muted);font-size:15px}
+.lst li:before{position:absolute;left:0;top:0;font-weight:700}
+.sim li:before{content:"✓";color:var(--ok)}
+.nao li:before{content:"–";color:var(--copper)}
+.autor{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;margin-top:8px}
+.mono{width:96px;height:96px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:30px;color:var(--accent);background:var(--raise)}
+.autor p{color:var(--muted);margin-top:8px;max-width:62ch}
+.oferta{max-width:620px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px;text-align:center;position:relative;overflow:hidden}
+.oferta:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--accent)}
+.oferta h2{font-size:28px}
+.oferta ul{text-align:left;list-style:none;padding:0;margin:22px auto 0;max-width:420px}
+.oferta li{padding-left:26px;position:relative;margin-bottom:8px;font-size:15px}
+.oferta li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.oferta .price{align-items:center;margin-top:24px}
+.oferta .price b{font-size:44px}
+.oferta .btn{width:100%;margin-top:20px}
+.gar{display:flex;gap:14px;align-items:flex-start;text-align:left;margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:12px;font-size:14px;color:var(--muted)}
+.gar b{color:var(--fg)}
+.gar .ic{flex:none;width:34px;height:34px;border-radius:50%;background:rgba(76,184,126,.14);color:var(--ok);display:flex;align-items:center;justify-content:center;font-weight:700}
+.faq{max-width:760px;margin:26px auto 0}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--accent);font-size:20px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{color:var(--muted);margin-top:10px;font-size:15px}
+footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));font-size:12.5px;color:var(--muted)}
+footer p+p{margin-top:8px}
+.center{text-align:center}.center .h2,.center .sub2{margin-left:auto;margin-right:auto}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;row-gap:40px;padding:8px 0 56px}
+  .stage{order:-1}
+  .tablet{width:min(280px,70vw)}
+  .caps{grid-template-columns:1fr 1fr}
+  .extras{grid-template-columns:1fr 1fr}
+  .para,.dores{grid-template-columns:1fr}
+  .preview{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  section{padding:56px 0}
+}
+@media (max-width:520px){
+  .caps,.extras{grid-template-columns:1fr}
+  .buy{flex-direction:column;align-items:stretch}
+  .buy .btn{width:100%}
+  .autor{grid-template-columns:1fr}
+  .oferta{padding:26px 20px}
+}
+</style>
+</head>
+<body>
+<div class="top">
+<header class="wrap"><a class="brand" href="/">GUSTAVO DANTAS</a></header>
+<div class="wrap hero">
+  <div>
+    <div class="eyebrow">Guia jurídico para donos de clínica odontológica</div>
+    <h1>Clínica<br><em>Protegida</em></h1>
+    <p class="lead">O guia completo para organizar a parte jurídica da sua clínica: estrutura, equipe, contrato com o paciente, prontuário, publicidade, LGPD e reclamações, com checklists e um plano de 30 dias.</p>
+    <div class="meta"><span>38 páginas</span><span>12 capítulos</span><span>Checklists para imprimir</span><span>PDF</span></div>
+    <div class="buy">
+      <div class="price"><small>Investimento</small><b data-preco>R$ 97</b></div>
+      <a class="btn" href="#comprar" data-comprar>Quero o guia completo</a>
+    </div>
+    <p class="note"><b>Garantia de 7 dias:</b> se não fizer sentido para você, devolvemos o valor.</p>
+  </div>
+  <div class="stage"><div class="tablet"><div class="screen"><img src="p1.jpg" alt="Capa do guia Clínica Protegida" width="910" height="1287"></div></div></div>
+</div>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">Por que este guia</div>
+    <h2 class="h2">A maioria dos problemas de uma clínica começa num detalhe que ninguém organizou</h2>
+    <div class="dores">
+      <div class="dor">O paciente some no meio do tratamento e, meses depois, pede o dinheiro de volta.</div>
+      <div class="dor">O termo de consentimento é um formulário genérico assinado no primeiro dia.</div>
+      <div class="dor">O dentista "parceiro" trabalha com horário fixo, metas e advertências.</div>
+      <div class="dor">Um post de antes e depois sai sem autorização por escrito do paciente.</div>
+      <div class="dor">A licença sanitária venceu e ninguém controlava a data.</div>
+      <div class="dor">Uma avaliação negativa é respondida com detalhes do tratamento.</div>
+    </div>
+    <p class="ponte">Nenhum desses pontos exige grandes investimentos. Exige saber o que organizar e em que ordem. É isso que o guia entrega, em linguagem direta e sem juridiquês.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">O que tem dentro</div>
+    <h2 class="h2">12 capítulos, um para cada área da clínica</h2>
+    <div class="caps">
+      <div class="cap"><div class="n">01</div><h3>Os três tipos de risco</h3><p>Ético, judicial e administrativo, e como um único episódio pode virar os três.</p></div>
+      <div class="cap"><div class="n">02</div><h3>Estrutura e regularidade</h3><p>CRO, responsável técnico, licenças e as normas da Anvisa que a vigilância mais cobra.</p></div>
+      <div class="cap"><div class="n">03</div><h3>Equipe</h3><p>CLT, autônomo ou parceria, os sinais de vínculo de emprego, ASB e TSB.</p></div>
+      <div class="cap"><div class="n">04</div><h3>Contrato com o paciente</h3><p>O que não pode faltar, faltas, abandono, desistência e reembolso.</p></div>
+      <div class="cap"><div class="n">05</div><h3>Prontuário e TCLE</h3><p>O que registrar, prazo de guarda, termo por procedimento e termo de recusa.</p></div>
+      <div class="cap"><div class="n">06</div><h3>Publicidade e redes</h3><p>O que as normas do CFO permitem, antes e depois, uso de imagem e "especialista".</p></div>
+      <div class="cap"><div class="n">07</div><h3>LGPD</h3><p>Dados de saúde, WhatsApp, acesso ao prontuário e incidentes.</p></div>
+      <div class="cap"><div class="n">08</div><h3>Reclamações e cobrança</h3><p>Roteiro de resposta, Procon, avaliações online e cobrança sem constrangimento.</p></div>
+      <div class="cap"><div class="n">09</div><h3>Sócios e parceiros</h3><p>Acordo de sócios, laboratórios, fornecedores e planos odontológicos.</p></div>
+      <div class="cap"><div class="n">10</div><h3>Fiscalização</h3><p>Quem fiscaliza, como receber o fiscal e o que fazer depois da visita.</p></div>
+      <div class="cap"><div class="n">11</div><h3>Noções tributárias</h3><p>Os temas certos para levar ao contador, inclusive a equiparação hospitalar.</p></div>
+      <div class="cap"><div class="n">12</div><h3>Plano de 30 dias</h3><p>O que fazer em cada semana, sem parar a rotina da clínica.</p></div>
+    </div>
+    <div class="extras">
+      <div class="ex"><div class="ic">☑</div><h3>Checklists</h3><p>Um por capítulo, para imprimir e marcar com a equipe.</p></div>
+      <div class="ex"><div class="ic">!</div><h3>Quadros de atenção</h3><p>Os erros mais comuns, destacados ao longo do texto.</p></div>
+      <div class="ex"><div class="ic">§</div><h3>Base normativa</h3><p>As principais normas citadas, para você consultar a fonte.</p></div>
+      <div class="ex"><div class="ic">▤</div><h3>Pasta de documentos</h3><p>A lista do que a clínica deve ter à mão numa fiscalização.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">Por dentro</div>
+    <h2 class="h2">Pensado para ser lido e usado</h2>
+    <div class="preview">
+      <figure><img src="p3.jpg" alt="Sumário do guia" loading="lazy"><figcaption>Sumário</figcaption></figure>
+      <figure><img src="p13.jpg" alt="Abertura do capítulo 4" loading="lazy"><figcaption>Abertura de capítulo</figcaption></figure>
+      <figure><img src="p16.jpg" alt="Página interna com checklist" loading="lazy"><figcaption>Conteúdo e checklist</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Para quem é</div>
+    <h2 class="h2">Feito para quem toca a clínica no dia a dia</h2>
+    <div class="para">
+      <div class="lst sim"><h3>É para você se</h3><ul>
+        <li>É dono, sócio ou gestor de clínica odontológica</li>
+        <li>Está abrindo uma clínica e quer começar organizado</li>
+        <li>Tem dentistas parceiros, ASB ou TSB na equipe</li>
+        <li>Usa redes sociais para divulgar a clínica</li>
+        <li>Quer saber por onde começar sem ler dezenas de normas</li></ul></div>
+      <div class="lst nao"><h3>O que o guia não é</h3><ul>
+        <li>Não traz modelos prontos para assinar: mostra o que cada documento deve conter</li>
+        <li>Não substitui a análise individual da sua clínica</li>
+        <li>Não é consultoria jurídica</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">Quem escreveu</div>
+    <div class="autor">
+      <div class="mono">GD</div>
+      <div>
+        <h2 class="h2" style="font-size:24px">Gustavo Dantas Ferreira</h2>
+        <p>Advogado (OAB/DF 61.199) em Brasília. Atua com assessoria jurídica preventiva para clínicas e profissionais da área da saúde, com foco em clínicas odontológicas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comprar">
+  <div class="wrap">
+    <div class="oferta">
+      <div class="eyebrow">Guia completo</div>
+      <h2>Clínica Protegida</h2>
+      <ul>
+        <li>Guia em PDF com 38 páginas e 12 capítulos</li>
+        <li>Checklists por capítulo para imprimir</li>
+        <li>Plano de 30 dias, semana a semana</li>
+        <li>Checklist geral e lista da pasta de documentos</li>
+        <li>Acesso imediato após a confirmação do pagamento</li>
+      </ul>
+      <div class="price"><small>Pagamento único</small><b data-preco>R$ 97</b></div>
+      <a class="btn" href="#" data-comprar>Quero o guia completo</a>
+      <div class="gar"><div class="ic">7</div><div><b>Garantia de 7 dias.</b> Se o guia não fizer sentido para a sua clínica, peça o reembolso dentro de 7 dias da compra e devolvemos o valor integral.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap center">
+    <div class="eyebrow">Dúvidas</div>
+    <h2 class="h2">Perguntas frequentes</h2>
+    <div class="faq" style="text-align:left">
+      <details><summary>Como recebo o guia?</summary><p>Depois da confirmação do pagamento, você recebe o link para baixar o PDF no e-mail informado na compra.</p></details>
+      <details><summary>Qual a diferença para o e-book gratuito?</summary><p>O e-book gratuito apresenta os cinco pilares de uma clínica protegida em poucas páginas. O guia completo aprofunda cada área em 12 capítulos, com explicações, base normativa, checklists, plano de 30 dias e a lista da pasta de documentos.</p></details>
+      <details><summary>O guia traz modelos de contrato e termos?</summary><p>Não. Cada documento depende da realidade da clínica, por isso o guia mostra o que o contrato, o TCLE, o termo de recusa e o termo de uso de imagem devem conter, para você revisar os seus ou elaborá-los com apoio profissional.</p></details>
+      <details><summary>Serve para clínica pequena ou consultório individual?</summary><p>Sim. A maior parte dos pontos vale para qualquer tamanho. Os capítulos sobre equipe e sócios são mais úteis para quem já tem pessoas trabalhando com você.</p></details>
+      <details><summary>As normas estão atualizadas?</summary><p>O guia foi elaborado com base nas normas vigentes em novembro de 2026. Como resoluções mudam, cada tema indica a norma de referência para você conferir a versão atual na fonte oficial.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias a partir da compra para pedir o reembolso integral, como prevê o Código de Defesa do Consumidor.</p></details>
+    </div>
+    <p style="margin-top:34px"><a class="btn" href="#comprar">Ver a oferta</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Gustavo Dantas Ferreira · Advogado · OAB/DF 61.199</p>
+    <p>Material informativo e educativo. Não constitui consultoria jurídica nem substitui a análise individual de cada caso. Venda realizada por CNPJ 29.305.583/0001-40.</p>
+  </div>
+</footer>
+
+<script>
+/* Configuração da venda: cole aqui o link do checkout quando a plataforma estiver pronta. */
+var CHECKOUT='';
+var PRECO='R$ 97';
+var WHATS='5561998457701';
+(function(){
+  try{var q=new URLSearchParams(location.search),r=(q.get('r')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);
+    if(r){if(!localStorage.getItem('eo-origem'))localStorage.setItem('eo-origem',r);q.delete('r');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}}catch(e){}
+  document.querySelectorAll('[data-preco]').forEach(function(e){e.textContent=PRECO});
+  var o='';try{o=localStorage.getItem('eo-origem')||''}catch(e){}
+  var dest=CHECKOUT?CHECKOUT+(CHECKOUT.indexOf('?')<0?'?':'&')+'src='+encodeURIComponent(o||'direto')
+    :'https://wa.me/'+WHATS+'?text='+encodeURIComponent('Olá! Quero adquirir o guia Clínica Protegida.');
+  document.querySelectorAll('[data-comprar]').forEach(function(a){
+    if(a.getAttribute('href')==='#comprar')return;
+    a.href=dest;a.target='_blank';a.rel='noopener';
+    a.addEventListener('click',function(){if(window.eoEvento)eoEvento('Clique comprar guia')});
+  });
+})();
+</script>
+<script src="/metrica.js"></script>
+</body>
+</html>

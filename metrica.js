@@ -11,7 +11,7 @@
     return o||'direto';
   }
   var p=location.pathname;
-  var pag=p.indexOf('/diagnostico')===0?'Diagnóstico':p.indexOf('/ebook')===0?'E-book':p.indexOf('/proposta')===0?'Proposta':'Página inicial';
+  var pag=p.indexOf('/diagnostico')===0?'Diagnóstico':p.indexOf('/ebook')===0?'E-book':p.indexOf('/proposta')===0?'Proposta':p.indexOf('/guia')===0?'Guia pago':'Página inicial';
   function envia(ev,extra){
     if(interno())return;
     var k='eo-ev-'+pag+'-'+ev;
