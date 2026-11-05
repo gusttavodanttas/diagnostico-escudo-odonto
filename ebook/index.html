@@ -214,10 +214,12 @@ f.addEventListener('submit',function(e){
   go.disabled=true;go.textContent='Preparando...';
   var p={tipo:'ebook',nome:nome,papel:papel,whats:whats.value,email:email,origem:ORIGEM,consent:document.getElementById('consent').checked,hp:document.getElementById('site').value};
   try{fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p),keepalive:true}).catch(function(){})}catch(x){}
+  if(window.eoEvento)eoEvento('E-book baixado');
   var a=document.createElement('a');a.href=PDF;a.download='Escudo Odonto - Sua clinica esta protegida.pdf';document.body.appendChild(a);a.click();a.remove();
   f.style.display='none';document.getElementById('done').style.display='block';
   document.getElementById('box').scrollIntoView({behavior:'smooth',block:'center'});
 });
 </script>
+<script src="/metrica.js"></script>
 </body>
 </html>

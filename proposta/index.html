@@ -139,10 +139,12 @@ section.card h2{font-size:22px;margin-bottom:6px}
   <div class="state" id="state"><h1>Carregando a proposta…</h1><p>Isso leva alguns segundos.</p></div>
 </main>
 
+<script src="/metrica.js"></script>
 <script>
 /* Endereço do app da planilha e WhatsApp de atendimento */
 const SHEET_URL='https://script.google.com/macros/s/AKfycbyEiMwLhcyG8GpRB-VxDB6UY_j0QZFcWEgDnlTYdjctbshL_1bgNR2iUku1iJ82jA/exec';
 const WHATS='5561998457701';
+(function(){try{var tk=new URLSearchParams(location.search).get('p');if(tk&&window.eoEvento)eoEvento('Proposta aberta',{token:tk})}catch(e){}})();
 
 /* Por que cada ponto importa. Prioridade: 1 = agir primeiro, 2 = em seguida, 3 = organizar */
 const WHY={
