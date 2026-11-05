@@ -86,9 +86,12 @@ h1 em{font-style:normal;color:var(--accent)}
 .card .sub{color:var(--muted);font-size:15px;margin-bottom:18px}
 label{display:block;font-size:14px;font-weight:500;margin:14px 0 6px}
 label small{color:var(--muted);font-weight:400}
-input[type=text],input[type=tel],input[type=email]{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 14px}
+input[type=text],input[type=tel],input[type=email],select{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 14px}
 input::placeholder{color:#6f675f}
-input:focus{outline:none;border-color:var(--accent)}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23A69C91' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+select:invalid{color:#6f675f}
+select option{color:var(--fg);background:var(--surface)}
 .chk{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:13.5px;color:var(--muted);line-height:1.5;font-weight:400}
 .chk input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 .card .btn{width:100%;margin-top:22px}
@@ -150,6 +153,15 @@ footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area
         <p class="sub">Preencha para baixar. Leva menos de um minuto.</p>
         <label for="nome">Seu nome</label>
         <input type="text" id="nome" name="nome" autocomplete="name" required maxlength="120">
+        <label for="papel">Qual é a sua relação com a clínica?</label>
+        <select id="papel" name="papel" required>
+          <option value="">Selecione</option>
+          <option>Sou dono(a) ou sócio(a)</option>
+          <option>Sou gestor(a) ou administrador(a)</option>
+          <option>Sou dentista e atendo em clínica de terceiros</option>
+          <option>Estou montando minha clínica</option>
+          <option>Outro</option>
+        </select>
         <label for="whats">WhatsApp com DDD</label>
         <input type="tel" id="whats" name="whats" autocomplete="tel" inputmode="tel" placeholder="(61) 90000-0000" required maxlength="20">
         <label for="email">E-mail <small>(opcional)</small></label>
@@ -195,10 +207,12 @@ f.addEventListener('submit',function(e){
   var w=whats.value.replace(/\D/g,'');
   var email=document.getElementById('email').value.trim();
   if(nome.length<2){err.textContent='Informe seu nome.';document.getElementById('nome').focus();return}
+  var papel=document.getElementById('papel').value;
+  if(!papel){err.textContent='Selecione sua relação com a clínica.';document.getElementById('papel').focus();return}
   if(w.length<10){err.textContent='Informe o WhatsApp com DDD.';whats.focus();return}
   if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Confira o e-mail ou deixe em branco.';return}
   go.disabled=true;go.textContent='Preparando...';
-  var p={tipo:'ebook',nome:nome,whats:whats.value,email:email,origem:ORIGEM,consent:document.getElementById('consent').checked,hp:document.getElementById('site').value};
+  var p={tipo:'ebook',nome:nome,papel:papel,whats:whats.value,email:email,origem:ORIGEM,consent:document.getElementById('consent').checked,hp:document.getElementById('site').value};
   try{fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p),keepalive:true}).catch(function(){})}catch(x){}
   var a=document.createElement('a');a.href=PDF;a.download='Escudo Odonto - Sua clinica esta protegida.pdf';document.body.appendChild(a);a.click();a.remove();
   f.style.display='none';document.getElementById('done').style.display='block';

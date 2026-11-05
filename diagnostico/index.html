@@ -214,10 +214,13 @@ const SECTIONS=[
 {id:'sobre',eb:'Etapa 1',t:'Sobre você e a clínica',items:[
  {id:'nome',type:'text',q:'Nome da clínica ou do profissional',req:1},
  {id:'resp',type:'text',q:'Seu nome',req:1},
+ {id:'papel',type:'select',q:'Qual é a sua relação com a clínica?',req:1,opts:['Sou dono(a) ou sócio(a)','Sou gestor(a) ou administrador(a)','Sou dentista e atendo em clínica de terceiros','Estou montando minha clínica','Outro']},
  {id:'whats',type:'tel',q:'WhatsApp para contato',req:1,ph:'(61) 90000-0000'},
  {id:'email',type:'text',q:'E-mail'},
  {id:'doc',type:'text',q:'CPF ou CNPJ'},
  {id:'porte',type:'select',q:'Forma de atuação',opts:['Pessoa física (autônomo)','Empresa no Simples Nacional','Empresa estruturada (outro regime)']},
+ {id:'equipe',type:'select',q:'Quantas pessoas trabalham na clínica, contando com você?',opts:['Só eu','2 a 5','6 a 10','11 a 20','Mais de 20']},
+ {id:'dentistas',type:'select',q:'Quantos dentistas atendem na clínica?',opts:['1','2 ou 3','4 a 6','7 ou mais']},
  {id:'fat',type:'select',q:'Faturamento médio mensal da clínica',opts:['Até R$ 20 mil','De R$ 20 mil a R$ 50 mil','De R$ 50 mil a R$ 100 mil','De R$ 100 mil a R$ 200 mil','De R$ 200 mil a R$ 500 mil','Acima de R$ 500 mil','Prefiro não informar']},
  {id:'cnae',type:'text',q:'CNAE registrado no CNPJ',ph:'Se souber'},
  {id:'espec',type:'area',q:'Especialidades atendidas e procedimentos realizados'},
@@ -453,7 +456,7 @@ function sendSheet(){
     if(!S.id){S.id=Date.now().toString(36)+Math.random().toString(36).slice(2,8);save()}
     const vis=visible(),sc=score(vis),pts=vis.filter(i=>i.type==='yn'&&i.bad&&get(i.id)===i.bad);
     const g=k=>String(get(k)||'').trim();
-    const p={id:S.id,clinica:g('nome'),nome:g('resp'),whats:g('whats'),email:g('email'),doc:g('doc'),porte:g('porte'),fat:g('fat'),cnae:g('cnae'),espec:g('espec'),demanda:g('demanda'),motivo:g('motivo'),
+    const p={id:S.id,clinica:g('nome'),nome:g('resp'),whats:g('whats'),email:g('email'),doc:g('doc'),porte:g('porte'),papel:g('papel'),equipe:g('equipe'),dentistas:g('dentistas'),fat:g('fat'),cnae:g('cnae'),espec:g('espec'),demanda:g('demanda'),motivo:g('motivo'),
       pct:sc?sc.pct:'',nivel:sc?level(sc.pct)[1]:'',nAlertas:pts.length,alertas:pts.map(attn).join('\n'),texto:textOut(vis,sc),news:!!S.c.news,origem:ORIGEM,hp:''};
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p),keepalive:true}).catch(()=>{});
   }catch(e){}
